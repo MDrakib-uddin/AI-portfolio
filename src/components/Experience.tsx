@@ -1,99 +1,87 @@
-import { Building, Calendar, MapPin } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { FaGraduationCap, FaRegListAlt } from 'react-icons/fa';
 
-const Experience = () => {
-  const experiences = [
-    {
-      title: "Senior AI Engineer",
-      company: "TechCorp AI",
-      location: "San Francisco, CA",
-      period: "2022 - Present",
-      description: "Leading development of next-generation recommendation systems using transformer architectures. Improved user engagement by 40% and reduced computational costs by 25%.",
-      technologies: ["PyTorch", "Transformers", "AWS", "Docker", "Kubernetes", "Python"]
-    },
-    {
-      title: "Machine Learning Engineer",
-      company: "InnovateLab",
-      location: "Seattle, WA",
-      period: "2020 - 2022",
-      description: "Built and deployed computer vision models for autonomous vehicle perception. Developed real-time object detection systems with 99.2% accuracy.",
-      technologies: ["TensorFlow", "OpenCV", "C++", "ROS", "CUDA", "MLOps"]
-    },
-    {
-      title: "AI Research Intern",
-      company: "Stanford AI Lab",
-      location: "Stanford, CA",
-      period: "2019 - 2020",
-      description: "Researched novel approaches to few-shot learning and meta-learning. Published 2 papers in top-tier conferences (ICML, NeurIPS).",
-      technologies: ["Python", "JAX", "Research", "Academic Writing", "Experimentation"]
-    },
-    {
-      title: "Data Science Intern",
-      company: "StartupVenture",
-      location: "Austin, TX",
-      period: "2018 - 2019",
-      description: "Developed predictive analytics models for customer behavior analysis. Built data pipelines processing 10M+ daily events.",
-      technologies: ["Python", "Scikit-learn", "Apache Spark", "SQL", "Tableau"]
-    }
-  ];
+const degrees = [
+  {
+    title: 'B.Sc in Computer Science & Engineering',
+    institution: 'CoxsBazar International University',
+    period: '2023 - 2027',
+    description: 'Graduated with honors. Coursework in algorithms, data structures, and artificial intelligence fundamentals.'
+  },
+  {
+    title: 'Higher Secondary Certificate (HSC)',
+    institution: 'Ramu Government Collage',
+    period: '2020 - 2022',
+    description: 'Completed Higher Secondary Certificate with strong academic performance. Focused on foundational topics in Mathematics, Physics, Chemistry, Biology and introductory Programming.'
+  }
+];
 
-  return (
-    <section id="experience" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Professional <span className="bg-gradient-primary bg-clip-text text-transparent">Experience</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A journey through cutting-edge AI projects and innovative solutions
-          </p>
+const courses = [
+  {
+    title: 'Deep Learning Specialization',
+    institution: 'Coursera (Andrew Ng)',
+    period: '2025',
+    description: 'Covered neural networks, CNNs, sequence models, and practical deep learning techniques.'
+  },
+  {
+    title: 'Machine Learning with Python',
+    institution: 'IBM Coursera',
+    period: '2025',
+    description: 'Supervised/unsupervised learning, best practices, and real-world ML applications.'
+  },
+  {
+    title: 'Deep learning & Reinforcement Learning',
+    institution: 'IBM',
+    period: '2025',
+    description: 'ANN, CNN, RNN, Python, Reinforcement Learning, and Potato Disease Projects.'
+  }
+];
+
+const Education = () => (
+  <section id="education" className="py-20 bg-background">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-10">
+        <h2 className="text-4xl font-bold mb-2">
+          <span className="text-foreground">Academic</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Qualification</span>
+        </h2>
+      </div>
+      <div className="grid md:grid-cols-2 gap-12">
+        {/* Left: Degrees Timeline */}
+        <div>
+          <div className="flex items-center gap-2 mb-8">
+            <FaGraduationCap className="text-primary text-2xl" />
+            <h2 className="text-2xl font-bold text-foreground">Education</h2>
+          </div>
+          <ol className="relative border-l-2 border-primary/30 ml-4">
+            {degrees.map((deg, i) => (
+              <li key={i} className="mb-10 ml-4">
+                <span className="absolute -left-5 flex items-center justify-center w-4 h-4 bg-primary rounded-full ring-4 ring-background"></span>
+                <h3 className="text-lg font-bold text-foreground mb-1">{deg.title}</h3>
+                <div className="text-muted-foreground text-sm mb-1">{deg.institution} <span className="mx-1">•</span> {deg.period}</div>
+                <div className="text-muted-foreground text-sm">{deg.description}</div>
+              </li>
+            ))}
+          </ol>
         </div>
-
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300">
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <CardTitle className="text-xl text-card-foreground mb-2">
-                      {exp.title}
-                    </CardTitle>
-                    <div className="flex items-center gap-4 text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <Building className="h-4 w-4" />
-                        <span>{exp.company}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="h-4 w-4" />
-                        <span>{exp.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-primary">
-                    <Calendar className="h-4 w-4" />
-                    <span className="font-medium">{exp.period}</span>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-card-foreground mb-4 leading-relaxed">
-                  {exp.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary" className="bg-secondary/50">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Right: Courses Timeline */}
+        <div>
+          <div className="flex items-center gap-2 mb-8">
+            <FaRegListAlt className="text-primary text-2xl" />
+            <h2 className="text-2xl font-bold text-foreground">Completed Courses</h2>
+          </div>
+          <ol className="relative border-l-2 border-primary/30 ml-4">
+            {courses.map((course, i) => (
+              <li key={i} className="mb-10 ml-4">
+                <span className="absolute -left-5 flex items-center justify-center w-4 h-4 bg-primary rounded-full ring-4 ring-background"></span>
+                <h3 className="text-lg font-bold text-foreground mb-1">{course.title}</h3>
+                <div className="text-muted-foreground text-sm mb-1">{course.institution} <span className="mx-1">•</span> {course.period}</div>
+                <div className="text-muted-foreground text-sm">{course.description}</div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
-export default Experience;
+export default Education;

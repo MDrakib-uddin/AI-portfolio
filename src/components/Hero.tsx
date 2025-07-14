@@ -29,14 +29,14 @@ const Hero = () => {
 
           {/* Name */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in delay-200">
-            <span className="text-foreground">Alex</span>
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Chen</span>
+            <span className="text-foreground">Rakib</span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Uddin</span>
           </h1>
 
           {/* Title */}
           <h2 className="text-2xl md:text-4xl font-semibold mb-8 animate-fade-in delay-400">
-            <span className="text-muted-foreground">AI Engineer & </span>
-            <span className="text-primary">Machine Learning Specialist</span>
+            <span className="text-muted-foreground">AI & Machine Learning Enthusiast |</span>
+            <span className="text-primary">Competitive Programmer</span>
           </h2>
 
           {/* Description */}

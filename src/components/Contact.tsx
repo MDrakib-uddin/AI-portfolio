@@ -1,10 +1,69 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+
+const contactInfo = [
+  {
+    icon: Mail,
+    title: 'Email',
+    content: 'rakibuddinraki2003@gmail.com',
+    link: 'mailto:rakibuddinraki2003@gmail.com',
+  },
+  {
+    icon: Phone,
+    title: 'Phone',
+    content: '01609980287',
+    link: 'tel:+8801609980287',
+  },
+  {
+    icon: MapPin,
+    title: 'Location',
+    content: "Cox's Bazar",
+    link: null,
+  },
+];
+
+const socialLinks = [
+  {
+    href: 'https://github.com/MDrakib-uddin',
+    label: 'Github',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+    ),
+  },
+  {
+    href: 'https://www.linkedin.com/in/rakib-uddin-4050381b4/',
+    label: 'LinkedIn',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    ),
+  },
+  {
+    href: 'https://x.com/UddinRakib97463',
+    label: 'Twitter',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+    ),
+  },
+  {
+    href: 'https://www.kaggle.com/rakib730',
+    label: 'Kaggle',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none"><g><path d="M6.857 6.857v18.286h3.429v-6.857l2.857 3.429 7.429 7.429h4.286l-9.143-9.143 8.571-8.571h-4.286l-9.143 9.143v-13.715h-3.429z" fill="#20BEFF"/></g></svg>
+    ),
+  },
+  {
+    href: 'https://huggingface.co/rakib730',
+    label: 'Hugging Face',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="36" cy="36" rx="36" ry="36" fill="#FFD21F"/><ellipse cx="24.5" cy="31.5" rx="3.5" ry="4.5" fill="#fff"/><ellipse cx="47.5" cy="31.5" rx="3.5" ry="4.5" fill="#fff"/><ellipse cx="24.5" cy="32.5" rx="1.5" ry="2.5" fill="#1A1A1A"/><ellipse cx="47.5" cy="32.5" rx="1.5" ry="2.5" fill="#1A1A1A"/><path d="M24 44c2.5 3 8.5 5 12 5s9.5-2 12-5" stroke="#1A1A1A" strokeWidth="2.5" strokeLinecap="round"/><path d="M18 41c0 4 7 7 18 7s18-3 18-7" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round"/></svg>
+    ),
+  },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +73,8 @@ const Contact = () => {
     message: ''
   });
   const { toast } = useToast();
+  const ref = useRef(null);
+  const [isInView, setIsInView] = useState(true); // For animation, can be improved
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -32,210 +93,150 @@ const Contact = () => {
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "alex.chen@example.com",
-      href: "mailto:alex.chen@example.com"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "San Francisco, CA",
-      href: "#"
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com",
-      color: "hover:text-white"
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com",
-      color: "hover:text-blue-400"
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
-      color: "hover:text-blue-300"
-    }
-  ];
-
   return (
-    <section id="contact" className="py-20 bg-gradient-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Ready to collaborate on your next AI project? Let's discuss how we can build something amazing together.
-          </p>
-        </div>
+    <section id="contact" className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div
+          ref={ref}
+          className={`transition-all duration-500 transform ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Have a project in mind or want to discuss potential collaborations? Feel free to reach out.
+            </p>
+          </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="bg-card border-border">
-            <CardHeader>
-              <CardTitle className="text-xl text-card-foreground">
-                Send me a message
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-card-foreground">
-                      Name
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your name"
-                      required
-                      className="bg-background border-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-card-foreground">
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your.email@example.com"
-                      required
-                      className="bg-background border-border"
-                    />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium text-card-foreground">
-                    Subject
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="What's this about?"
-                    required
-                    className="bg-background border-border"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-card-foreground">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell me about your project or idea..."
-                    rows={5}
-                    required
-                    className="bg-background border-border resize-none"
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-1 space-y-8">
+              {contactInfo.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-start space-x-4 transition-all duration-300 transform"
+                  style={{ transitionDelay: `${index * 40}ms` }}
                 >
-                  <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Contact Details */}
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-xl text-card-foreground">
-                  Contact Information
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {contactInfo.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-secondary/20 transition-colors group"
-                  >
-                    <item.icon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
-                      <p className="text-card-foreground font-medium">{item.value}</p>
-                    </div>
-                  </a>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Social Links */}
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-xl text-card-foreground">
+                  <div className="bg-primary/10 p-3 rounded-lg text-primary">
+                    <item.icon size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {item.content}
+                      </a>
+                    ) : (
+                      <p className="text-muted-foreground">{item.content}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+              <div className="pt-6 mt-8 border-t border-border">
+                <h3 className="text-lg font-semibold text-foreground mb-4">
                   Follow Me
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-4">
-                  {socialLinks.map((social, index) => (
+                </h3>
+                <div className="flex space-x-4">
+                  {socialLinks.map((social, i) => (
                     <a
-                      key={index}
+                      key={i}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-lg bg-secondary/20 hover:bg-secondary/40 transition-all duration-300 group ${social.color}`}
-                      title={social.label}
+                      className="bg-secondary/30 p-3 rounded-lg text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                      aria-label={social.label}
                     >
-                      <social.icon className="h-6 w-6 group-hover:scale-110 transition-transform" />
+                      {social.icon}
                     </a>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Availability */}
+              </div>
+            </div>
+            {/* Right: Contact Form (keep your existing form logic here) */}
             <Card className="bg-card border-border">
               <CardHeader>
                 <CardTitle className="text-xl text-card-foreground">
-                  Availability
+                  Send me a message
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-card-foreground mb-2">
-                  Currently open for new opportunities
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  I'm always interested in discussing innovative AI projects, consulting opportunities, 
-                  or potential collaborations. Feel free to reach out!
-                </p>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium text-card-foreground">
+                        Name
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your name"
+                        required
+                        className="bg-background border-border"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium text-card-foreground">
+                        Email
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="your.email@example.com"
+                        required
+                        className="bg-background border-border"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-medium text-card-foreground">
+                      Subject
+                    </label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="What's this about?"
+                      required
+                      className="bg-background border-border"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-card-foreground">
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell me about your project or idea..."
+                      rows={5}
+                      required
+                      className="bg-background border-border resize-none"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
+                  >
+                    <MessageSquare className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    Send Message
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>

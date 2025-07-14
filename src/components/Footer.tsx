@@ -9,15 +9,15 @@ const Footer = () => {
           <div className="flex items-center space-x-2">
             <Brain className="h-6 w-6 text-primary" />
             <span className="text-lg font-bold bg-gradient-primary bg-clip-text text-transparent">
-              AI Engineer
+              AI & Machine Expertise
             </span>
           </div>
           
           {/* Copyright */}
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>© 2024 Alex Chen. Built with</span>
+            <span>© © 2025 Rakib Uddin</span>
             <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-            <span>and cutting-edge AI</span>
+            <span>All rights reserved</span>
           </div>
         </div>
       </div>

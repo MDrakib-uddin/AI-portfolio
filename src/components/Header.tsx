@@ -7,7 +7,8 @@ const Header = () => {
 
   const navItems = [
     { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
+    { name: 'Academic Qualification', href: '#education' },
+    { name: 'Competitive Programming', href: '#competitive-programming' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
@@ -21,7 +22,7 @@ const Header = () => {
           <div className="flex items-center space-x-2">
             <Brain className="h-8 w-8 text-primary" />
             <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              AI Engineer
+              AI & ML Engineer
             </span>
           </div>
 

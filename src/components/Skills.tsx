@@ -71,14 +71,15 @@ const Skills = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 {aiDomains.map((domain, index) => (
-                  <Badge 
-                    key={index} 
-                    className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 rounded-lg px-3 py-2 font-medium hover:bg-primary/20 transition-colors"
                   >
-                    {domain}
-                  </Badge>
+                    <span className="text-lg">🤖</span>
+                    <span>{domain}</span>
+                  </div>
                 ))}
               </div>
             </CardContent>
