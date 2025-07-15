@@ -47,7 +47,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row w-full justify-center items-center mb-8 sm:mb-16 animate-fade-in delay-800 gap-y-3 sm:gap-y-0 sm:gap-x-8">
+          <div className="flex flex-row w-full justify-center items-center mb-8 sm:mb-16 animate-fade-in delay-800 gap-x-8">
             <Button 
               size="lg" 
               className="w-full sm:w-auto bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
