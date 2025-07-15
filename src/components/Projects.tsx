@@ -133,13 +133,29 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-2 sm:gap-3">
-                  <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-base" disabled={project.github === '#'}>
-                    <Github className="h-4 w-4 mr-2" />
-                    Code
+                  <Button asChild size="sm" variant="outline" className="flex-1 text-xs sm:text-base" disabled={project.github === '#'}>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={project.github === '#' ? -1 : 0}
+                      aria-label={`${project.title} GitHub`}
+                    >
+                      <Github className="h-4 w-4 mr-2" />
+                      Code
+                    </a>
                   </Button>
-                  <Button size="sm" className="flex-1 text-xs sm:text-base bg-gradient-primary" disabled={project.demo === '#'}>
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Live Demo
+                  <Button asChild size="sm" className="flex-1 text-xs sm:text-base bg-gradient-primary" disabled={project.demo === '#'}>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={project.demo === '#' ? -1 : 0}
+                      aria-label={`${project.title} Live Demo`}
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Live Demo
+                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -189,13 +205,29 @@ const Projects = () => {
                   </div>
 
                   <div className="flex gap-1 sm:gap-2">
-                    <Button size="sm" variant="outline" className="flex-1 text-xs" disabled={project.github === '#'}>
-                      <Github className="h-3 w-3 mr-1" />
-                      Code
+                    <Button asChild size="sm" variant="outline" className="flex-1 text-xs" disabled={project.github === '#'}>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        tabIndex={project.github === '#' ? -1 : 0}
+                        aria-label={`${project.title} GitHub`}
+                      >
+                        <Github className="h-3 w-3 mr-1" />
+                        Code
+                      </a>
                     </Button>
-                    <Button size="sm" className="flex-1 text-xs bg-gradient-primary" disabled={project.demo === '#'}>
-                      <ExternalLink className="h-3 w-3 mr-1" />
-                      Demo
+                    <Button asChild size="sm" className="flex-1 text-xs bg-gradient-primary" disabled={project.demo === '#'}>
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        tabIndex={project.demo === '#' ? -1 : 0}
+                        aria-label={`${project.title} Demo`}
+                      >
+                        <ExternalLink className="h-3 w-3 mr-1" />
+                        Demo
+                      </a>
                     </Button>
                   </div>
                 </CardContent>

@@ -46,8 +46,8 @@ const Footer = () => {
             <div className="text-xl sm:text-2xl font-bold mb-1">
               <span className="text-foreground">Rakib</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Uddin</span>
             </div>
-            <div className="text-muted-foreground text-sm sm:text-base">
-              Building intelligent systems that solve real-world problems<br className="hidden xs:block" />
+            <div className="text-muted-foreground text-sm">
+              Building intelligent systems that solve real-world problems<br />
               through machine learning and data science.
             </div>
           </div>

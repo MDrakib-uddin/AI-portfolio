@@ -36,9 +36,9 @@ const Hero = () => {
           </h1>
 
           {/* Title */}
-          <h2 className="text-base xs:text-lg sm:text-2xl md:text-4xl font-semibold mb-3 sm:mb-8 animate-fade-in delay-400">
-            <span className="text-muted-foreground">AI & Machine Learning Enthusiast |</span>
-            <span className="text-primary">Competitive Programmer</span>
+          <h2 className="text-lg xs:text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-8 animate-fade-in delay-400 drop-shadow-lg">
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,180,255,0.18)]">AI &amp; Machine Learning Enthusiast&nbsp;|&nbsp;</span>
+            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(120,0,255,0.25)]">Competitive Programmer</span>
           </h2>
 
           {/* Description */}

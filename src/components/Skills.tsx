@@ -4,18 +4,19 @@ import { Badge } from '@/components/ui/badge';
 
 const Skills = () => {
   const technicalSkills = [
-    { name: "Python", level: 95 },
+    { name: "Machine Learning", level: 95 },
     { name: "PyTorch", level: 90 },
     { name: "TensorFlow", level: 85 },
     { name: "Deep Learning", level: 92 },
     { name: "Computer Vision", level: 88 },
-    { name: "NLP", level: 85 },
+    { name: "Natural Language Processing", level: 85 },
+    { name: "Reinforcement Learning", level: 80 },
     { name: "MLOps", level: 80 },
     { name: "AWS/GCP", level: 75 }
   ];
 
   const aiDomains = [
-    "Deep Learning", "Computer Vision", "Natural Language Processing", 
+    "Machine Learning","Deep Learning", "Computer Vision", "Natural Language Processing", 
     "Reinforcement Learning", "Time Series Analysis", "Generative AI",
     "Transfer Learning", "Model Optimization", "AI Ethics", "AutoML"
   ];

@@ -37,20 +37,24 @@ const courses = [
 ];
 
 const Education = () => (
-  <section id="education" className="py-14 sm:py-20 bg-background">
+  <>
+    <section id="education" className="py-14 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
       <div className="text-center mb-8 sm:mb-10">
         <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-2">
           <span className="text-foreground">Academic</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Qualification</span>
-          </h2>
+        </h2>
+        <div className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto mt-2">
+          Strong academic background in Computer Science, focused on algorithms, data structures, and AI.
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
         {/* Left: Degrees Timeline */}
-        <div>
+                  <div>
           <div className="flex items-center gap-2 mb-5 sm:mb-8">
             <FaGraduationCap className="text-primary text-xl sm:text-2xl" />
             <h2 className="text-lg sm:text-2xl font-bold text-foreground">Education</h2>
-          </div>
+                      </div>
           <ul className="relative border-l-2 border-primary/30 ml-2 sm:ml-4">
             {degrees.map((deg, i) => (
               <li key={i} className="mb-6 sm:mb-10 ml-2 sm:ml-4">
@@ -61,13 +65,13 @@ const Education = () => (
               </li>
             ))}
           </ul>
-        </div>
+                      </div>
         {/* Right: Courses Timeline */}
         <div className="mt-10 md:mt-0">
           <div className="flex items-center gap-2 mb-5 sm:mb-8">
             <FaRegListAlt className="text-primary text-xl sm:text-2xl" />
             <h2 className="text-lg sm:text-2xl font-bold text-foreground">Completed Courses</h2>
-          </div>
+                    </div>
           <ul className="relative border-l-2 border-primary/30 ml-2 sm:ml-4 max-h-96 overflow-auto">
             {courses.map((course, i) => (
               <li key={i} className="mb-6 sm:mb-10 ml-2 sm:ml-4">
@@ -76,12 +80,13 @@ const Education = () => (
                 <div className="text-muted-foreground text-xs sm:text-sm mb-1">{course.institution} <span className="mx-1">•</span> {course.period}</div>
                 <div className="text-muted-foreground text-xs sm:text-sm">{course.description}</div>
               </li>
-            ))}
+                  ))}
           </ul>
-        </div>
+                </div>
         </div>
       </div>
     </section>
-  );
+  </>
+);
 
 export default Education;
