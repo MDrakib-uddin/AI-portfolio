@@ -51,16 +51,16 @@ const Education = () => (
             <FaGraduationCap className="text-primary text-xl sm:text-2xl" />
             <h2 className="text-lg sm:text-2xl font-bold text-foreground">Education</h2>
           </div>
-          <ol className="relative border-l-2 border-primary/30 ml-2 sm:ml-4">
+          <ul className="relative border-l-2 border-primary/30 ml-2 sm:ml-4">
             {degrees.map((deg, i) => (
               <li key={i} className="mb-6 sm:mb-10 ml-2 sm:ml-4">
-                <span className="absolute -left-4 sm:-left-5 flex items-center justify-center w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full ring-4 ring-background"></span>
+                <span aria-hidden="true" className="absolute -left-4 sm:-left-5 flex items-center justify-center w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full ring-4 ring-background"></span>
                 <h3 className="text-base sm:text-lg font-bold text-foreground mb-1">{deg.title}</h3>
                 <div className="text-muted-foreground text-xs sm:text-sm mb-1">{deg.institution} <span className="mx-1">•</span> {deg.period}</div>
                 <div className="text-muted-foreground text-xs sm:text-sm">{deg.description}</div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
         {/* Right: Courses Timeline */}
         <div className="mt-10 md:mt-0">
@@ -68,16 +68,16 @@ const Education = () => (
             <FaRegListAlt className="text-primary text-xl sm:text-2xl" />
             <h2 className="text-lg sm:text-2xl font-bold text-foreground">Completed Courses</h2>
           </div>
-          <ol className="relative border-l-2 border-primary/30 ml-2 sm:ml-4">
+          <ul className="relative border-l-2 border-primary/30 ml-2 sm:ml-4 max-h-96 overflow-auto">
             {courses.map((course, i) => (
               <li key={i} className="mb-6 sm:mb-10 ml-2 sm:ml-4">
-                <span className="absolute -left-4 sm:-left-5 flex items-center justify-center w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full ring-4 ring-background"></span>
+                <span aria-hidden="true" className="absolute -left-4 sm:-left-5 flex items-center justify-center w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full ring-4 ring-background"></span>
                 <h3 className="text-base sm:text-lg font-bold text-foreground mb-1">{course.title}</h3>
                 <div className="text-muted-foreground text-xs sm:text-sm mb-1">{course.institution} <span className="mx-1">•</span> {course.period}</div>
                 <div className="text-muted-foreground text-xs sm:text-sm">{course.description}</div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
         </div>
       </div>

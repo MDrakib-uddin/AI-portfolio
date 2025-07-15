@@ -68,8 +68,17 @@ const Footer = () => {
           </div>
         </div>
         <hr className="border-border mb-2" />
-        <div className="text-center text-muted-foreground text-xs sm:text-sm">
-          © 2025 Rakib Uddin. All rights reserved.
+        <div className="flex flex-col items-center gap-2">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-xs sm:text-sm px-3 py-1 rounded bg-primary/10 hover:bg-primary/20 text-primary transition mb-1"
+            aria-label="Back to top"
+          >
+            ↑ Back to top
+          </button>
+          <div className="text-center text-muted-foreground text-xs sm:text-sm">
+            © 2025 Rakib Uddin. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>

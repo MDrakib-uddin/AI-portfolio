@@ -34,6 +34,7 @@ const socialLinks = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
     ),
+    ariaLabel: 'Github profile',
   },
   {
     href: 'https://www.linkedin.com/in/rakib-uddin-4050381b4/',
@@ -85,10 +86,17 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot check
+    const honeypot = (e.target as any).honeypot?.value;
+    if (honeypot) {
+      // Bot detected, silently fail
+      return;
+    }
     // Simulate form submission
     toast({
-      title: "Message Sent!",
+      title: '✅ Message Sent!',
       description: "Thank you for reaching out. I'll get back to you soon.",
+      duration: 6000,
     });
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
@@ -119,6 +127,8 @@ const Contact = () => {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                {/* Honeypot field for anti-spam */}
+                <input type="text" name="honeypot" className="hidden" tabIndex={-1} autoComplete="off" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="space-y-1 sm:space-y-2">
                     <label htmlFor="name" className="text-xs sm:text-sm font-medium text-card-foreground">
@@ -229,8 +239,8 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                        className="p-3 rounded-full bg-secondary/30 hover:bg-primary/80 hover:text-white transition"
-                        aria-label={social.label}
+                        className="p-2 sm:p-3 rounded-full bg-secondary/20 hover:bg-primary/80 hover:text-white transition"
+                        aria-label={social.ariaLabel || social.label}
                     >
                         {social.icon}
                     </a>

@@ -10,7 +10,7 @@ const Projects = () => {
       description: 'Developed a finetuned image classification model using Vision Transformers and oxford-pets dataset.',
       image: 'https://media.istockphoto.com/id/480412341/photo/portrait-pomeranian-dog.jpg?s=612x612&w=0&k=20&c=E0rSqNXQF_z6k44g0GiPtXrA9ZzdgBdh-jnYR3PokvI=',
       technologies: ['Computer Vision', 'CNN', 'TensorFlow', 'Python','Vision Transformers','Gradio'],
-      github: 'https://github.com/MDrakib-uddin/Hugging-face-fintuned/blob/main/image-classification.ipynb',
+      github: 'https://huggingface.co/rakib730/vit-base-oxford-iiit-pets',
       demo: 'https://huggingface.co/spaces/rakib730/ImageClassification',
       featured: true
     },
@@ -97,11 +97,11 @@ const Projects = () => {
         {/* Featured Projects */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 mb-10 sm:mb-16">
           {featuredProjects.map((project, index) => (
-            <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group">
+            <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group" tabIndex={0}>
               <div className="relative">
                 <img 
                   src={project.image} 
-                  alt={project.title}
+                  alt={`Screenshot of project: ${project.title}`}
                   className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
@@ -118,7 +118,10 @@ const Projects = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-xs sm:text-muted-foreground sm:text-base mb-2 sm:mb-4 leading-relaxed">
-                  {project.description}
+                  {project.description.split(' ').map(word => {
+                    const keywords = ['Vision', 'Transformers', 'deep learning', 'recommendation', 'pipeline', 'deployment', 'real-time', 'detection', 'audio', 'emotion', 'classification', 'system', 'OpenCV', 'TensorFlow', 'PyTorch', 'BERT', 'MLOps', 'MLflow', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Gradio', 'autonomous', 'analytics', 'anomaly', 'monitoring', 'collaborative', 'filtering', 'content-based', 'hyperparameter', 'augmentation', 'finetuned', 'intelligent', 'chatbot', 'token', 'classification', 'research', 'AI', 'ML'];
+                    return keywords.some(k => word.toLowerCase().includes(k.toLowerCase())) ? <strong key={word}>{word} </strong> : word + ' ';
+                  })}
                 </p>
                 
                 <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
@@ -130,11 +133,11 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-2 sm:gap-3">
-                  <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-base">
+                  <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-base" disabled={project.github === '#'}>
                     <Github className="h-4 w-4 mr-2" />
                     Code
                   </Button>
-                  <Button size="sm" className="flex-1 text-xs sm:text-base bg-gradient-primary">
+                  <Button size="sm" className="flex-1 text-xs sm:text-base bg-gradient-primary" disabled={project.demo === '#'}>
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Live Demo
                   </Button>
@@ -151,11 +154,11 @@ const Projects = () => {
           </h3>
           <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {otherProjects.map((project, index) => (
-              <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group">
+              <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group" tabIndex={0}>
                 <div className="relative">
                   <img 
                     src={project.image} 
-                    alt={project.title}
+                    alt={`Screenshot of project: ${project.title}`}
                     className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -166,7 +169,10 @@ const Projects = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 leading-relaxed">
-                    {project.description}
+                    {project.description.split(' ').map(word => {
+                      const keywords = ['Vision', 'Transformers', 'deep learning', 'recommendation', 'pipeline', 'deployment', 'real-time', 'detection', 'audio', 'emotion', 'classification', 'system', 'OpenCV', 'TensorFlow', 'PyTorch', 'BERT', 'MLOps', 'MLflow', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Gradio', 'autonomous', 'analytics', 'anomaly', 'monitoring', 'collaborative', 'filtering', 'content-based', 'hyperparameter', 'augmentation', 'finetuned', 'intelligent', 'chatbot', 'token', 'classification', 'research', 'AI', 'ML'];
+                      return keywords.some(k => word.toLowerCase().includes(k.toLowerCase())) ? <strong key={word}>{word} </strong> : word + ' ';
+                    })}
                   </p>
                   
                   <div className="flex flex-wrap gap-1 mb-2 sm:mb-3">
@@ -183,11 +189,11 @@ const Projects = () => {
                   </div>
 
                   <div className="flex gap-1 sm:gap-2">
-                    <Button size="sm" variant="outline" className="flex-1 text-xs">
+                    <Button size="sm" variant="outline" className="flex-1 text-xs" disabled={project.github === '#'}>
                       <Github className="h-3 w-3 mr-1" />
                       Code
                     </Button>
-                    <Button size="sm" className="flex-1 text-xs bg-gradient-primary">
+                    <Button size="sm" className="flex-1 text-xs bg-gradient-primary" disabled={project.demo === '#'}>
                       <ExternalLink className="h-3 w-3 mr-1" />
                       Demo
                     </Button>

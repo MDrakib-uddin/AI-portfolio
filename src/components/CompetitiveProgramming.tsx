@@ -113,7 +113,7 @@ const CompetitiveProgramming = () => (
       {/* Platforms */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-16">
         {platforms.map((p, i) => (
-          <Card key={i} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 flex flex-col">
+          <Card key={i} className="bg-card border-border md:hover:shadow-glow-purple/20 transition-all duration-300 flex flex-col">
             <CardHeader className="flex flex-row items-center gap-3 sm:gap-4 pb-2">
               <img src={p.logo} alt={p.name} className="h-8 w-8 sm:h-10 sm:w-10 rounded" />
               <CardTitle className="text-base sm:text-xl text-card-foreground">{p.name}</CardTitle>

@@ -57,7 +57,7 @@ const Skills = () => {
                     <span className="text-card-foreground font-medium text-xs sm:text-base">{skill.name}</span>
                     <span className="text-primary font-semibold text-xs sm:text-base">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2" />
+                  <Progress value={skill.level} className="h-2" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} />
                 </div>
               ))}
             </CardContent>
@@ -101,6 +101,7 @@ const Skills = () => {
                     key={index} 
                     variant="secondary"
                     className="bg-secondary/50 hover:bg-secondary transition-colors text-xs sm:text-base"
+                    title={tool}
                   >
                     {tool}
                   </Badge>
@@ -123,6 +124,7 @@ const Skills = () => {
                     key={index} 
                     variant="outline"
                     className="border-primary/30 text-primary hover:bg-primary/10 transition-colors text-xs sm:text-base"
+                    title={language}
                   >
                     {language}
                   </Badge>
@@ -140,24 +142,24 @@ const Skills = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
-              <div className="space-y-1 sm:space-y-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
+              <li className="space-y-1 sm:space-y-2">
                 <h4 className="font-semibold text-card-foreground text-xs sm:text-base">AWS Certified Machine Learning - Specialty</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">Amazon Web Services • 2023</p>
-              </div>
-              <div className="space-y-1 sm:space-y-2">
+              </li>
+              <li className="space-y-1 sm:space-y-2">
                 <h4 className="font-semibold text-card-foreground text-xs sm:text-base">TensorFlow Developer Certificate</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">Google • 2022</p>
-              </div>
-              <div className="space-y-1 sm:space-y-2">
+              </li>
+              <li className="space-y-1 sm:space-y-2">
                 <h4 className="font-semibold text-card-foreground text-xs sm:text-base">Deep Learning Specialization</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">Coursera/Stanford • 2021</p>
-              </div>
-              <div className="space-y-1 sm:space-y-2">
+              </li>
+              <li className="space-y-1 sm:space-y-2">
                 <h4 className="font-semibold text-card-foreground text-xs sm:text-base">Published Research Papers</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">ICML, NeurIPS • 2020-2023</p>
-              </div>
-            </div>
+              </li>
+            </ul>
           </CardContent>
         </Card>
       </div>
