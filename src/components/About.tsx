@@ -33,7 +33,7 @@ const About = () => {
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
-            I'm a passionate AI engineer with 5+ years of experience building intelligent systems 
+            I'm a passionate AI enthusiast with 2+ years of educational experience building intelligent systems 
             that transform how businesses operate and how people interact with technology.
           </p>
         </div>
@@ -42,23 +42,15 @@ const About = () => {
           {/* Left Column - Bio */}
           <div className="space-y-4 sm:space-y-6">
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              My journey in <strong>AI</strong> began during my <strong>Computer Science</strong> studies at <strong>Stanford</strong>, where I became 
-              fascinated by the potential of <strong>machine learning</strong> to solve complex problems. Since then, 
-              I've worked at <strong>leading tech companies</strong> and <strong>startups</strong>, developing everything from 
-              <strong>recommendation systems</strong> to <strong>computer vision applications</strong>.
+              My journey into the world of <strong>Artificial Intelligence</strong> began during my <strong>Computer Science</strong> studies at <strong>CBIU</strong>, where I was captivated by the power of <strong>machine learning</strong> to address real-world challenges. Since then, I have been deeply engaged in exploring and developing AI systems—ranging from intelligent recommendation engines to computer vision applications.
             </p>
             
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              I specialize in <strong>deep learning</strong>, <strong>natural language processing</strong>, and <strong>computer vision</strong>. 
-              My work has contributed to products used by <strong>millions of users</strong>, from improving <strong>search algorithms</strong> 
-              to building <strong>autonomous systems</strong>. I'm particularly interested in the intersection 
-              of <strong>AI ethics</strong> and practical applications.
+              I specialize in <strong>deep learning</strong>, <strong>natural language processing</strong>, and <strong>computer vision</strong>. My projects have focused on solving practical problems with AI, from improving <strong>search algorithms</strong> to experimenting with <strong>autonomous technologies</strong>. I'm particularly interested in the intersection of <strong>AI ethics</strong> and real-world impact, striving to ensure that AI is developed and used responsibly.
             </p>
 
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              When I'm not coding, you'll find me <strong>contributing to open-source projects</strong>, 
-              <strong>writing technical blogs</strong>, or <strong>mentoring aspiring AI engineers</strong>. I believe in making 
-              <strong>AI accessible and beneficial for everyone</strong>.
+              Outside of research and development, I actively contribute to <strong>open-source communities</strong>, write <strong>technical blogs</strong>, and mentor <strong>aspiring AI engineers</strong>. I strongly believe in democratizing AI—making its tools, knowledge, and opportunities accessible to all.
             </p>
           </div>
 
