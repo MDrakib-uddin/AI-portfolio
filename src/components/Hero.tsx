@@ -47,7 +47,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col gap-3 w-full sm:flex-row sm:gap-4 justify-center items-center mb-8 sm:mb-16 animate-fade-in delay-800">
+          <div className="flex flex-col w-full sm:flex-row sm:gap-4 justify-center items-center mb-8 sm:mb-16 animate-fade-in delay-800 gap-y-3">
             <Button 
               size="lg" 
               className="w-full sm:w-auto bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
@@ -61,7 +61,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+              className="w-full sm:w-auto border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group mt-2 sm:mt-0"
               asChild
             >
               <a href="/Rakib-Uddin-FlowCV-Resume-20250707.pdf" download>
