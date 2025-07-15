@@ -1,11 +1,17 @@
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { FaTrophy, FaMedal, FaStar, FaCode, FaChartLine } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
+import codeforcesLogo from '@/assets/images/codeforces-logo.png';
+import codechefLogo from '@/assets/images/codechef-logo.jpeg';
+import leetcodeLogo from '@/assets/images/leetcode-logo.png';
+import hackerrankLogo from '@/assets/images/hackerrank-logo.jpeg';
+import atcoderLogo from '@/assets/images/atcode-logo.jpeg';
+import lightojLogo from '@/assets/images/lightoj-logo.jpeg';
 
 const platforms = [
   {
     name: 'Codeforces',
-    logo: 'https://sta.codeforces.com/s/20607/images/codeforces-logo.png',
+    logo: codeforcesLogo,
     username: '@Rakib731',
     rating: '1216',
     status: 'Pupil',
@@ -15,7 +21,7 @@ const platforms = [
   },
   {
     name: 'CodeChef',
-    logo: 'https://cdn.codechef.com/images/cc-logo.svg',
+    logo: codechefLogo,
     username: '@rakib730',
     rating: '1707',
     status: '3★',
@@ -25,7 +31,7 @@ const platforms = [
   },
   {
     name: 'LeetCode',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png',
+    logo: leetcodeLogo,
     username: '@rakib_uddin',
     rating: '1538',
     status: '',
@@ -35,7 +41,7 @@ const platforms = [
   },
   {
     name: 'HackerRank',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png',
+    logo: hackerrankLogo,
     username: '@rakibuddinraki11',
     rating: '',
     status: '',
@@ -45,7 +51,7 @@ const platforms = [
   },
   {
     name: 'AtCoder',
-    logo: 'https://img.atcoder.jp/assets/atcoder.png',
+    logo: atcoderLogo,
     username: '@rakib730',
     rating: '48',
     status: 'Gray',
@@ -55,7 +61,7 @@ const platforms = [
   },
   {
     name: 'LightOJ',
-    logo: 'https://toph.co/static/images/oj-logos/lightoj-512.png',
+    logo: lightojLogo,
     username: '@rakib_uddin',
     rating: '',
     status: 'Intermediate',

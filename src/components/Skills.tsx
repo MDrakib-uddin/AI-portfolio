@@ -23,11 +23,11 @@ const Skills = () => {
   const tools = [
     "PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn",
     "Pandas", "NumPy", "Docker", "Kubernetes", "Git", "Jupyter",
-    "MLflow", "Weights & Biases", "Apache Spark", "Elasticsearch"
+    "MLflow", "Weights & Biases", "Librosa", "Transformers", "LangChain", "LangGraph"
   ];
 
   const languages = [
-    "Python", "JavaScript", "C++", "SQL", "R", "Julia", "Go", "Rust"
+    "Python", "JavaScript", "C++", "SQL", "R", "Julia", "Go", "Rust","Java","C"
   ];
 
   return (
@@ -74,7 +74,7 @@ const Skills = () => {
               <div className="grid grid-cols-2 gap-3">
                 {aiDomains.map((domain, index) => (
                   <div
-                    key={index}
+                    key={index} 
                     className="flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 rounded-lg px-3 py-2 font-medium hover:bg-primary/20 transition-colors"
                   >
                     <span className="text-lg">🤖</span>

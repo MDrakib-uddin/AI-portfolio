@@ -6,59 +6,77 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
-      title: "Neural Style Transfer Platform",
-      description: "A real-time artistic style transfer application using deep neural networks. Users can transform photos into artwork styles with custom style models.",
-      image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=250&fit=crop",
-      technologies: ["PyTorch", "FastAPI", "React", "Docker", "AWS"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: 'Fine-tuned Image Classification Model For Pets',
+      description: 'Developed a finetuned image classification model using Vision Transformers and oxford-pets dataset.',
+      image: 'https://media.istockphoto.com/id/480412341/photo/portrait-pomeranian-dog.jpg?s=612x612&w=0&k=20&c=E0rSqNXQF_z6k44g0GiPtXrA9ZzdgBdh-jnYR3PokvI=',
+      technologies: ['Computer Vision', 'CNN', 'TensorFlow', 'Python','Vision Transformers','Gradio'],
+      github: 'https://github.com/MDrakib-uddin/Hugging-face-fintuned/blob/main/image-classification.ipynb',
+      demo: 'https://huggingface.co/spaces/rakib730/ImageClassification',
       featured: true
     },
     {
-      title: "Intelligent Document Parser",
-      description: "AI-powered document analysis system that extracts and categorizes information from various document types using computer vision and NLP.",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop",
-      technologies: ["TensorFlow", "OCR", "spaCy", "MongoDB", "Flask"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: 'Fine-tuned Token Classification LLM Model',
+      description: 'Built an intelligent chatbot using transformer models for token classification.',
+      image: 'https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg',
+      technologies: ['Natural Language Processing', 'Transformers', 'PyTorch', 'BERT','Conll2003 Dataset'],
+      github: 'https://github.com/MDrakib-uddin/Hugging-face-fintuned/blob/main/Finetuned_Token_classification_(PyTorch).ipynb',
+      demo: 'https://colab.research.google.com/drive/1Fhl3q9igahWLWsrqPeuWZwziGlIzuWWm#scrollTo=GPxJg1znDGVr',
       featured: true
     },
     {
-      title: "Conversational AI Assistant",
-      description: "Multi-modal AI assistant capable of understanding and responding to text, voice, and image inputs using transformer-based architectures.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
-      technologies: ["Transformers", "Whisper", "CLIP", "Gradio", "HuggingFace"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: 'Predictive Analytics for E-commerce',
+      description: 'Created a product recommendation system using collaborative filtering and content-based approaches.',
+      image: 'https://images.pexels.com/photos/7567460/pexels-photo-7567460.jpeg',
+      technologies: ['Recommender Systems', 'ML', 'Python', 'SQL'],
+      github: '#',
+      demo: '#',
       featured: false
     },
     {
-      title: "Predictive Maintenance System",
-      description: "IoT-based machine learning system that predicts equipment failures before they occur, reducing downtime by 60%.",
-      image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=250&fit=crop",
-      technologies: ["Python", "Time Series", "IoT", "InfluxDB", "Grafana"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: 'Anomaly Detection in Time Series Data',
+      description: 'Developed a system for detecting anomalies in IoT sensor data using LSTM networks and statistical methods.',
+      image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg',
+      technologies: ['Time Series', 'LSTM', 'Anomaly Detection', 'IoT'],
+      github: '#',
+      demo: '#',
       featured: false
     },
     {
-      title: "Autonomous Drone Navigation",
-      description: "Computer vision system for autonomous drone navigation in complex environments using deep reinforcement learning.",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&h=250&fit=crop",
-      technologies: ["OpenCV", "ROS", "Deep RL", "Gazebo", "Python"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: 'End to End MLOps project for Car Price Prediction',
+      description: 'Developed an end-to-end MLOps pipeline for car price prediction, including data preprocessing, model training, deployment, and monitoring. Integrated automated workflows for scalable and continuous delivery using tools like MLflow and Docker..',
+      image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg',
+      technologies: ['Docker', 'Kubernetes', 'CI/CD pipeline', 'AWS','MLflow'],
+      github: 'https://github.com/MDrakib-uddin/MLOPS-project1',
+      demo: 'https://github.com/MDrakib-uddin/MLOPS-project1',
       featured: false
     },
     {
-      title: "Real-time Sentiment Analysis",
-      description: "High-throughput sentiment analysis pipeline processing millions of social media posts in real-time with 95% accuracy.",
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop",
-      technologies: ["BERT", "Kafka", "Elasticsearch", "Kibana", "Docker"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: 'Fine-tuned Audio Classification Model',
+      description: 'Finetuned a pre-trained audio classification model on custom datasets to accurately detect and classify sound events. Improved model performance through data augmentation and hyperparameter tuning.',
+      image: 'https://images.ctfassets.net/3viuren4us1n/7MmrorOl3fJ8QhDi6jxrpW/14d2844c5d9094377ecbf0290cfb3732/audio_classification.jpg',
+      technologies: ['Pytorch', 'Torchvision', 'Librosa', 'Gradio','Transformers'],
+      github: 'https://github.com/MDrakib-uddin/Hugging-face-fintuned/blob/main/Fine_tuning_audio_model.ipynb',
+      demo: 'https://huggingface.co/spaces/rakib730/PartyMusicAgent',
       featured: false
-    }
+    },
+    {
+      title: 'AI-powered Face Mask Detector',
+      description: 'A real-time face mask detection system using deep learning and OpenCV. Detects people with/without masks in live video streams.',
+      image: 'https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg',
+      technologies: ['Computer Vision', 'OpenCV', 'TensorFlow', 'Python'],
+      github: '#',
+      demo: '#',
+      featured: false
+    },
+    {
+      title: 'Speech Emotion Recognition',
+      description: 'Classifies emotions from speech audio using deep learning models. Supports real-time audio input and visualization.',
+      image: 'https://cdn.pixabay.com/photo/2023/01/06/15/42/sound-7701546_1280.jpg',
+      technologies: ['Audio', 'Deep Learning', 'Librosa', 'Keras'],
+      github: '#',
+      demo: '#',
+      featured: false
+    },
   ];
 
   const featuredProjects = projects.filter(p => p.featured);

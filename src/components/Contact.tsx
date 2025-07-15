@@ -109,64 +109,17 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-1 space-y-8">
-              {contactInfo.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-4 transition-all duration-300 transform"
-                  style={{ transitionDelay: `${index * 40}ms` }}
-                >
-                  <div className="bg-primary/10 p-3 rounded-lg text-primary">
-                    <item.icon size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        {item.content}
-                      </a>
-                    ) : (
-                      <p className="text-muted-foreground">{item.content}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-              <div className="pt-6 mt-8 border-t border-border">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Follow Me
-                </h3>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, i) => (
-                    <a
-                      key={i}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-secondary/30 p-3 rounded-lg text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-                      aria-label={social.label}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* Right: Contact Form (keep your existing form logic here) */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left: Contact Form */}
             <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-xl text-card-foreground">
-                  Send me a message
+                <CardTitle className="text-xl text-card-foreground flex items-center gap-2">
+                  <Send className="h-5 w-5 text-primary" /> Send me a message
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-card-foreground">
                         Name
@@ -196,23 +149,21 @@ const Contact = () => {
                         className="bg-background border-border"
                       />
                     </div>
+                    <div className="space-y-2 col-span-2">
+                      <label htmlFor="subject" className="text-sm font-medium text-card-foreground">
+                        Subject
+                      </label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        placeholder="What's this about?"
+                        required
+                        className="bg-background border-border"
+                      />
+                    </div>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium text-card-foreground">
-                      Subject
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      placeholder="What's this about?"
-                      required
-                      className="bg-background border-border"
-                    />
-                  </div>
-                  
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium text-card-foreground">
                       Message
@@ -223,22 +174,83 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell me about your project or idea..."
-                      rows={5}
+                      rows={10}
                       required
-                      className="bg-background border-border resize-none"
+                      className="bg-background border-border resize-none w-full min-h-[200px]"
                     />
                   </div>
-                  
                   <Button 
                     type="submit" 
                     className="w-full bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
                   >
-                    <MessageSquare className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     Send Message
                   </Button>
                 </form>
               </CardContent>
             </Card>
+            {/* Right: Info Cards */}
+            <div className="flex flex-col gap-6">
+              {/* Contact Information */}
+              <Card className="bg-card border-border">
+                <CardHeader>
+                  <CardTitle className="text-lg text-card-foreground">Contact Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {contactInfo.map((item, index) => (
+                    <div key={index} className="flex items-center gap-4">
+                      <div className="bg-primary/10 p-3 rounded-full text-primary">
+                        <item.icon size={22} />
+                      </div>
+                      <div>
+                        <div className="font-semibold text-card-foreground">{item.title}</div>
+                        {item.link ? (
+                          <a href={item.link} className="text-muted-foreground hover:text-primary transition">
+                            {item.content}
+                          </a>
+                        ) : (
+                          <div className="text-muted-foreground">{item.content}</div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+              {/* Follow Me */}
+              <Card className="bg-card border-border">
+                <CardHeader>
+                  <CardTitle className="text-lg text-card-foreground">Follow Me</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex gap-3 mt-2">
+                    {socialLinks.map((social, i) => (
+                      <a
+                        key={i}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-secondary/30 hover:bg-primary/80 hover:text-white transition"
+                        aria-label={social.label}
+                      >
+                        {social.icon}
+                      </a>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              {/* Availability */}
+              <Card className="bg-card border-border">
+                <CardHeader>
+                  <CardTitle className="text-lg text-card-foreground">Availability</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="font-semibold text-card-foreground mb-1">Currently open for new opportunities</div>
+                  <div className="text-muted-foreground text-sm">
+                    I'm always interested in discussing innovative AI projects, consulting opportunities, or potential collaborations. Feel free to reach out!
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

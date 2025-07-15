@@ -41,13 +41,13 @@ const Header = () => {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="https://github.com/MDrakib-uddin" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
             </a>
-            <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="https://www.linkedin.com/in/rakib-uddin-4050381b4/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href="mailto:contact@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="mailto:rakibuddinraki2003@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
               <Mail className="h-5 w-5" />
             </a>
           </div>
@@ -76,13 +76,13 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex items-center space-x-4 pt-4 border-t border-border">
-                <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://github.com/MDrakib-uddin" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                 </a>
-                <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/in/rakib-uddin-4050381b4/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="mailto:contact@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:rakibuddinraki2003@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="h-5 w-5" />
                 </a>
               </div>

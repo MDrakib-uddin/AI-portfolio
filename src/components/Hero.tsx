@@ -51,22 +51,33 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
+              asChild
             >
-              <MessageCircle className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-              Get In Touch
+              <a href="#contact">
+                <MessageCircle className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                Get In Touch
+              </a>
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+              asChild
             >
-              <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-              Download Resume
+              <a href="/Rakib-Uddin-FlowCV-Resume-20250707.pdf" download>
+                <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+                Download Resume
+              </a>
             </Button>
           </div>
 
           {/* Scroll Indicator */}
-          <div className="animate-bounce">
+          <div className="animate-bounce cursor-pointer" onClick={() => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}>
             <ArrowDown className="h-6 w-6 text-muted-foreground mx-auto" />
           </div>
         </div>

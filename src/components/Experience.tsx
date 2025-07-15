@@ -1,13 +1,13 @@
 import { FaGraduationCap, FaRegListAlt } from 'react-icons/fa';
 
 const degrees = [
-  {
+    {
     title: 'B.Sc in Computer Science & Engineering',
     institution: 'CoxsBazar International University',
     period: '2023 - 2027',
     description: 'Graduated with honors. Coursework in algorithms, data structures, and artificial intelligence fundamentals.'
-  },
-  {
+    },
+    {
     title: 'Higher Secondary Certificate (HSC)',
     institution: 'Ramu Government Collage',
     period: '2020 - 2022',
@@ -16,7 +16,7 @@ const degrees = [
 ];
 
 const courses = [
-  {
+    {
     title: 'Deep Learning Specialization',
     institution: 'Coursera (Andrew Ng)',
     period: '2025',
@@ -27,8 +27,8 @@ const courses = [
     institution: 'IBM Coursera',
     period: '2025',
     description: 'Supervised/unsupervised learning, best practices, and real-world ML applications.'
-  },
-  {
+    },
+    {
     title: 'Deep learning & Reinforcement Learning',
     institution: 'IBM',
     period: '2025',
@@ -38,11 +38,11 @@ const courses = [
 
 const Education = () => (
   <section id="education" className="py-20 bg-background">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold mb-2">
           <span className="text-foreground">Academic</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Qualification</span>
-        </h2>
+          </h2>
       </div>
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left: Degrees Timeline */}
@@ -63,11 +63,11 @@ const Education = () => (
           </ol>
         </div>
         {/* Right: Courses Timeline */}
-        <div>
+                  <div>
           <div className="flex items-center gap-2 mb-8">
             <FaRegListAlt className="text-primary text-2xl" />
             <h2 className="text-2xl font-bold text-foreground">Completed Courses</h2>
-          </div>
+                      </div>
           <ol className="relative border-l-2 border-primary/30 ml-4">
             {courses.map((course, i) => (
               <li key={i} className="mb-10 ml-4">
@@ -79,9 +79,9 @@ const Education = () => (
             ))}
           </ol>
         </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 
 export default Education;
