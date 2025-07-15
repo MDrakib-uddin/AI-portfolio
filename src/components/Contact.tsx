@@ -94,115 +94,115 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section id="contact" className="py-14 sm:py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6">
         <div
           ref={ref}
           className={`transition-all duration-500 transform ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
+            Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
+          </h2>
+            <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-2xl mx-auto">
               Have a project in mind or want to discuss potential collaborations? Feel free to reach out.
-            </p>
-          </div>
+          </p>
+        </div>
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
             {/* Left: Contact Form */}
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-xl text-card-foreground flex items-center gap-2">
+          <Card className="bg-card border-border">
+            <CardHeader>
+                <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2">
                   <Send className="h-5 w-5 text-primary" /> Send me a message
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-card-foreground">
-                        Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Your name"
-                        required
-                        className="bg-background border-border"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-card-foreground">
-                        Email
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="your.email@example.com"
-                        required
-                        className="bg-background border-border"
-                      />
-                    </div>
-                    <div className="space-y-2 col-span-2">
-                      <label htmlFor="subject" className="text-sm font-medium text-card-foreground">
-                        Subject
-                      </label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        placeholder="What's this about?"
-                        required
-                        className="bg-background border-border"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-card-foreground">
-                      Message
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label htmlFor="name" className="text-xs sm:text-sm font-medium text-card-foreground">
+                      Name
                     </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Tell me about your project or idea..."
-                      rows={10}
+                      placeholder="Your name"
                       required
-                      className="bg-background border-border resize-none w-full min-h-[200px]"
+                      className="bg-background border-border text-xs sm:text-base"
                     />
                   </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
-                  >
-                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                  <div className="space-y-1 sm:space-y-2">
+                    <label htmlFor="email" className="text-xs sm:text-sm font-medium text-card-foreground">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="your.email@example.com"
+                      required
+                      className="bg-background border-border text-xs sm:text-base"
+                    />
+                  </div>
+                    <div className="space-y-1 sm:space-y-2 col-span-1 sm:col-span-2">
+                  <label htmlFor="subject" className="text-xs sm:text-sm font-medium text-card-foreground">
+                    Subject
+                  </label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    placeholder="What's this about?"
+                    required
+                    className="bg-background border-border text-xs sm:text-base"
+                  />
+                </div>
+                  </div>
+                <div className="space-y-1 sm:space-y-2">
+                  <label htmlFor="message" className="text-xs sm:text-sm font-medium text-card-foreground">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Tell me about your project or idea..."
+                    rows={8}
+                    required
+                    className="bg-background border-border resize-none w-full min-h-[120px] sm:min-h-[200px] text-xs sm:text-base"
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group text-xs sm:text-base"
+                >
+                  <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  Send Message
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
             {/* Right: Info Cards */}
-            <div className="flex flex-col gap-6">
-              {/* Contact Information */}
-              <Card className="bg-card border-border">
-                <CardHeader>
-                  <CardTitle className="text-lg text-card-foreground">Contact Information</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {contactInfo.map((item, index) => (
+            <div className="flex flex-col gap-4 sm:gap-6 mt-6 lg:mt-0">
+          {/* Contact Information */}
+            <Card className="bg-card border-border">
+              <CardHeader>
+                  <CardTitle className="text-sm sm:text-lg text-card-foreground">Contact Information</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 sm:space-y-4">
+                {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-center gap-4">
                       <div className="bg-primary/10 p-3 rounded-full text-primary">
                         <item.icon size={22} />
                       </div>
-                      <div>
+                    <div>
                         <div className="font-semibold text-card-foreground">{item.title}</div>
                         {item.link ? (
                           <a href={item.link} className="text-muted-foreground hover:text-primary transition">
@@ -213,43 +213,43 @@ const Contact = () => {
                         )}
                       </div>
                     </div>
-                  ))}
-                </CardContent>
-              </Card>
+                ))}
+              </CardContent>
+            </Card>
               {/* Follow Me */}
-              <Card className="bg-card border-border">
-                <CardHeader>
+            <Card className="bg-card border-border">
+              <CardHeader>
                   <CardTitle className="text-lg text-card-foreground">Follow Me</CardTitle>
-                </CardHeader>
-                <CardContent>
+              </CardHeader>
+              <CardContent>
                   <div className="flex gap-3 mt-2">
                     {socialLinks.map((social, i) => (
-                      <a
+                    <a
                         key={i}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                         className="p-3 rounded-full bg-secondary/30 hover:bg-primary/80 hover:text-white transition"
                         aria-label={social.label}
-                      >
+                    >
                         {social.icon}
-                      </a>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              {/* Availability */}
-              <Card className="bg-card border-border">
-                <CardHeader>
+                    </a>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+            {/* Availability */}
+            <Card className="bg-card border-border">
+              <CardHeader>
                   <CardTitle className="text-lg text-card-foreground">Availability</CardTitle>
-                </CardHeader>
-                <CardContent>
+              </CardHeader>
+              <CardContent>
                   <div className="font-semibold text-card-foreground mb-1">Currently open for new opportunities</div>
                   <div className="text-muted-foreground text-sm">
                     I'm always interested in discussing innovative AI projects, consulting opportunities, or potential collaborations. Feel free to reach out!
                   </div>
-                </CardContent>
-              </Card>
+              </CardContent>
+            </Card>
             </div>
           </div>
         </div>

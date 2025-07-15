@@ -38,28 +38,28 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-background pt-10 pb-4 border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pb-6">
+    <footer className="bg-background pt-8 sm:pt-10 pb-3 sm:pb-4 border-t border-border">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-8 pb-4 sm:pb-6">
           {/* Left: Name & Description */}
-          <div className="text-left">
-            <div className="text-2xl font-bold mb-1">
+          <div className="text-left w-full md:w-auto text-center md:text-left">
+            <div className="text-xl sm:text-2xl font-bold mb-1">
               <span className="text-foreground">Rakib</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Uddin</span>
             </div>
-            <div className="text-muted-foreground text-base">
-              Building intelligent systems that solve real-world problems<br />
+            <div className="text-muted-foreground text-sm sm:text-base">
+              Building intelligent systems that solve real-world problems<br className="hidden xs:block" />
               through machine learning and data science.
             </div>
           </div>
           {/* Right: Social Icons */}
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3 flex-wrap justify-center">
             {socialLinks.map((social, i) => (
               <a
                 key={i}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-secondary/20 hover:bg-primary/80 hover:text-white transition"
+                className="p-2 sm:p-3 rounded-full bg-secondary/20 hover:bg-primary/80 hover:text-white transition"
                 aria-label={social.label}
               >
                 {social.icon}
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
         </div>
         <hr className="border-border mb-2" />
-        <div className="text-center text-muted-foreground text-sm">
+        <div className="text-center text-muted-foreground text-xs sm:text-sm">
           © 2025 Rakib Uddin. All rights reserved.
         </div>
       </div>

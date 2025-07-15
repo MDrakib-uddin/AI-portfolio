@@ -26,36 +26,36 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="about" className="py-14 sm:py-20 bg-gradient-secondary">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
             I'm a passionate AI engineer with 5+ years of experience building intelligent systems 
             that transform how businesses operate and how people interact with technology.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Column - Bio */}
-          <div className="space-y-6">
-            <p className="text-foreground leading-relaxed">
+          <div className="space-y-4 sm:space-y-6">
+            <p className="text-foreground leading-relaxed text-sm xs:text-base">
               My journey in AI began during my Computer Science studies at Stanford, where I became 
               fascinated by the potential of machine learning to solve complex problems. Since then, 
               I've worked at leading tech companies and startups, developing everything from 
               recommendation systems to computer vision applications.
             </p>
             
-            <p className="text-foreground leading-relaxed">
+            <p className="text-foreground leading-relaxed text-sm xs:text-base">
               I specialize in deep learning, natural language processing, and computer vision. 
               My work has contributed to products used by millions of users, from improving search 
               algorithms to building autonomous systems. I'm particularly interested in the intersection 
               of AI ethics and practical applications.
             </p>
 
-            <p className="text-foreground leading-relaxed">
+            <p className="text-foreground leading-relaxed text-sm xs:text-base">
               When I'm not coding, you'll find me contributing to open-source projects, 
               writing technical blogs, or mentoring aspiring AI engineers. I believe in making 
               AI accessible and beneficial for everyone.
@@ -63,15 +63,15 @@ const About = () => {
           </div>
 
           {/* Right Column - Highlights */}
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-8 lg:mt-0">
             {highlights.map((highlight, index) => (
               <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <highlight.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2 text-card-foreground">
+                <CardContent className="p-4 sm:p-6 text-center">
+                  <highlight.icon className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" />
+                  <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-card-foreground">
                     {highlight.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     {highlight.description}
                   </p>
                 </CardContent>

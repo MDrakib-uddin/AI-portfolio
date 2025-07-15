@@ -16,23 +16,23 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="flex justify-between items-center py-3 sm:py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <Brain className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
+            <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               AI & ML Engineer
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4 sm:space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="text-xs sm:text-base text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 {item.name}
               </a>
@@ -40,7 +40,7 @@ const Header = () => {
           </nav>
 
           {/* Social Links */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2 sm:space-x-4">
             <a href="https://github.com/MDrakib-uddin" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
             </a>
@@ -63,19 +63,19 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
+          <div className="md:hidden py-3 sm:py-4 border-t border-border">
+            <nav className="flex flex-col space-y-2 sm:space-y-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                  className="text-xs sm:text-base text-muted-foreground hover:text-primary transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="flex items-center space-x-4 pt-4 border-t border-border">
+              <div className="flex items-center space-x-2 sm:space-x-4 pt-3 sm:pt-4 border-t border-border">
                 <a href="https://github.com/MDrakib-uddin" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                 </a>

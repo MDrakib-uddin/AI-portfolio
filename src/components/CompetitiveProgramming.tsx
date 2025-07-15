@@ -100,76 +100,76 @@ const learning = [
 ];
 
 const CompetitiveProgramming = () => (
-  <section id="competitive-programming" className="py-20 bg-background">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold mb-2">
+  <section id="competitive-programming" className="py-14 sm:py-20 bg-background">
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="text-center mb-8 sm:mb-10">
+        <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-2">
           <span className="text-foreground">Competitive</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Programming</span>
         </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
           Passionate about solving algorithmic challenges and participating in programming contests across various platforms.
         </p>
       </div>
       {/* Platforms */}
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-16">
         {platforms.map((p, i) => (
           <Card key={i} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 flex flex-col">
-            <CardHeader className="flex flex-row items-center gap-4 pb-2">
-              <img src={p.logo} alt={p.name} className="h-10 w-10 rounded" />
-              <CardTitle className="text-xl text-card-foreground">{p.name}</CardTitle>
+            <CardHeader className="flex flex-row items-center gap-3 sm:gap-4 pb-2">
+              <img src={p.logo} alt={p.name} className="h-8 w-8 sm:h-10 sm:w-10 rounded" />
+              <CardTitle className="text-base sm:text-xl text-card-foreground">{p.name}</CardTitle>
             </CardHeader>
             <CardContent className="pt-0 flex-1 flex flex-col">
-              <div className="mb-2 text-muted-foreground">{p.username}</div>
-              <div className="flex flex-wrap gap-2 mb-2">
+              <div className="mb-1 sm:mb-2 text-muted-foreground text-xs sm:text-sm">{p.username}</div>
+              <div className="flex flex-wrap gap-1 sm:gap-2 mb-1 sm:mb-2">
                 {p.rating && <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-semibold">{p.rating} {p.status}</span>}
                 {!p.rating && p.status && <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-semibold">{p.status}</span>}
                 <span className="bg-secondary/50 text-card-foreground px-2 py-1 rounded text-xs font-semibold">{p.solved} Problems Solved</span>
                 <span className="bg-secondary/50 text-card-foreground px-2 py-1 rounded text-xs font-semibold">{p.contests} Contests</span>
               </div>
-              <a href={p.profile} target="_blank" rel="noopener noreferrer" className="text-primary underline mt-auto">View Profile <FiArrowUpRight className="inline" /></a>
+              <a href={p.profile} target="_blank" rel="noopener noreferrer" className="text-primary underline mt-auto text-xs sm:text-sm">View Profile <FiArrowUpRight className="inline" /></a>
             </CardContent>
           </Card>
         ))}
       </div>
       {/* Achievements */}
-      <div className="bg-card border-border rounded-xl p-8 mb-16">
-        <h3 className="text-2xl font-semibold mb-2 text-center text-card-foreground">Notable Achievements</h3>
-        <p className="text-muted-foreground text-center mb-8">Highlights from my competitive programming journey</p>
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="bg-card border-border rounded-xl p-4 sm:p-8 mb-10 sm:mb-16">
+        <h3 className="text-lg sm:text-2xl font-semibold mb-2 text-center text-card-foreground">Notable Achievements</h3>
+        <p className="text-xs sm:text-base text-muted-foreground text-center mb-4 sm:mb-8">Highlights from my competitive programming journey</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
           {achievements.map((a, i) => (
-            <div key={i} className="bg-secondary/30 rounded-lg p-6 text-center flex flex-col items-center">
+            <div key={i} className="bg-secondary/30 rounded-lg p-4 sm:p-6 text-center flex flex-col items-center">
               {a.icon}
-              <div className="font-bold text-lg mb-1 text-card-foreground">{a.title}</div>
-              <div className="text-muted-foreground text-sm mb-1">{a.desc}</div>
+              <div className="font-bold text-base sm:text-lg mb-1 text-card-foreground">{a.title}</div>
+              <div className="text-muted-foreground text-xs sm:text-sm mb-1">{a.desc}</div>
               <div className="text-xs text-primary">{a.year}</div>
             </div>
           ))}
         </div>
       </div>
       {/* Skills & Learning Approach */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
         <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-xl text-card-foreground flex items-center gap-2"><FaCode /> Problem Solving Skills</CardTitle>
+            <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2"><FaCode /> Problem Solving Skills</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {skills.map((s, i) => (
-                <li key={i} className="flex items-center gap-2 text-card-foreground"><span className="text-green-400">●</span> {s}</li>
+                <li key={i} className="flex items-center gap-2 text-card-foreground text-xs sm:text-base"><span className="text-green-400">●</span> {s}</li>
               ))}
             </ul>
           </CardContent>
         </Card>
         <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-xl text-card-foreground flex items-center gap-2"><FaChartLine /> Learning Approach</CardTitle>
+            <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2"><FaChartLine /> Learning Approach</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               {learning.map((l, i) => (
-                <li key={i} className="bg-secondary/30 rounded p-4">
-                  <div className="font-bold text-card-foreground mb-1">{l.title}</div>
-                  <div className="text-muted-foreground text-sm">{l.desc}</div>
+                <li key={i} className="bg-secondary/30 rounded p-3 sm:p-4">
+                  <div className="font-bold text-card-foreground mb-1 text-xs sm:text-base">{l.title}</div>
+                  <div className="text-muted-foreground text-xs sm:text-sm">{l.desc}</div>
                 </li>
               ))}
             </ul>

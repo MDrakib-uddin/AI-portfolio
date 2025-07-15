@@ -83,58 +83,58 @@ const Projects = () => {
   const otherProjects = projects.filter(p => !p.featured);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="projects" className="py-14 sm:py-20 bg-gradient-secondary">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
             A showcase of innovative AI solutions and cutting-edge research implementations
           </p>
         </div>
 
         {/* Featured Projects */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 mb-10 sm:mb-16">
           {featuredProjects.map((project, index) => (
             <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group">
               <div className="relative">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-4 right-4">
-                  <Badge className="bg-primary text-primary-foreground">
+                <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+                  <Badge className="bg-primary text-primary-foreground text-xs sm:text-base">
                     <Star className="h-3 w-3 mr-1" />
                     Featured
                   </Badge>
                 </div>
               </div>
               <CardHeader>
-                <CardTitle className="text-xl text-card-foreground">
+                <CardTitle className="text-base sm:text-xl text-card-foreground">
                   {project.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-xs sm:text-muted-foreground sm:text-base mb-2 sm:mb-4 leading-relaxed">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary" className="bg-secondary/50">
+                    <Badge key={techIndex} variant="secondary" className="bg-secondary/50 text-xs sm:text-base">
                       {tech}
                     </Badge>
                   ))}
                 </div>
 
-                <div className="flex gap-3">
-                  <Button size="sm" variant="outline" className="flex-1">
+                <div className="flex gap-2 sm:gap-3">
+                  <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-base">
                     <Github className="h-4 w-4 mr-2" />
                     Code
                   </Button>
-                  <Button size="sm" className="flex-1 bg-gradient-primary">
+                  <Button size="sm" className="flex-1 text-xs sm:text-base bg-gradient-primary">
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Live Demo
                   </Button>
@@ -146,30 +146,30 @@ const Projects = () => {
 
         {/* Other Projects */}
         <div>
-          <h3 className="text-2xl font-bold mb-8 text-center">
+          <h3 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-8 text-center">
             Other <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {otherProjects.map((project, index) => (
               <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group">
                 <div className="relative">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg text-card-foreground">
+                  <CardTitle className="text-sm sm:text-lg text-card-foreground">
                     {project.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 leading-relaxed">
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-1 mb-3">
+                  <div className="flex flex-wrap gap-1 mb-2 sm:mb-3">
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
                       <Badge key={techIndex} variant="secondary" className="text-xs bg-secondary/50">
                         {tech}
@@ -182,7 +182,7 @@ const Projects = () => {
                     )}
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 sm:gap-2">
                     <Button size="sm" variant="outline" className="flex-1 text-xs">
                       <Github className="h-3 w-3 mr-1" />
                       Code
