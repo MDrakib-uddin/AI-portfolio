@@ -10,6 +10,7 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
       >
+        <span className="sr-only">Background image showing AI/ML theme</span>
         <div className="absolute inset-0 bg-background/60"></div>
       </div>
 
@@ -24,6 +25,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Greeting */}
           <p className="text-sm xs:text-base sm:text-lg text-muted-foreground mb-2 sm:mb-4 animate-fade-in">
+            <span className="sr-only">Greeting: Hello, I’m Rakib</span>
             Hello, I'm
           </p>
 
@@ -52,8 +54,9 @@ const Hero = () => {
               size="lg" 
               className="w-full sm:w-auto bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
               asChild
+              aria-label="Contact me via form section"
             >
-              <a href="#contact">
+              <a href="#contact" aria-label="Go to contact section">
               <MessageCircle className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
               Get In Touch
               </a>
@@ -63,8 +66,9 @@ const Hero = () => {
               size="lg"
               className="w-full sm:w-auto border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group mt-2 sm:mt-0"
               asChild
+              aria-label="Download my resume as PDF"
             >
-              <a href="/Rakib-Uddin-FlowCV-Resume-20250707.pdf" download>
+              <a href="/Rakib-Uddin-FlowCV-Resume-20250707.pdf" download aria-label="Download Rakib Uddin Resume PDF">
               <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
               Download Resume
               </a>

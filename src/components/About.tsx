@@ -42,23 +42,23 @@ const About = () => {
           {/* Left Column - Bio */}
           <div className="space-y-4 sm:space-y-6">
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              My journey in AI began during my Computer Science studies at Stanford, where I became 
-              fascinated by the potential of machine learning to solve complex problems. Since then, 
-              I've worked at leading tech companies and startups, developing everything from 
-              recommendation systems to computer vision applications.
+              My journey in <strong>AI</strong> began during my <strong>Computer Science</strong> studies at <strong>Stanford</strong>, where I became 
+              fascinated by the potential of <strong>machine learning</strong> to solve complex problems. Since then, 
+              I've worked at <strong>leading tech companies</strong> and <strong>startups</strong>, developing everything from 
+              <strong>recommendation systems</strong> to <strong>computer vision applications</strong>.
             </p>
             
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              I specialize in deep learning, natural language processing, and computer vision. 
-              My work has contributed to products used by millions of users, from improving search 
-              algorithms to building autonomous systems. I'm particularly interested in the intersection 
-              of AI ethics and practical applications.
+              I specialize in <strong>deep learning</strong>, <strong>natural language processing</strong>, and <strong>computer vision</strong>. 
+              My work has contributed to products used by <strong>millions of users</strong>, from improving <strong>search algorithms</strong> 
+              to building <strong>autonomous systems</strong>. I'm particularly interested in the intersection 
+              of <strong>AI ethics</strong> and practical applications.
             </p>
 
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              When I'm not coding, you'll find me contributing to open-source projects, 
-              writing technical blogs, or mentoring aspiring AI engineers. I believe in making 
-              AI accessible and beneficial for everyone.
+              When I'm not coding, you'll find me <strong>contributing to open-source projects</strong>, 
+              <strong>writing technical blogs</strong>, or <strong>mentoring aspiring AI engineers</strong>. I believe in making 
+              <strong>AI accessible and beneficial for everyone</strong>.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ const About = () => {
             {highlights.map((highlight, index) => (
               <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300">
                 <CardContent className="p-4 sm:p-6 text-center">
-                  <highlight.icon className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" />
+                  <highlight.icon className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" aria-label={highlight.title} />
                   <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-card-foreground">
                     {highlight.title}
                   </h3>

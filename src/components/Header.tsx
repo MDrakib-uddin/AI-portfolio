@@ -1,14 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Brain, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const navItems = [
     { name: 'About', href: '#about' },
-    { name: 'Academic Qualification', href: '#education' },
     { name: 'Competitive Programming', href: '#competitive-programming' },
+    { name: 'Education',href: '#education'},
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
@@ -19,15 +31,15 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-4">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <a href="#" className="flex items-center space-x-2" aria-label="Go to home section">
             <Brain className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
             <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               AI & ML Engineer
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-4 sm:space-x-8">
+          <nav className="hidden md:flex items-center space-x-4 sm:space-x-8" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -64,8 +76,11 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute left-0 top-full w-full bg-background border-b border-border shadow-lg animate-fade-in z-50">
-            <nav className="flex flex-col space-y-2 py-4 px-4">
+          <>
+            {/* Backdrop overlay */}
+            <div className="fixed inset-0 bg-black/40 z-40 animate-fade-in" aria-hidden="true"></div>
+            <div className="md:hidden absolute left-0 top-full w-full bg-background border-b border-border shadow-lg animate-fade-in z-50">
+            <nav className="flex flex-col space-y-2 py-4 px-4" role="navigation" aria-label="Mobile navigation">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -88,7 +103,8 @@ const Header = () => {
                 </a>
               </div>
             </nav>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </header>
