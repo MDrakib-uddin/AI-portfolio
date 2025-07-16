@@ -24,12 +24,12 @@ const Projects = () => {
       featured: true
     },
     {
-      title: 'Predictive Analytics for E-commerce',
-      description: 'Created a product recommendation system using collaborative filtering and content-based approaches.',
-      image: 'https://images.pexels.com/photos/7567460/pexels-photo-7567460.jpeg',
-      technologies: ['Recommender Systems', 'ML', 'Python', 'SQL'],
-      github: '#',
-      demo: '#',
+      title: 'House Price Prediction Using Machine Learning',
+      description: 'Built a house price prediction system using machine learning techniques like Random Forest and XGBoost, leveraging features such as location, square footage, and number of rooms',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKpvCqGI4-FgKWCPAxdF_RW3t7fvfoJksAww&s',
+      technologies: ['Machine Learning', 'Random Forest', 'XGBoost', 'netlify', 'Railway'],
+      github: 'https://github.com/MDrakib-uddin/House-Price-Prediction/tree/master',
+      demo: 'https://price-house.netlify.app/',
       featured: false
     },
     {

@@ -24,11 +24,13 @@ const Skills = () => {
   const tools = [
     "PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn",
     "Pandas", "NumPy", "Docker", "Kubernetes", "Git", "Jupyter",
-    "MLflow", "Weights & Biases", "Librosa", "Transformers", "LangChain", "LangGraph"
+    "MLflow", "Weights & Biases", "Librosa", "Transformers", "LangChain", "LangGraph",
+     "Flask","Railway","Netlify","Streamlit","Gradio","Vercel",
   ];
 
   const languages = [
-    "Python", "JavaScript", "C++", "SQL", "R", "Julia", "Go", "Rust","Java","C"
+    "Python", "JavaScript", "C++", "SQL", "R", "Julia", "Go", "Rust","Java","C",
+    "SQL","NoSQL","DSA","OOP"
   ];
 
   return (
