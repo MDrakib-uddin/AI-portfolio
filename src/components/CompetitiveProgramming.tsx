@@ -67,7 +67,7 @@ const platforms = [
     status: 'Intermediate',
     solved: '30+',
     contests: '0',
-    profile: 'https://lightoj.com/user/rakib_uddin',
+    profile: 'https://lightoj.com/user/rakib730',
   },
 ];
 
