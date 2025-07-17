@@ -43,7 +43,7 @@ const Education = () => (
       <div className="text-center mb-8 sm:mb-10">
         <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-2">
           <span className="text-foreground">Academic</span> <span className="bg-gradient-primary bg-clip-text text-transparent">Qualification</span>
-        </h2>
+          </h2>
         <div className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto mt-2">
           Strong academic background in Computer Science, focused on algorithms, data structures, and AI.
         </div>
@@ -87,6 +87,6 @@ const Education = () => (
       </div>
     </section>
   </>
-);
+  );
 
 export default Education;
