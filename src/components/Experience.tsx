@@ -12,6 +12,12 @@ const degrees = [
     institution: 'Ramu Government Collage',
     period: '2020 - 2022',
     description: 'Completed Higher Secondary Certificate with strong academic performance. Focused on foundational topics in Mathematics, Physics, Chemistry, Biology and introductory Programming.'
+  },
+  {
+    title: 'Secondary School Certificate (SSC)',
+    institution: 'Al-Haj Fazal Ambia High School',
+    period: '2018 - 2020',
+    description: 'Completed Secondary School Certificate with strong academic performance. Focused on foundational topics in Mathematics, Physics, Chemistry, Biology and English.'
   }
 ];
 
