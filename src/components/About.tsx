@@ -11,7 +11,7 @@ const About = () => {
     {
        icon: Code,
        title: "Full-Stack Development",
-       description: "Proficient in Python, JavaScript, and modern frameworks for building end-to-end AI applications.        [Learning Stage]"
+       description: "Proficient in Python, JavaScript, and modern frameworks for building end-to-end AI applications."
     },
     {
       icon: Zap,
