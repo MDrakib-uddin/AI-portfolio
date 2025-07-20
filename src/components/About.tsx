@@ -9,9 +9,9 @@ const About = () => {
       description: "Deep knowledge in neural networks, transformer architectures, and cutting-edge ML algorithms."
     },
     {
-       icon: Code,
-       title: "Full-Stack Development",
-       description: "Proficient in Python, JavaScript, and modern frameworks for building end-to-end AI applications."
+      icon: Code,
+      title: "Full-Stack Development",
+      description: "Proficient in Python, JavaScript, and modern frameworks for building end-to-end AI applications."
     },
     {
       icon: Zap,

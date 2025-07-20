@@ -68,7 +68,7 @@ const Hero = () => {
               asChild
               aria-label="Download my resume as PDF"
             >
-              <a href="/Rakib-Uddin-FlowCV-Resume-20250707.pdf" download aria-label="Download Rakib Uddin Resume PDF">
+              <a href="/Rakib-resume.pdf" download aria-label="Download Rakib Uddin Resume PDF">
               <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
               Download Resume
               </a>
