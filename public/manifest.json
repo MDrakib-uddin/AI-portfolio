@@ -1,0 +1,21 @@
+{
+  "name": "Rakib Uddin AI/ML Portfolio",
+  "short_name": "RakibAI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#7c3aed",
+  "description": "Rakib Uddin's AI/ML portfolio: projects, skills, competitive programming, and academic achievements.",
+  "icons": [
+    {
+      "src": "/brain.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/brain.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+} 
