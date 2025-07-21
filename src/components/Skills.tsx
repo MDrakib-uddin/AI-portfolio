@@ -1,6 +1,8 @@
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { FiExternalLink } from 'react-icons/fi';
 
 const Skills = () => {
   const technicalSkills = [
@@ -146,21 +148,69 @@ const Skills = () => {
           </CardHeader>
           <CardContent>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
-              <li className="space-y-1 sm:space-y-2">
-                <h4 className="font-semibold text-card-foreground text-xs sm:text-base">AWS Certified Machine Learning - Specialty</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground">Amazon Web Services • 2023</p>
+              <li className="space-y-1 sm:space-y-2 flex items-center justify-between gap-2">
+                <div>
+                  <h4 className="font-semibold text-card-foreground text-xs sm:text-base">AWS Certified Machine Learning - Specialty</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Amazon Web Services • 2023</p>
+                </div>
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-to-r from-primary to-purple-500 text-white shadow-md hover:from-primary/90 hover:to-purple-600 transition-all px-3 py-1.5 rounded flex items-center gap-1"
+                  aria-label="View AWS Certificate"
+                >
+                  <a href="https://example.com/aws-certificate-demo" target="_blank" rel="noopener noreferrer">
+                    View Certificate <FiExternalLink className="ml-1" />
+                  </a>
+                </Button>
               </li>
-              <li className="space-y-1 sm:space-y-2">
-                <h4 className="font-semibold text-card-foreground text-xs sm:text-base">TensorFlow Developer Certificate</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground">Google • 2022</p>
+              <li className="space-y-1 sm:space-y-2 flex items-center justify-between gap-2">
+                <div>
+                  <h4 className="font-semibold text-card-foreground text-xs sm:text-base">TensorFlow Developer Certificate</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Google • 2022</p>
+                </div>
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-to-r from-primary to-yellow-500 text-white shadow-md hover:from-primary/90 hover:to-yellow-600 transition-all px-3 py-1.5 rounded flex items-center gap-1"
+                  aria-label="View TensorFlow Certificate"
+                >
+                  <a href="https://example.com/tensorflow-certificate-demo" target="_blank" rel="noopener noreferrer">
+                    View Certificate <FiExternalLink className="ml-1" />
+                  </a>
+                </Button>
               </li>
-              <li className="space-y-1 sm:space-y-2">
-                <h4 className="font-semibold text-card-foreground text-xs sm:text-base">Deep Learning Specialization</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground">Coursera/Stanford • 2021</p>
+              <li className="space-y-1 sm:space-y-2 flex items-center justify-between gap-2">
+                <div>
+                  <h4 className="font-semibold text-card-foreground text-xs sm:text-base">Deep Learning Specialization</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Coursera/Stanford • 2021</p>
+                </div>
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-to-r from-primary to-pink-500 text-white shadow-md hover:from-primary/90 hover:to-pink-600 transition-all px-3 py-1.5 rounded flex items-center gap-1"
+                  aria-label="View Deep Learning Certificate"
+                >
+                  <a href="https://example.com/deeplearning-certificate-demo" target="_blank" rel="noopener noreferrer">
+                    View Certificate <FiExternalLink className="ml-1" />
+                  </a>
+                </Button>
               </li>
-              <li className="space-y-1 sm:space-y-2">
-                <h4 className="font-semibold text-card-foreground text-xs sm:text-base">Published Research Papers</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground">ICML, NeurIPS • 2020-2023</p>
+              <li className="space-y-1 sm:space-y-2 flex items-center justify-between gap-2">
+                <div>
+                  <h4 className="font-semibold text-card-foreground text-xs sm:text-base">Published Research Papers</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">ICML, NeurIPS • 2020-2023</p>
+                </div>
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-to-r from-primary to-green-500 text-white shadow-md hover:from-primary/90 hover:to-green-600 transition-all px-3 py-1.5 rounded flex items-center gap-1"
+                  aria-label="View Research Paper"
+                >
+                  <a href="https://example.com/research-paper-demo" target="_blank" rel="noopener noreferrer">
+                    View <FiExternalLink className="ml-1" />
+                  </a>
+                </Button>
               </li>
             </ul>
           </CardContent>
