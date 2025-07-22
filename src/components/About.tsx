@@ -6,12 +6,12 @@ const About = () => {
     {
       icon: Brain,
       title: "AI Expertise",
-      description: "Deep knowledge in neural networks, transformer architectures, and cutting-edge ML algorithms."
+      description: "Strong foundation in neural networks, transformer architectures, and advanced machine learning algorithms."
     },
     {
       icon: Code,
       title: "Full-Stack Development",
-      description: "Proficient in Python, JavaScript, and modern frameworks for building end-to-end AI applications."
+      description: "I’m actively learning and practicing full-stack development, focusing on Python, JavaScript, and modern frameworks to build scalable and efficient AI-powered web applications."
     },
     {
       icon: Zap,
@@ -50,7 +50,7 @@ const About = () => {
             </p>
 
             <p className="text-foreground leading-relaxed text-sm xs:text-base">
-              Outside of research and development, I actively contribute to <strong>open-source communities</strong>, write <strong>technical blogs</strong>, and mentor <strong>aspiring AI engineers</strong>. I strongly believe in democratizing AI—making its tools, knowledge, and opportunities accessible to all.
+              Outside of research and development, I contribute to <strong>open-source communities</strong>, write <strong>technical blogs</strong>. I’m also passionate about <strong>competitive programming</strong>, which helps me enhance my algorithmic thinking and build efficient, optimized AI solutions. I strongly believe in democratizing AI by making its tools and knowledge accessible to all.
             </p>
           </div>
 
