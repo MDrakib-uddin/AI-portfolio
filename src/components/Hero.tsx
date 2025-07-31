@@ -21,38 +21,38 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Greeting */}
-          <p className="text-sm xs:text-base sm:text-lg text-muted-foreground mb-2 sm:mb-4 animate-fade-in">
-            <span className="sr-only">Greeting: Hello, I’m Rakib</span>
+          <p className="text-base sm:text-lg text-muted-foreground mb-3 sm:mb-4 animate-fade-in">
+            <span className="sr-only">Greeting: Hello, I'm Rakib</span>
             Hello, I'm
           </p>
 
           {/* Name */}
-          <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-6 animate-fade-in delay-200">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 animate-fade-in delay-200">
             <span className="text-foreground">Rakib</span>
             <span className="bg-gradient-primary bg-clip-text text-transparent"> Uddin</span>
           </h1>
 
           {/* Title */}
-          <h2 className="text-lg xs:text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-8 animate-fade-in delay-400 drop-shadow-lg">
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-4 sm:mb-6 lg:mb-8 animate-fade-in delay-400 drop-shadow-lg">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,180,255,0.18)]">AI &amp; Machine Learning Enthusiast&nbsp;|&nbsp;</span>
             <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(120,0,255,0.25)]">Competitive Programmer</span>
           </h2>
 
           {/* Description */}
-          <p className="text-sm xs:text-base sm:text-xl text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto mb-6 sm:mb-12 leading-relaxed animate-fade-in delay-600">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-muted-foreground max-w-sm sm:max-w-md lg:max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-12 leading-relaxed animate-fade-in delay-600">
             Passionate about pushing the boundaries of artificial intelligence. 
             I specialize in deep learning, computer vision, and building scalable AI systems 
             that solve real-world problems.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center mb-8 sm:mb-16 animate-fade-in delay-800 gap-y-3 sm:gap-y-0 sm:gap-x-8">
+          <div className="flex flex-col sm:flex-row justify-center items-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in delay-800 gap-4 sm:gap-6">
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
               asChild
               aria-label="Contact me via form section"
             >
@@ -64,7 +64,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="w-full sm:w-auto border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group mt-2 sm:mt-0"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
               asChild
               aria-label="Download my resume as PDF"
             >
@@ -82,7 +82,7 @@ const Hero = () => {
               aboutSection.scrollIntoView({ behavior: 'smooth' });
             }
           }}>
-            <ArrowDown className="h-6 w-6 text-muted-foreground mx-auto" />
+            <ArrowDown className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground mx-auto" />
           </div>
         </div>
       </div>
