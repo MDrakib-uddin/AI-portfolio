@@ -12,7 +12,9 @@ const Projects = () => {
       technologies: ['Computer Vision', 'CNN', 'TensorFlow', 'Python','Vision Transformers','Gradio'],
       github: 'https://huggingface.co/rakib730/vit-base-oxford-iiit-pets',
       demo: 'https://huggingface.co/spaces/rakib730/ImageClassification',
-      featured: true
+      featured: true,
+      gradient: 'from-blue-500 to-cyan-500',
+      bgGradient: 'from-blue-500/10 to-cyan-500/10'
     },
     {
       title: 'Fine-tuned Token Classification LLM Model',
@@ -21,7 +23,9 @@ const Projects = () => {
       technologies: ['Natural Language Processing', 'Transformers', 'PyTorch', 'BERT','Conll2003 Dataset'],
       github: 'https://github.com/MDrakib-uddin/Hugging-face-fintuned/blob/main/Finetuned_Token_classification_(PyTorch).ipynb',
       demo: 'https://colab.research.google.com/drive/1Fhl3q9igahWLWsrqPeuWZwziGlIzuWWm#scrollTo=GPxJg1znDGVr',
-      featured: true
+      featured: true,
+      gradient: 'from-purple-500 to-pink-500',
+      bgGradient: 'from-purple-500/10 to-pink-500/10'
     },
     {
       title: 'House Price Prediction Using Machine Learning',
@@ -30,7 +34,9 @@ const Projects = () => {
       technologies: ['Machine Learning', 'Random Forest', 'XGBoost', 'netlify', 'Railway'],
       github: 'https://github.com/MDrakib-uddin/House-Price-Prediction/tree/master',
       demo: 'https://price-house.netlify.app/',
-      featured: false
+      featured: false,
+      gradient: 'from-green-500 to-teal-500',
+      bgGradient: 'from-green-500/10 to-teal-500/10'
     },
     {
       title: 'Anomaly Detection in Time Series Data',
@@ -39,16 +45,20 @@ const Projects = () => {
       technologies: ['Time Series', 'LSTM', 'Anomaly Detection', 'IoT'],
       github: '#',
       demo: '#',
-      featured: false
+      featured: false,
+      gradient: 'from-orange-500 to-red-500',
+      bgGradient: 'from-orange-500/10 to-red-500/10'
     },
     {
       title: 'End to End MLOps project for Car Price Prediction',
-      description: 'Developed an end-to-end MLOps pipeline for car price prediction, including data preprocessing, model training, deployment, and monitoring. Integrated automated workflows for scalable and continuous delivery using tools like MLflow and Docker..',
+      description: 'Developed an end-to-end MLOps pipeline for car price prediction, including data preprocessing, model training, deployment, and monitoring. Integrated automated workflows for scalable and continuous delivery using tools like MLflow and Docker.',
       image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg',
       technologies: ['Docker', 'Kubernetes', 'CI/CD pipeline', 'AWS','MLflow'],
       github: 'https://github.com/MDrakib-uddin/MLOPS-project1',
       demo: 'https://github.com/MDrakib-uddin/MLOPS-project1',
-      featured: false
+      featured: false,
+      gradient: 'from-indigo-500 to-purple-500',
+      bgGradient: 'from-indigo-500/10 to-purple-500/10'
     },
     {
       title: 'Fine-tuned Audio Classification Model',
@@ -57,7 +67,9 @@ const Projects = () => {
       technologies: ['Pytorch', 'Torchvision', 'Librosa', 'Gradio','Transformers'],
       github: 'https://github.com/MDrakib-uddin/Hugging-face-fintuned/blob/main/Fine_tuning_audio_model.ipynb',
       demo: 'https://huggingface.co/spaces/rakib730/PartyMusicAgent',
-      featured: false
+      featured: false,
+      gradient: 'from-yellow-500 to-orange-500',
+      bgGradient: 'from-yellow-500/10 to-orange-500/10'
     },
     {
       title: 'AI-powered Face Mask Detector',
@@ -66,7 +78,9 @@ const Projects = () => {
       technologies: ['Computer Vision', 'OpenCV', 'TensorFlow', 'Python'],
       github: '#',
       demo: '#',
-      featured: false
+      featured: false,
+      gradient: 'from-pink-500 to-rose-500',
+      bgGradient: 'from-pink-500/10 to-rose-500/10'
     },
     {
       title: 'Speech Emotion Recognition',
@@ -75,7 +89,9 @@ const Projects = () => {
       technologies: ['Audio', 'Deep Learning', 'Librosa', 'Keras'],
       github: '#',
       demo: '#',
-      featured: false
+      featured: false,
+      gradient: 'from-cyan-500 to-blue-500',
+      bgGradient: 'from-cyan-500/10 to-blue-500/10'
     },
   ];
 
@@ -94,46 +110,75 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Featured Projects */}
+        {/* Enhanced Featured Projects */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 mb-10 sm:mb-16">
           {featuredProjects.map((project, index) => (
-            <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group" tabIndex={0}>
+            <Card 
+              key={index} 
+              className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group" 
+              tabIndex={0}
+            >
+              {/* Gradient background overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              
+              {/* Top gradient border */}
+              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.gradient}`}></div>
+              
+              {/* Enhanced Image Container */}
               <div className="relative">
-                <img 
-                  src={project.image} 
-                  alt={`Screenshot of project: ${project.title}`}
-                  className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
-                  <Badge className="bg-primary text-primary-foreground text-xs sm:text-base">
-                    <Star className="h-3 w-3 mr-1" />
-                    Featured
-                  </Badge>
+                <div className="overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={`Screenshot of project: ${project.title}`}
+                    className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
+                <div className="absolute top-3 right-3">
+                  <div className={`p-1 bg-gradient-to-r ${project.gradient} rounded-lg shadow-lg`}>
+                    <Badge className="bg-white/90 text-primary border-0 text-xs sm:text-sm font-semibold">
+                      <Star className="h-3 w-3 mr-1" />
+                      Featured
+                    </Badge>
+                  </div>
+                </div>
+                
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              <CardHeader>
-                <CardTitle className="text-base sm:text-xl text-card-foreground">
+              
+              <CardHeader className="relative">
+                <CardTitle className="text-base sm:text-xl text-card-foreground group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-xs sm:text-muted-foreground sm:text-base mb-2 sm:mb-4 leading-relaxed">
-                  {project.description.split(' ').map(word => {
-                    const keywords = ['Vision', 'Transformers', 'deep learning', 'recommendation', 'pipeline', 'deployment', 'real-time', 'detection', 'audio', 'emotion', 'classification', 'system', 'OpenCV', 'TensorFlow', 'PyTorch', 'BERT', 'MLOps', 'MLflow', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Gradio', 'autonomous', 'analytics', 'anomaly', 'monitoring', 'collaborative', 'filtering', 'content-based', 'hyperparameter', 'augmentation', 'finetuned', 'intelligent', 'chatbot', 'token', 'classification', 'research', 'AI', 'ML'];
-                    return keywords.some(k => word.toLowerCase().includes(k.toLowerCase())) ? <strong key={word}>{word} </strong> : word + ' ';
-                  })}
+              
+              <CardContent className="relative">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                  {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
+                {/* Enhanced Technology Tags */}
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary" className="bg-secondary/50 text-xs sm:text-base">
+                    <Badge 
+                      key={techIndex} 
+                      variant="outline" 
+                      className="text-xs bg-primary/10 border-primary/20 hover:bg-primary/20 transition-colors"
+                    >
                       {tech}
                     </Badge>
                   ))}
                 </div>
 
-                <div className="flex gap-2 sm:gap-3">
-                  <Button asChild size="sm" variant="outline" className="flex-1 text-xs sm:text-base" disabled={project.github === '#'}>
+                {/* Enhanced Action Buttons */}
+                <div className="flex gap-2">
+                  <Button 
+                    asChild 
+                    size="sm" 
+                    variant="outline" 
+                    className="flex-1 text-xs border-primary/20 hover:bg-primary/10" 
+                    disabled={project.github === '#'}
+                  >
                     <a
                       href={project.github}
                       target="_blank"
@@ -141,71 +186,104 @@ const Projects = () => {
                       tabIndex={project.github === '#' ? -1 : 0}
                       aria-label={`${project.title} GitHub`}
                     >
-                      <Github className="h-4 w-4 mr-2" />
+                      <Github className="h-3 w-3 mr-1" />
                       Code
                     </a>
                   </Button>
-                  <Button asChild size="sm" className="flex-1 text-xs sm:text-base bg-gradient-primary" disabled={project.demo === '#'}>
+                  <Button 
+                    asChild 
+                    size="sm" 
+                    className={`flex-1 text-xs bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white shadow-md`}
+                    disabled={project.demo === '#'}
+                  >
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
                       tabIndex={project.demo === '#' ? -1 : 0}
-                      aria-label={`${project.title} Live Demo`}
+                      aria-label={`${project.title} Demo`}
                     >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      Demo
                     </a>
                   </Button>
                 </div>
+                
+                {/* Bottom decoration */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Other Projects */}
-        <div>
-          <h3 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-8 text-center">
+        {/* Enhanced Other Projects */}
+        <div className="mb-8 sm:mb-12">
+          <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">
             Other <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
           </h3>
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {otherProjects.map((project, index) => (
-              <Card key={index} className="bg-card border-border hover:shadow-glow-purple/20 transition-all duration-300 overflow-hidden group" tabIndex={0}>
+              <Card 
+                key={index} 
+                className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group" 
+                tabIndex={0}
+              >
+                {/* Gradient background overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                
+                {/* Top gradient border */}
+                <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.gradient}`}></div>
+                
+                {/* Enhanced Image Container */}
                 <div className="relative">
-                  <img 
-                    src={project.image} 
-                    alt={`Screenshot of project: ${project.title}`}
-                    className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  <div className="overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={`Screenshot of project: ${project.title}`}
+                      className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-sm sm:text-lg text-card-foreground">
+                
+                <CardContent className="relative p-3 sm:p-4">
+                  <h4 className="font-semibold text-sm sm:text-base text-card-foreground group-hover:text-primary transition-colors duration-300 mb-2">
                     {project.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 leading-relaxed">
-                    {project.description.split(' ').map(word => {
-                      const keywords = ['Vision', 'Transformers', 'deep learning', 'recommendation', 'pipeline', 'deployment', 'real-time', 'detection', 'audio', 'emotion', 'classification', 'system', 'OpenCV', 'TensorFlow', 'PyTorch', 'BERT', 'MLOps', 'MLflow', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Gradio', 'autonomous', 'analytics', 'anomaly', 'monitoring', 'collaborative', 'filtering', 'content-based', 'hyperparameter', 'augmentation', 'finetuned', 'intelligent', 'chatbot', 'token', 'classification', 'research', 'AI', 'ML'];
-                      return keywords.some(k => word.toLowerCase().includes(k.toLowerCase())) ? <strong key={word}>{word} </strong> : word + ' ';
-                    })}
+                  </h4>
+                  
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                    {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-1 mb-2 sm:mb-3">
+                  {/* Enhanced Technology Tags */}
+                  <div className="flex flex-wrap gap-1 mb-3">
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary" className="text-xs bg-secondary/50">
+                      <Badge 
+                        key={techIndex} 
+                        variant="outline" 
+                        className="text-xs bg-primary/10 border-primary/20 hover:bg-primary/20 transition-colors"
+                      >
                         {tech}
                       </Badge>
                     ))}
                     {project.technologies.length > 3 && (
-                      <Badge variant="secondary" className="text-xs bg-secondary/50">
+                      <Badge variant="outline" className="text-xs bg-secondary/50">
                         +{project.technologies.length - 3}
                       </Badge>
                     )}
                   </div>
 
+                  {/* Enhanced Action Buttons */}
                   <div className="flex gap-1 sm:gap-2">
-                    <Button asChild size="sm" variant="outline" className="flex-1 text-xs" disabled={project.github === '#'}>
+                    <Button 
+                      asChild 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 text-xs border-primary/20 hover:bg-primary/10" 
+                      disabled={project.github === '#'}
+                    >
                       <a
                         href={project.github}
                         target="_blank"
@@ -217,7 +295,12 @@ const Projects = () => {
                         Code
                       </a>
                     </Button>
-                    <Button asChild size="sm" className="flex-1 text-xs bg-gradient-primary" disabled={project.demo === '#'}>
+                    <Button 
+                      asChild 
+                      size="sm" 
+                      className={`flex-1 text-xs bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white shadow-md`}
+                      disabled={project.demo === '#'}
+                    >
                       <a
                         href={project.demo}
                         target="_blank"
@@ -230,6 +313,9 @@ const Projects = () => {
                       </a>
                     </Button>
                   </div>
+                  
+                  {/* Bottom decoration */}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
                 </CardContent>
               </Card>
             ))}

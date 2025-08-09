@@ -1,97 +1,178 @@
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Download, MessageCircle } from 'lucide-react';
+import { ArrowDown, Download, MessageCircle, Sparkles, Brain, Zap, Code } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-2 sm:px-4">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
-        <span className="sr-only">Background image showing AI/ML theme</span>
-        <div className="absolute inset-0 bg-background/60"></div>
-      </div>
+  const [currentTitle, setCurrentTitle] = useState(0);
+  
+  const titles = [
+    "AI & Machine Learning Enthusiast",
+    "Competitive Programmer", 
+    "Deep Learning Researcher",
+    "Computer Vision Expert"
+  ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % titles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [titles.length]);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background/95 to-background/90">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 xs:w-40 xs:h-40 sm:w-64 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 xs:w-56 xs:h-56 sm:w-96 sm:h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto">
-          {/* Greeting */}
-          <p className="text-base sm:text-lg text-muted-foreground mb-3 sm:mb-4 animate-fade-in">
-            <span className="sr-only">Greeting: Hello, I'm Rakib</span>
-            Hello, I'm
-          </p>
+      {/* Main Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen">
+          
+          {/* Left Content */}
+          <div className="text-center lg:text-left space-y-8">
+            
+            {/* Greeting Badge */}
+            <div className="animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 backdrop-blur-sm">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium text-muted-foreground">
+                  Hello, I'm
+                </span>
+              </div>
+            </div>
 
-          {/* Name */}
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 animate-fade-in delay-200">
-            <span className="text-foreground">Rakib</span>
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Uddin</span>
-          </h1>
+            {/* Name */}
+            <div className="animate-fade-in delay-200">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+                <span className="text-foreground">Rakib</span>
+                <br />
+                <span className="bg-gradient-to-r from-primary via-purple-500 to-accent bg-clip-text text-transparent">
+                  Uddin
+                </span>
+              </h1>
+            </div>
 
-          {/* Title */}
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-4 sm:mb-6 lg:mb-8 animate-fade-in delay-400 drop-shadow-lg">
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,180,255,0.18)]">AI &amp; Machine Learning Enthusiast&nbsp;|&nbsp;</span>
-            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(120,0,255,0.25)]">Competitive Programmer</span>
-          </h2>
+            {/* Dynamic Title */}
+            <div className="animate-fade-in delay-400">
+              <div className="h-16 sm:h-20 flex items-center justify-center lg:justify-start">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent transition-all duration-500">
+                    {titles[currentTitle]}
+                  </span>
+                </h2>
+              </div>
+            </div>
 
-          {/* Description */}
-          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-muted-foreground max-w-sm sm:max-w-md lg:max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-12 leading-relaxed animate-fade-in delay-600">
-            Passionate about pushing the boundaries of artificial intelligence. 
-            I specialize in deep learning, computer vision, and building scalable AI systems 
-            that solve real-world problems.
-          </p>
+            {/* Description */}
+            <div className="animate-fade-in delay-600">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                Passionate about pushing the boundaries of artificial intelligence. 
+                I specialize in <span className="text-primary font-semibold">deep learning</span>, <span className="text-primary font-semibold">computer vision</span>, and building scalable AI systems 
+                that solve real-world problems.
+              </p>
+            </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in delay-800 gap-4 sm:gap-6">
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-gradient-primary hover:shadow-glow-purple transition-all duration-300 group"
-              asChild
-              aria-label="Contact me via form section"
-            >
-              <a href="#contact" aria-label="Go to contact section">
-              <MessageCircle className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-              Get In Touch
-              </a>
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
-              asChild
-              aria-label="Download my resume as PDF"
-            >
-              <a href="/Rakib-resume.pdf" download aria-label="Download Rakib Uddin Resume PDF">
-              <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-              Download Resume
-              </a>
-            </Button>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 animate-fade-in delay-800">
+              <Button 
+                size="lg" 
+                className="group relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                asChild
+              >
+                <a href="#contact">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <MessageCircle className="mr-2 h-5 w-5 relative z-10" />
+                  <span className="relative z-10 font-semibold">Get In Touch</span>
+                </a>
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="group relative overflow-hidden border-2 border-primary/40 text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                asChild
+              >
+                <a href="/Rakib-resume.pdf" download>
+                  <Download className="mr-2 h-5 w-5" />
+                  <span className="font-semibold">Download Resume</span>
+                </a>
+              </Button>
+            </div>
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="animate-bounce cursor-pointer" onClick={() => {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-              aboutSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}>
-            <ArrowDown className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground mx-auto" />
+          {/* Right Content - Visual Elements */}
+          <div className="relative hidden lg:block animate-fade-in delay-1000">
+            <div className="relative w-full h-[600px] flex items-center justify-center">
+              
+              {/* Main Visual Container */}
+              <div className="relative w-96 h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl backdrop-blur-sm border border-primary/20 shadow-2xl">
+                
+                {/* Floating Icons */}
+                <div className="absolute top-8 left-8 animate-float">
+                  <div className="p-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl backdrop-blur-sm border border-blue-500/30">
+                    <Brain className="h-8 w-8 text-blue-400" />
+                  </div>
+                </div>
+
+                <div className="absolute top-8 right-8 animate-float delay-1000">
+                  <div className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl backdrop-blur-sm border border-purple-500/30">
+                    <Zap className="h-8 w-8 text-purple-400" />
+                  </div>
+                </div>
+
+                <div className="absolute bottom-8 left-8 animate-float delay-2000">
+                  <div className="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl backdrop-blur-sm border border-green-500/30">
+                    <Code className="h-8 w-8 text-green-400" />
+                  </div>
+                </div>
+
+                <div className="absolute bottom-8 right-8 animate-float delay-3000">
+                  <div className="p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl backdrop-blur-sm border border-orange-500/30">
+                    <Sparkles className="h-8 w-8 text-orange-400" />
+                  </div>
+                </div>
+
+                {/* Center Element */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-24 h-24 bg-gradient-to-r from-primary to-accent rounded-2xl shadow-2xl flex items-center justify-center animate-pulse">
+                    <div className="w-16 h-16 bg-background/80 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                      <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                        AI
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Background Decorative Elements */}
+              <div className="absolute inset-0 -z-10">
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Decorative Grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}></div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in delay-1200">
+          <div 
+            className="animate-bounce cursor-pointer group hover:scale-110 transition-transform duration-300" 
+            onClick={() => {
+              const aboutSection = document.getElementById('about');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            <ArrowDown className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground mx-auto group-hover:text-primary transition-colors duration-300" />
+          </div>
+        </div>
       </div>
     </section>
   );
