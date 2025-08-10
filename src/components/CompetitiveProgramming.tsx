@@ -41,7 +41,7 @@ const platforms = [
     status: '',
     solved: '200+',
     contests: '10+',
-    profile: 'https://leetcode.com/rakib_uddin',
+    profile: 'https://leetcode.com/u/rakib730/',
     gradient: 'from-orange-600 to-yellow-600',
     bgGradient: 'from-orange-600/10 to-yellow-600/10'
   },

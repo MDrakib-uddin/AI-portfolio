@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowDown, Download, MessageCircle, Sparkles, Brain, Zap, Code } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
 import { useState, useEffect } from 'react';
+import { trackResumeDownload, trackButtonClick } from '@/lib/analytics';
 
 const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
@@ -19,6 +20,15 @@ const Hero = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, [titles.length]);
+
+  const handleResumeDownload = () => {
+    trackResumeDownload();
+    trackButtonClick('download_resume');
+  };
+
+  const handleGetInTouch = () => {
+    trackButtonClick('get_in_touch');
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background/95 to-background/90">
@@ -42,16 +52,15 @@ const Hero = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 backdrop-blur-sm">
                 <Sparkles className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium text-muted-foreground">
-                  Hello, I'm
+            Hello, I'm
                 </span>
               </div>
             </div>
 
-            {/* Name */}
+          {/* Name */}
             <div className="animate-fade-in delay-200">
               <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                <span className="text-foreground">Rakib</span>
-                <br />
+                <span className="text-foreground">Rakib </span>
                 <span className="bg-gradient-to-r from-primary via-purple-500 to-accent bg-clip-text text-transparent">
                   Uddin
                 </span>
@@ -60,49 +69,49 @@ const Hero = () => {
 
             {/* Dynamic Title */}
             <div className="animate-fade-in delay-400">
-              <div className="h-16 sm:h-20 flex items-center justify-center lg:justify-start">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
-                  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent transition-all duration-500">
+              <div className="h-20 sm:h-24 md:h-28 flex items-center justify-center lg:justify-start">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                  <span className="bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent transition-all duration-700 hover:scale-105 transform drop-shadow-2xl hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]">
                     {titles[currentTitle]}
                   </span>
-                </h2>
+          </h2>
               </div>
             </div>
 
-            {/* Description */}
+          {/* Description */}
             <div className="animate-fade-in delay-600">
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Passionate about pushing the boundaries of artificial intelligence. 
+            Passionate about pushing the boundaries of artificial intelligence. 
                 I specialize in <span className="text-primary font-semibold">deep learning</span>, <span className="text-primary font-semibold">computer vision</span>, and building scalable AI systems 
-                that solve real-world problems.
-              </p>
+            that solve real-world problems.
+          </p>
             </div>
 
-            {/* CTA Buttons */}
+          {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 animate-fade-in delay-800">
-              <Button 
-                size="lg" 
+            <Button 
+              size="lg" 
                 className="group relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                asChild
+              asChild
               >
-                <a href="#contact">
+                <a href="#contact" onClick={handleGetInTouch}>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <MessageCircle className="mr-2 h-5 w-5 relative z-10" />
                   <span className="relative z-10 font-semibold">Get In Touch</span>
-                </a>
-              </Button>
+              </a>
+            </Button>
               
-              <Button 
-                variant="outline" 
-                size="lg"
+            <Button 
+              variant="outline" 
+              size="lg"
                 className="group relative overflow-hidden border-2 border-primary/40 text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                asChild
-              >
-                <a href="/Rakib-resume.pdf" download>
+              asChild
+            >
+                <a href="/Rakib-resume.pdf" download onClick={handleResumeDownload}>
                   <Download className="mr-2 h-5 w-5" />
                   <span className="font-semibold">Download Resume</span>
-                </a>
-              </Button>
+              </a>
+            </Button>
             </div>
           </div>
 
@@ -157,17 +166,17 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
-        {/* Scroll Indicator */}
+          {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in delay-1200">
           <div 
             className="animate-bounce cursor-pointer group hover:scale-110 transition-transform duration-300" 
             onClick={() => {
-              const aboutSection = document.getElementById('about');
-              if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth' });
-              }
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
             }}
           >
             <ArrowDown className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground mx-auto group-hover:text-primary transition-colors duration-300" />

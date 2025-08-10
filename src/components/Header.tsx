@@ -55,9 +55,9 @@ const Header = () => {
               <Brain className="h-6 w-6 text-white" />
             </div>
             <div>
-              <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                AI & ML Engineer
-              </span>
+            <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              AI & ML Engineer
+            </span>
               <div className="text-xs text-muted-foreground hidden sm:block">
                 Rakib Uddin
               </div>
@@ -119,28 +119,28 @@ const Header = () => {
             
             <div className="md:hidden absolute left-0 top-full w-full bg-background/95 backdrop-blur-xl border-b border-border shadow-lg animate-fade-in z-50">
               <nav className="flex flex-col py-4 px-4" role="navigation" aria-label="Mobile navigation">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
                     className="block py-3 px-2 text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
                 
                 <div className="flex items-center justify-center space-x-6 pt-4 mt-4 border-t border-border">
-                  <a href="https://github.com/MDrakib-uddin" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-                    <Github className="h-6 w-6" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/rakib-uddin-4050381b4/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="h-6 w-6" />
-                  </a>
-                  <a href="mailto:rakibuddinraki2003@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Mail className="h-6 w-6" />
-                  </a>
-                </div>
+                <a href="https://github.com/MDrakib-uddin" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-6 w-6" />
+                </a>
+                <a href="https://www.linkedin.com/in/rakib-uddin-4050381b4/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-6 w-6" />
+                </a>
+                <a href="mailto:rakibuddinraki2003@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Mail className="h-6 w-6" />
+                </a>
+              </div>
                 
                 <div className="pt-4">
                   <Button
@@ -151,7 +151,7 @@ const Header = () => {
                     <a href="#contact">Contact Me</a>
                   </Button>
                 </div>
-              </nav>
+            </nav>
             </div>
           </>
         )}

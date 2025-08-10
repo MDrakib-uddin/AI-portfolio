@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { trackContactSubmission, trackButtonClick } from '@/lib/analytics';
+import { useSectionTracking } from '@/hooks/use-section-tracking';
 
 const contactInfo = [
   {
@@ -78,6 +80,7 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+  const sectionRef = useSectionTracking({ sectionName: 'contact' });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -89,6 +92,10 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    // Track contact submission
+    trackContactSubmission();
+    trackButtonClick('submit_contact');
     
     // Simulate form submission
     setTimeout(() => {
@@ -109,7 +116,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-14 sm:py-20 bg-gradient-secondary">
+    <section id="contact" className="py-14 sm:py-20 bg-gradient-secondary" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
@@ -142,29 +149,29 @@ const Contact = () => {
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-card-foreground">
                     Full Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
                     type="text"
                     placeholder="Enter your name"
-                    value={formData.name}
+                      value={formData.name}
                     onChange={handleChange}
-                    required
+                      required
                     className="bg-background/50 border-border focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
-                  />
-                </div>
+                    />
+                  </div>
                 
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-card-foreground">
                     Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
                     placeholder="Enter your email"
-                    value={formData.email}
+                      value={formData.email}
                     onChange={handleChange}
                     required
                     className="bg-background/50 border-border focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
@@ -187,8 +194,8 @@ const Contact = () => {
                   />
                 </div>
                 
-                <Button
-                  type="submit"
+                <Button 
+                  type="submit" 
                   disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:scale-100"
                 >
@@ -200,7 +207,7 @@ const Contact = () => {
                   ) : (
                     <>
                       <Send className="h-4 w-4 mr-2" />
-                      Send Message
+                  Send Message
                     </>
                   )}
                 </Button>
@@ -232,21 +239,21 @@ const Contact = () => {
                   <div key={index} className="flex items-center gap-4 p-2 rounded-lg hover:bg-secondary/20 transition-all duration-300">
                     <div className={`p-3 bg-gradient-to-r ${item.gradient} rounded-full text-white shadow-lg hover:scale-110 transition-transform duration-300`}>
                       <item.icon size={20} />
-                    </div>
+                      </div>
                     <div>
-                      <div className="font-semibold text-card-foreground">{item.title}</div>
-                      {item.link ? (
+                        <div className="font-semibold text-card-foreground">{item.title}</div>
+                        {item.link ? (
                         <a 
                           href={item.link} 
                           className="text-muted-foreground hover:text-primary transition-colors duration-300"
                         >
-                          {item.content}
-                        </a>
-                      ) : (
-                        <div className="text-muted-foreground">{item.content}</div>
-                      )}
+                            {item.content}
+                          </a>
+                        ) : (
+                          <div className="text-muted-foreground">{item.content}</div>
+                        )}
+                      </div>
                     </div>
-                  </div>
                 ))}
               </CardContent>
               
@@ -269,15 +276,15 @@ const Contact = () => {
               </CardHeader>
               
               <CardContent className="relative">
-                <div className="flex gap-3 mt-2">
-                  {socialLinks.map((social, i) => (
+                  <div className="flex gap-3 mt-2">
+                    {socialLinks.map((social, i) => (
                     <a
-                      key={i}
+                        key={i}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`p-3 rounded-full bg-gradient-to-r ${social.gradient} text-white shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 group/social`}
-                      aria-label={social.ariaLabel || social.label}
+                        aria-label={social.ariaLabel || social.label}
                       title={social.label}
                     >
                       <div className="group-hover/social:animate-pulse">
@@ -312,8 +319,8 @@ const Contact = () => {
                   Currently open for new opportunities
                 </div>
                 <div className="text-muted-foreground text-sm leading-relaxed">
-                  I'm always interested in discussing innovative AI projects, consulting opportunities, or potential collaborations. Feel free to reach out!
-                </div>
+                    I'm always interested in discussing innovative AI projects, consulting opportunities, or potential collaborations. Feel free to reach out!
+                  </div>
               </CardContent>
               
               {/* Bottom decoration */}

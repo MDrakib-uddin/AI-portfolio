@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { useState, useEffect } from 'react';
+import { GraduationCap, BookOpen, Building2, Brain, Bot, Target } from 'lucide-react';
 
 const degrees = [
     {
@@ -11,9 +12,9 @@ const degrees = [
     period: '2023 - 2027',
     description: 'Graduated with honors. Coursework in algorithms, data structures, and artificial intelligence fundamentals.',
     status: 'Current',
-    gpa: '3.85/4.00',
-    progress: 75,
-    icon: '🎓',
+    gpa: '3.60/4.00',
+    progress: 50,
+    icon: GraduationCap,
     color: 'from-blue-500 to-cyan-500',
     subjects: ['Algorithms', 'Data Structures', 'AI Fundamentals', 'Machine Learning']
     },
@@ -25,7 +26,7 @@ const degrees = [
     status: 'Completed',
     gpa: '5.00/5.00',
     progress: 100,
-    icon: '📚',
+    icon: BookOpen,
     color: 'from-green-500 to-teal-500',
     subjects: ['Mathematics', 'Physics', 'Chemistry', 'Biology']
   },
@@ -37,7 +38,7 @@ const degrees = [
     status: 'Completed',
     gpa: '5.00/5.00',
     progress: 100,
-    icon: '🏫',
+    icon: Building2,
     color: 'from-purple-500 to-pink-500',
     subjects: ['Mathematics', 'Physics', 'Chemistry', 'English']
   }
@@ -50,8 +51,8 @@ const courses = [
     period: '2025',
     description: 'Covered neural networks, CNNs, sequence models, and practical deep learning techniques.',
     status: 'In Progress',
-    progress: 60,
-    icon: '🧠',
+    progress: 80,
+    icon: Brain,
     color: 'from-indigo-500 to-purple-500',
     skills: ['Neural Networks', 'CNNs', 'RNNs', 'Transformers']
   },
@@ -60,9 +61,9 @@ const courses = [
     institution: 'IBM Coursera',
     period: '2025',
     description: 'Supervised/unsupervised learning, best practices, and real-world ML applications.',
-    status: 'In Progress',
-    progress: 80,
-    icon: '🤖',
+    status: 'Completed',
+    progress: 100,
+    icon: Bot,
     color: 'from-orange-500 to-red-500',
     skills: ['Supervised Learning', 'Unsupervised Learning', 'Python', 'Scikit-learn']
     },
@@ -71,68 +72,17 @@ const courses = [
     institution: 'IBM',
     period: '2025',
     description: 'ANN, CNN, RNN, Python, Reinforcement Learning, and Potato Disease Projects.',
-    status: 'In Progress',
-    progress: 45,
-    icon: '🎯',
+    status: 'Completed',
+    progress: 98,
+    icon: Target,
     color: 'from-yellow-500 to-orange-500',
     skills: ['Reinforcement Learning', 'Q-Learning', 'Policy Gradient', 'PyTorch']
   }
 ];
 
 const Education = () => {
-  const [animatedStats, setAnimatedStats] = useState({
-    years: 0,
-    gpa: 0,
-    courses: 0,
-    hours: 0
-  });
   const [hoveredItem, setHoveredItem] = useState(null);
   const [progressValues, setProgressValues] = useState({});
-
-  // Animate stats on mount
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      // Animate years counter
-      let yearsCount = 0;
-      const yearsInterval = setInterval(() => {
-        yearsCount += 0.1;
-        setAnimatedStats(prev => ({ ...prev, years: Math.min(yearsCount, 3.2) }));
-        if (yearsCount >= 3.2) clearInterval(yearsInterval);
-      }, 50);
-
-      // Animate GPA counter
-      let gpaCount = 0;
-      setTimeout(() => {
-        const gpaInterval = setInterval(() => {
-          gpaCount += 0.05;
-          setAnimatedStats(prev => ({ ...prev, gpa: Math.min(gpaCount, 3.85) }));
-          if (gpaCount >= 3.85) clearInterval(gpaInterval);
-        }, 30);
-      }, 200);
-
-      // Animate courses counter
-      let coursesCount = 0;
-      setTimeout(() => {
-        const coursesInterval = setInterval(() => {
-          coursesCount += 1;
-          setAnimatedStats(prev => ({ ...prev, courses: Math.min(coursesCount, 6) }));
-          if (coursesCount >= 6) clearInterval(coursesInterval);
-        }, 100);
-      }, 400);
-
-      // Animate hours counter
-      let hoursCount = 0;
-      setTimeout(() => {
-        const hoursInterval = setInterval(() => {
-          hoursCount += 5;
-          setAnimatedStats(prev => ({ ...prev, hours: Math.min(hoursCount, 150) }));
-          if (hoursCount >= 150) clearInterval(hoursInterval);
-        }, 50);
-      }, 600);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Animate progress bars
   useEffect(() => {
@@ -176,17 +126,17 @@ const Education = () => {
         </div>
       </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-stretch">
             {/* Left: Degrees */}
-            <div className="animate-fade-in delay-300">
-              <div className="flex items-center gap-3 mb-6 sm:mb-8">
+            <div className="animate-fade-in delay-300 flex flex-col min-h-full">
+              <div className="flex items-center gap-3 mb-8 sm:mb-10">
                 <div className="p-3 bg-gradient-to-r from-primary to-accent rounded-xl shadow-lg animate-pulse">
                   <FaGraduationCap className="text-white text-xl sm:text-2xl" />
                 </div>
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Education Timeline</h3>
               </div>
               
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4 sm:space-y-5 flex-1">
                 {degrees.map((deg, i) => (
                   <Card 
                     key={i} 
@@ -195,49 +145,49 @@ const Education = () => {
                     onMouseLeave={() => setHoveredItem(null)}
                   >
                     <div className={`h-1 bg-gradient-to-r ${deg.color} transition-all duration-300 group-hover:h-2`}></div>
-                    <CardHeader className="pb-2 pt-3">
-                      <div className="flex items-start gap-2">
-                        <div className={`p-2 bg-gradient-to-r ${deg.color} rounded-lg flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          <span className="text-sm text-white">{deg.icon}</span>
+                    <CardHeader className="pb-3 pt-4">
+                      <div className="flex items-start gap-3">
+                        <div className={`p-3 bg-gradient-to-r ${deg.color} rounded-lg flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <deg.icon className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-sm sm:text-base text-card-foreground mb-1 group-hover:text-primary transition-colors">
+                          <CardTitle className="text-base sm:text-lg text-card-foreground mb-2 group-hover:text-primary transition-colors">
                             {deg.title}
                           </CardTitle>
-                          <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground mb-1">
+                          <div className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground mb-2">
                             <span>{deg.institution}</span>
                             <span>•</span>
                             <span>{deg.period}</span>
-                            <Badge variant={deg.status === 'Current' ? 'default' : 'secondary'} className="text-xs animate-pulse">
+                            <Badge variant={deg.status === 'Current' ? 'default' : 'secondary'} className="text-sm animate-pulse">
                               {deg.status}
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-3 mb-1">
-                            <div className="text-xs font-semibold text-primary">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="text-sm font-semibold text-primary">
                               GPA: {deg.gpa}
                             </div>
                             <div className="flex-1">
-                              <div className="flex items-center gap-1">
+                              <div className="flex items-center gap-2">
                                 <Progress 
                                   value={progressValues[deg.title] || 0} 
-                                  className="flex-1 h-1.5" 
+                                  className="flex-1 h-2" 
                                 />
-                                <span className="text-xs text-primary font-semibold">{deg.progress}%</span>
+                                <span className="text-sm text-primary font-semibold">{deg.progress}%</span>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="pt-0 pb-3">
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                    <CardContent className="pt-0 pb-4">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                         {deg.description}
                       </p>
                       {hoveredItem === `deg-${i}` && (
                         <div className="animate-fade-in">
-                          <div className="flex flex-wrap gap-1">
+                          <div className="flex flex-wrap gap-2">
                             {deg.subjects.map((subject, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs bg-primary/10 animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
+                              <Badge key={idx} variant="outline" className="text-sm bg-primary/10 animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
                                 {subject}
                               </Badge>
                             ))}
@@ -251,15 +201,15 @@ const Education = () => {
             </div>
 
             {/* Right: Courses */}
-            <div className="animate-fade-in delay-400">
-              <div className="flex items-center gap-3 mb-6 sm:mb-8">
+            <div className="animate-fade-in delay-400 flex flex-col min-h-full">
+              <div className="flex items-center gap-3 mb-8 sm:mb-10">
                 <div className="p-3 bg-gradient-to-r from-accent to-primary rounded-xl shadow-lg animate-pulse delay-500">
                   <FaRegListAlt className="text-white text-xl sm:text-2xl" />
                 </div>
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Specialized Courses</h3>
               </div>
               
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4 sm:space-y-5 flex-1">
                 {courses.map((course, i) => (
                   <Card 
                     key={i} 
@@ -268,100 +218,53 @@ const Education = () => {
                     onMouseLeave={() => setHoveredItem(null)}
                   >
                     <div className={`h-1 bg-gradient-to-r ${course.color} transition-all duration-300 group-hover:h-2`}></div>
-                    <CardHeader className="pb-2 pt-3">
-                      <div className="flex items-start gap-2">
-                        <div className={`p-2 bg-gradient-to-r ${course.color} rounded-lg flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          <span className="text-sm text-white">{course.icon}</span>
+                    <CardHeader className="pb-3 pt-4">
+                      <div className="flex items-start gap-3">
+                        <div className={`p-3 bg-gradient-to-r ${course.color} rounded-lg flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <course.icon className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-sm sm:text-base text-card-foreground mb-1 group-hover:text-primary transition-colors">
+                          <CardTitle className="text-base sm:text-lg text-card-foreground mb-2 group-hover:text-primary transition-colors">
                             {course.title}
                           </CardTitle>
-                          <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground mb-1">
+                          <div className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground mb-2">
                             <span>{course.institution}</span>
                             <span>•</span>
                             <span>{course.period}</span>
-                            <Badge variant={course.status === 'In Progress' ? 'default' : 'secondary'} className="text-xs animate-pulse">
+                            <Badge variant={course.status === 'In Progress' ? 'default' : 'secondary'} className="text-sm animate-pulse">
                               {course.status}
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-2">
                             <Progress 
                               value={progressValues[course.title] || 0} 
-                              className="flex-1 h-1.5" 
+                              className="flex-1 h-2" 
                             />
-                            <span className="text-xs text-primary font-semibold">{course.progress}%</span>
+                            <span className="text-sm text-primary font-semibold">{course.progress}%</span>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="pt-0 pb-3">
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                    <CardContent className="pt-0 pb-4">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                         {course.description}
                       </p>
                       {hoveredItem === `course-${i}` && (
                         <div className="animate-fade-in">
-                          <div className="flex flex-wrap gap-1">
+                          <div className="flex flex-wrap gap-2">
                             {course.skills.map((skill, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs bg-primary/10 animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
+                              <Badge key={idx} variant="outline" className="text-sm bg-primary/10 animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
                                 {skill}
                               </Badge>
                             ))}
                           </div>
-                        </div>
+                    </div>
                       )}
                     </CardContent>
                   </Card>
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* Enhanced Achievement Stats */}
-          <div className="mt-8 sm:mt-12 animate-fade-in delay-600">
-            <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20 shadow-2xl hover:shadow-glow-purple/20 transition-all duration-500">
-              <CardContent className="p-6 sm:p-8">
-                <h3 className="text-center text-lg sm:text-xl font-bold text-foreground mb-6">Academic Achievements</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                  <div className="space-y-2 hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary animate-pulse">
-                      {animatedStats.years.toFixed(1)}+
-                    </div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Years of Study</div>
-                    <div className="w-full bg-secondary/30 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-1000" style={{ width: `${(animatedStats.years / 3.2) * 100}%` }}></div>
-                    </div>
-                  </div>
-                  <div className="space-y-2 hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary animate-pulse">
-                      {animatedStats.gpa.toFixed(2)}
-                    </div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Current GPA</div>
-                    <div className="w-full bg-secondary/30 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-green-500 to-teal-500 h-2 rounded-full transition-all duration-1000" style={{ width: `${(animatedStats.gpa / 4) * 100}%` }}></div>
-                    </div>
-                  </div>
-                  <div className="space-y-2 hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary animate-pulse">
-                      {animatedStats.courses}+
-                    </div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Courses Completed</div>
-                    <div className="w-full bg-secondary/30 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full transition-all duration-1000" style={{ width: `${(animatedStats.courses / 6) * 100}%` }}></div>
-                    </div>
-                  </div>
-                  <div className="space-y-2 hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary animate-pulse">
-                      {animatedStats.hours}+
-                    </div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Hours Learning</div>
-                    <div className="w-full bg-secondary/30 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-1000" style={{ width: `${(animatedStats.hours / 150) * 100}%` }}></div>
-                    </div>
-                  </div>
                 </div>
-              </CardContent>
-            </Card>
         </div>
       </div>
     </section>

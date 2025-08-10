@@ -1,15 +1,8 @@
-import { Code, Brain, Zap, Users } from 'lucide-react';
+import { Code, Zap, Users, Lightbulb } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const About = () => {
   const highlights = [
-    {
-      icon: Brain,
-      title: "AI Expertise",
-      description: "Strong foundation in neural networks, transformer architectures, and advanced machine learning algorithms.",
-      gradient: "from-blue-500 to-cyan-500",
-      bgGradient: "from-blue-500/10 to-cyan-500/10"
-    },
     {
       icon: Code,
       title: "Full-Stack Development",
@@ -30,6 +23,13 @@ const About = () => {
       description: "Led cross-functional teams to deliver AI solutions that impact millions of users.",
       gradient: "from-green-500 to-teal-500",
       bgGradient: "from-green-500/10 to-teal-500/10"
+    },
+    {
+      icon: Lightbulb,
+      title: "Research & Innovation",
+      description: "Passionate about exploring cutting-edge AI research and contributing to open-source communities.",
+      gradient: "from-indigo-500 to-blue-500",
+      bgGradient: "from-indigo-500/10 to-blue-500/10"
     }
   ];
 
@@ -52,15 +52,15 @@ const About = () => {
             <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
               <p className="text-foreground leading-relaxed text-sm xs:text-base mb-4">
                 My journey into the world of <span className="text-primary font-semibold">Artificial Intelligence</span> began during my <span className="text-primary font-semibold">Computer Science</span> studies at <span className="text-primary font-semibold">CBIU</span>, where I was captivated by the power of <span className="text-primary font-semibold">machine learning</span> to address real-world challenges. Since then, I have been deeply engaged in exploring and developing AI systems—ranging from intelligent recommendation engines to computer vision applications.
-              </p>
-              
+            </p>
+            
               <p className="text-foreground leading-relaxed text-sm xs:text-base mb-4">
                 I specialize in <span className="text-primary font-semibold">deep learning</span>, <span className="text-primary font-semibold">natural language processing</span>, and <span className="text-primary font-semibold">computer vision</span>. My projects have focused on solving practical problems with AI, from improving <span className="text-primary font-semibold">search algorithms</span> to experimenting with <span className="text-primary font-semibold">autonomous technologies</span>. I'm particularly interested in the intersection of <span className="text-primary font-semibold">AI ethics</span> and real-world impact, striving to ensure that AI is developed and used responsibly.
-              </p>
+            </p>
 
-              <p className="text-foreground leading-relaxed text-sm xs:text-base">
+            <p className="text-foreground leading-relaxed text-sm xs:text-base">
                 Outside of research and development, I contribute to <span className="text-primary font-semibold">open-source communities</span>, write <span className="text-primary font-semibold">technical blogs</span>. I'm also passionate about <span className="text-primary font-semibold">competitive programming</span>, which helps me enhance my algorithmic thinking and build efficient, optimized AI solutions. I strongly believe in democratizing AI by making its tools and knowledge accessible to all.
-              </p>
+            </p>
             </div>
           </div>
 

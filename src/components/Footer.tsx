@@ -113,7 +113,7 @@ const Footer = () => {
         {/* Enhanced Bottom Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <div className="text-xs sm:text-sm text-muted-foreground text-center">
-            <span className="block sm:inline">© 2024 Rakib Uddin. All rights reserved.</span>
+            <span className="block sm:inline">© 2025 Rakib Uddin. All rights reserved.</span>
           </div>
         </div>
       </div>

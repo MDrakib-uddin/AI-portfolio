@@ -2,8 +2,12 @@ import { ExternalLink, Github, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { trackProjectView, trackButtonClick } from '@/lib/analytics';
+import { useSectionTracking } from '@/hooks/use-section-tracking';
 
 const Projects = () => {
+  const sectionRef = useSectionTracking({ sectionName: 'projects' });
+  
   const projects = [
     {
       title: 'Fine-tuned Image Classification Model For Pets',
@@ -99,7 +103,7 @@ const Projects = () => {
   const otherProjects = projects.filter(p => !p.featured);
 
   return (
-    <section id="projects" className="py-14 sm:py-20 bg-gradient-secondary">
+    <section id="projects" className="py-14 sm:py-20 bg-gradient-secondary" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
@@ -127,20 +131,20 @@ const Projects = () => {
               {/* Enhanced Image Container */}
               <div className="relative">
                 <div className="overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={`Screenshot of project: ${project.title}`}
+                <img 
+                  src={project.image} 
+                  alt={`Screenshot of project: ${project.title}`}
                     className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                />
                 </div>
                 <div className="absolute top-3 right-3">
                   <div className={`p-1 bg-gradient-to-r ${project.gradient} rounded-lg shadow-lg`}>
                     <Badge className="bg-white/90 text-primary border-0 text-xs sm:text-sm font-semibold">
-                      <Star className="h-3 w-3 mr-1" />
-                      Featured
-                    </Badge>
-                  </div>
+                    <Star className="h-3 w-3 mr-1" />
+                    Featured
+                  </Badge>
                 </div>
+              </div>
                 
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -225,8 +229,9 @@ const Projects = () => {
             {otherProjects.map((project, index) => (
               <Card 
                 key={index} 
-                className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group" 
+                className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group cursor-pointer" 
                 tabIndex={0}
+                onClick={() => trackProjectView(project.title)}
               >
                 {/* Gradient background overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -237,29 +242,31 @@ const Projects = () => {
                 {/* Enhanced Image Container */}
                 <div className="relative">
                   <div className="overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={`Screenshot of project: ${project.title}`}
+                  <img 
+                    src={project.image} 
+                    alt={`Screenshot of project: ${project.title}`}
                       className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                  />
                   </div>
                   
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
-                <CardContent className="relative p-3 sm:p-4">
-                  <h4 className="font-semibold text-sm sm:text-base text-card-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                <CardHeader className="relative">
+                  <CardTitle className="text-base sm:text-xl text-card-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
-                  </h4>
-                  
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                  </CardTitle>
+                </CardHeader>
+                
+                <CardContent className="relative">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
                     {project.description}
                   </p>
                   
                   {/* Enhanced Technology Tags */}
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
+                    {project.technologies.map((tech, techIndex) => (
                       <Badge 
                         key={techIndex} 
                         variant="outline" 
@@ -268,21 +275,20 @@ const Projects = () => {
                         {tech}
                       </Badge>
                     ))}
-                    {project.technologies.length > 3 && (
-                      <Badge variant="outline" className="text-xs bg-secondary/50">
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
                   </div>
 
                   {/* Enhanced Action Buttons */}
-                  <div className="flex gap-1 sm:gap-2">
+                  <div className="flex gap-2">
                     <Button 
                       asChild 
                       size="sm" 
                       variant="outline" 
                       className="flex-1 text-xs border-primary/20 hover:bg-primary/10" 
                       disabled={project.github === '#'}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        trackButtonClick(`view_${project.title}_github`);
+                      }}
                     >
                       <a
                         href={project.github}
@@ -300,6 +306,10 @@ const Projects = () => {
                       size="sm" 
                       className={`flex-1 text-xs bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white shadow-md`}
                       disabled={project.demo === '#'}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        trackButtonClick(`view_${project.title}_demo`);
+                      }}
                     >
                       <a
                         href={project.demo}

@@ -4,8 +4,24 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FiExternalLink } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
+import { 
+  Bot, 
+  Flame, 
+  Brain, 
+  Zap, 
+  Eye, 
+  MessageSquare, 
+  Target, 
+  Rocket,
+  Network,
+  BarChart3,
+  Search,
+  Cpu
+} from 'lucide-react';
+import { useSectionTracking } from '@/hooks/use-section-tracking';
 
 const Skills = () => {
+  const sectionRef = useSectionTracking({ sectionName: 'skills' });
   const [animatedValues, setAnimatedValues] = useState({});
   const [hoveredSkill, setHoveredSkill] = useState(null);
 
@@ -13,7 +29,7 @@ const Skills = () => {
     { 
       name: "Machine Learning", 
       level: 95, 
-      icon: "🤖",
+      icon: Bot,
       description: "Supervised/Unsupervised learning, Feature Engineering",
       projects: ["House Price Prediction", "Anomaly Detection"],
       gradient: "from-blue-500 to-cyan-500"
@@ -21,7 +37,7 @@ const Skills = () => {
     { 
       name: "PyTorch", 
       level: 90, 
-      icon: "🔥",
+      icon: Flame,
       description: "Neural Networks, Custom Models, Fine-tuning",
       projects: ["Vision Transformers", "Audio Classification"],
       gradient: "from-orange-500 to-red-500"
@@ -29,7 +45,7 @@ const Skills = () => {
     { 
       name: "TensorFlow", 
       level: 85, 
-      icon: "🧠",
+      icon: Brain,
       description: "Deep Learning, Model Deployment, TensorFlow Lite",
       projects: ["Image Classification", "Face Mask Detection"],
       gradient: "from-green-500 to-teal-500"
@@ -37,7 +53,7 @@ const Skills = () => {
     { 
       name: "Deep Learning", 
       level: 92, 
-      icon: "⚡",
+      icon: Zap,
       description: "CNNs, RNNs, Transformers, GANs",
       projects: ["Token Classification", "Speech Recognition"],
       gradient: "from-purple-500 to-pink-500"
@@ -45,7 +61,7 @@ const Skills = () => {
     { 
       name: "Computer Vision", 
       level: 88, 
-      icon: "👁️",
+      icon: Eye,
       description: "Image Processing, Object Detection, OCR",
       projects: ["Pet Classification", "Real-time Detection"],
       gradient: "from-indigo-500 to-blue-500"
@@ -53,7 +69,7 @@ const Skills = () => {
     { 
       name: "Natural Language Processing", 
       level: 85, 
-      icon: "💬",
+      icon: MessageSquare,
       description: "Text Processing, Sentiment Analysis, LLMs",
       projects: ["Chatbot", "Text Classification"],
       gradient: "from-emerald-500 to-green-500"
@@ -61,7 +77,7 @@ const Skills = () => {
     { 
       name: "Reinforcement Learning", 
       level: 80, 
-      icon: "🎯",
+      icon: Target,
       description: "Q-Learning, Policy Gradient, Game AI",
       projects: ["Game Agent", "Optimization"],
       gradient: "from-yellow-500 to-orange-500"
@@ -69,7 +85,7 @@ const Skills = () => {
     { 
       name: "MLOps", 
       level: 80, 
-      icon: "🚀",
+      icon: Rocket,
       description: "Model Deployment, Monitoring, CI/CD",
       projects: ["Pipeline Automation", "Model Serving"],
       gradient: "from-pink-500 to-rose-500"
@@ -77,23 +93,23 @@ const Skills = () => {
   ];
 
   const aiDomains = [
-    { name: "Computer Vision", icon: "👁️", color: "from-blue-500 to-cyan-500" },
-    { name: "Natural Language Processing", icon: "💬", color: "from-green-500 to-teal-500" },
-    { name: "Machine Learning", icon: "🤖", color: "from-purple-500 to-pink-500" },
-    { name: "Deep Learning", icon: "🧠", color: "from-orange-500 to-red-500" },
-    { name: "Neural Networks", icon: "🔗", color: "from-indigo-500 to-purple-500" },
-    { name: "Data Science", icon: "📊", color: "from-emerald-500 to-green-500" },
-    { name: "MLOps & DevOps", icon: "🚀", color: "from-yellow-500 to-orange-500" },
-    { name: "Edge Computing", icon: "⚡", color: "from-pink-500 to-rose-500" },
-    { name: "Explainable AI", icon: "🔍", color: "from-cyan-500 to-blue-500" },
-    { name: "Reinforcement Learning", icon: "🎯", color: "from-violet-500 to-purple-500" }
+    { name: "Computer Vision", icon: Eye, color: "from-blue-500 to-cyan-500" },
+    { name: "Natural Language Processing", icon: MessageSquare, color: "from-green-500 to-teal-500" },
+    { name: "Machine Learning", icon: Bot, color: "from-purple-500 to-pink-500" },
+    { name: "Deep Learning", icon: Brain, color: "from-orange-500 to-red-500" },
+    { name: "Neural Networks", icon: Network, color: "from-indigo-500 to-purple-500" },
+    { name: "Data Science", icon: BarChart3, color: "from-emerald-500 to-green-500" },
+    { name: "MLOps & DevOps", icon: Rocket, color: "from-yellow-500 to-orange-500" },
+    { name: "Edge Computing", icon: Zap, color: "from-pink-500 to-rose-500" },
+    { name: "Explainable AI", icon: Search, color: "from-cyan-500 to-blue-500" },
+    { name: "Reinforcement Learning", icon: Target, color: "from-violet-500 to-purple-500" }
   ];
 
   const tools = [
     "PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn",
     "Pandas", "NumPy", "Docker", "Kubernetes", "Git", "Jupyter",
     "MLflow", "Weights & Biases", "Librosa", "Transformers", "LangChain", "LangGraph",
-    "Flask","Railway","Netlify","Streamlit","Gradio","Vercel",
+     "Flask","Railway","Netlify","Streamlit","Gradio","Vercel",
   ];
 
   const languages = [
@@ -117,11 +133,11 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="py-14 sm:py-20 bg-background">
+    <section id="skills" className="py-14 sm:py-20 bg-background" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
-            Skills & <span className="bg-gradient-primary bg-clip-text text-transparent">Expertise</span>
+            Technical Skills & <span className="bg-gradient-primary bg-clip-text text-transparent">Expertise</span>
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
             A comprehensive toolkit for building next-generation AI solutions
@@ -152,7 +168,7 @@ const Skills = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">{skill.icon}</span>
+                      <skill.icon className="h-5 w-5 text-primary" />
                       <span className="text-sm font-medium text-foreground">{skill.name}</span>
                     </div>
                     <span className="text-sm text-primary font-semibold">{skill.level}%</span>
@@ -197,7 +213,7 @@ const Skills = () => {
             
             <CardHeader className="relative pb-3">
               <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                🤖 AI Domains
+                <Bot className="h-5 w-5" /> AI Expertise
               </CardTitle>
             </CardHeader>
             <CardContent className="relative">
@@ -208,7 +224,7 @@ const Skills = () => {
                     className="group/item p-2 rounded-lg border border-border/50 text-center hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-105"
                   >
                     <div className={`w-8 h-8 mx-auto mb-1 rounded-lg bg-gradient-to-r ${domain.color} p-1 flex items-center justify-center group-hover/item:animate-bounce`}>
-                      <span className="text-white text-sm">{domain.icon}</span>
+                      <domain.icon className="h-4 w-4 text-white" />
                     </div>
                     <div className="text-xs sm:text-sm font-medium text-card-foreground group-hover/item:text-primary transition-colors truncate">
                       {domain.name}
@@ -234,13 +250,13 @@ const Skills = () => {
             
             <CardHeader className="relative pb-3">
               <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                🛠️ Tools & Technologies
+                <Rocket className="h-5 w-5" /> Tools & Technologies
               </CardTitle>
             </CardHeader>
             <CardContent className="relative">
               <div className="flex flex-wrap gap-1">
                 {tools.map((tool, index) => (
-                  <Badge
+                  <Badge 
                     key={tool}
                     variant="outline"
                     className="text-xs sm:text-sm bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-green-500 hover:to-teal-500 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
@@ -265,13 +281,13 @@ const Skills = () => {
             
             <CardHeader className="relative pb-3">
               <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                🔤 Languages & Others
+                <MessageSquare className="h-5 w-5" /> Languages & Others
               </CardTitle>
             </CardHeader>
             <CardContent className="relative">
               <div className="flex flex-wrap gap-1">
                 {languages.map((language, index) => (
-                  <Badge
+                  <Badge 
                     key={language}
                     variant="outline"
                     className="text-xs sm:text-sm bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
@@ -297,7 +313,7 @@ const Skills = () => {
           
           <CardHeader className="relative">
             <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-              🏆 Certifications & Achievements
+              <Target className="h-5 w-5" /> Certifications & Achievements
             </CardTitle>
           </CardHeader>
           <CardContent className="relative">
