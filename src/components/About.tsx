@@ -1,5 +1,5 @@
 import { Code, Zap, Users, Lightbulb } from 'lucide-react';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 
 const About = () => {
   const highlights = [

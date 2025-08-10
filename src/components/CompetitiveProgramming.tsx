@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent, CardTitle } from './ui/card';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { Trophy, Star, TrendingUp, Code, Users, Award } from 'lucide-react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import codeforcesLogo from '../assets/images/codeforces-logo.png';

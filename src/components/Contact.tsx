@@ -4,9 +4,9 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import { trackContactSubmission, trackButtonClick } from '../lib/analytics';
-import { useToast } from '../hooks/use-toast';
-import { useSectionTracking } from '../hooks/use-section-tracking';
+import { trackContactSubmission, trackButtonClick } from '@/lib/analytics';
+import { useToast } from '@/hooks/use-toast';
+import { useSectionTracking } from '@/hooks/use-section-tracking';
 
 const contactInfo = [
   {
