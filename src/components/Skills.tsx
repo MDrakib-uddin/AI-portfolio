@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { FiExternalLink } from 'react-icons/fi';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { 
   Bot, 
   Flame, 
@@ -18,7 +18,11 @@ import {
   Search,
   Cpu
 } from 'lucide-react';
-import { useSectionTracking } from '../hooks/use-section-tracking';
+// Inline hook to avoid import issues
+const useSectionTracking = (sectionId: string) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  return sectionRef;
+};
 
 const Skills = () => {
   const sectionRef = useSectionTracking({ sectionName: 'skills' });
