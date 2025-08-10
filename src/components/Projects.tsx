@@ -1,10 +1,10 @@
 import { ExternalLink, Github, Star } from 'lucide-react';
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { trackProjectView, trackButtonClick } from '@/lib/analytics';
-import { useSectionTracking } from '@/hooks/use-section-tracking';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+import { trackProjectView, trackButtonClick } from '../lib/analytics';
+import { useSectionTracking } from '../hooks/use-section-tracking';
 
 const Projects = () => {
   const sectionRef = useSectionTracking({ sectionName: 'projects' });

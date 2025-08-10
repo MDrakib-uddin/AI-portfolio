@@ -1,8 +1,8 @@
-import { Button } from '@/components/ui/button';
+import { Button } from './ui/button';
 import { ArrowDown, Download, MessageCircle, Sparkles, Brain, Zap, Code } from 'lucide-react';
 import heroBackground from '../assets/hero-background.jpg';
 import { useState, useEffect } from 'react';
-import { trackResumeDownload, trackButtonClick } from '@/lib/analytics';
+import { trackResumeDownload, trackButtonClick } from '../lib/analytics';
 
 const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
