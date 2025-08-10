@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
 import { Download, Eye, MousePointer, MessageSquare, Code, Trash2, BarChart3, Zap, X, Activity } from 'lucide-react';
-import { getAnalyticsData, clearAnalytics } from '@/lib/analytics';
+import { getAnalyticsData, clearAnalytics } from '../lib/analytics';
 
 interface AnalyticsData {
   totalEvents: number;

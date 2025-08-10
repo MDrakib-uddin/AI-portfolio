@@ -1,12 +1,12 @@
-import { useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { trackContactSubmission, trackButtonClick } from '@/lib/analytics';
-import { useSectionTracking } from '@/hooks/use-section-tracking';
+import { useState } from 'react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { trackContactSubmission, trackButtonClick } from '../lib/analytics';
+import { useToast } from '../hooks/use-toast';
+import { useSectionTracking } from '../hooks/use-section-tracking';
 
 const contactInfo = [
   {
@@ -139,7 +139,7 @@ const Contact = () => {
             
             <CardHeader className="relative">
               <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                <MessageSquare className="h-5 w-5 text-primary" />
+                <CheckCircle className="h-5 w-5 text-primary" />
                 Send Message
               </CardTitle>
             </CardHeader>

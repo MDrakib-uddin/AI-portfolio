@@ -1,12 +1,12 @@
-import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
-import { FaTrophy, FaMedal, FaStar, FaCode, FaChartLine } from 'react-icons/fa';
+import { Card, CardHeader, CardContent, CardTitle } from './ui/card';
+import { Trophy, Star, TrendingUp, Code, Users, Award } from 'lucide-react';
 import { FiArrowUpRight } from 'react-icons/fi';
-import codeforcesLogo from '@/assets/images/codeforces-logo.png';
-import codechefLogo from '@/assets/images/codechef-logo.jpeg';
-import leetcodeLogo from '@/assets/images/leetcode-logo.png';
-import hackerrankLogo from '@/assets/images/hackerrank-logo.jpeg';
-import atcoderLogo from '@/assets/images/atcode-logo.jpeg';
-import lightojLogo from '@/assets/images/lightoj-logo.jpeg';
+import codeforcesLogo from '../assets/images/codeforces-logo.png';
+import codechefLogo from '../assets/images/codechef-logo.jpeg';
+import leetcodeLogo from '../assets/images/leetcode-logo.png';
+import hackerrankLogo from '../assets/images/hackerrank-logo.jpeg';
+import atcoderLogo from '../assets/images/atcode-logo.jpeg';
+import lightojLogo from '../assets/images/lightoj-logo.jpeg';
 
 const platforms = [
   {
@@ -85,7 +85,7 @@ const platforms = [
 
 const achievements = [
   {
-    icon: FaTrophy,
+    icon: Trophy,
     title: 'Codeforces Pupil',
     desc: 'Secured 1200+ rating in Codeforces',
     year: '2024',
@@ -93,7 +93,7 @@ const achievements = [
     bgGradient: 'from-yellow-500/10 to-orange-500/10'
   },
   {
-    icon: FaMedal,
+    icon: Award,
     title: 'CodeChef 3-star Rating',
     desc: 'Achieved 3-star rating in CodeChef',
     year: '2024',
@@ -101,7 +101,7 @@ const achievements = [
     bgGradient: 'from-purple-500/10 to-pink-500/10'
   },
   {
-    icon: FaStar,
+    icon: Star,
     title: 'LeetCode 1500+ Rating',
     desc: 'Secured 1500+ rating in LeetCode',
     year: '2024',
@@ -112,7 +112,7 @@ const achievements = [
 
 const skillCategories = [
   {
-    icon: FaCode,
+    icon: Code,
     title: 'Problem Solving Skills',
     gradient: 'from-green-500 to-teal-500',
     bgGradient: 'from-green-500/10 to-teal-500/10',
@@ -127,7 +127,7 @@ const skillCategories = [
     ]
   },
   {
-    icon: FaChartLine,
+    icon: TrendingUp,
     title: 'Learning Approach',
     gradient: 'from-indigo-500 to-purple-500',
     bgGradient: 'from-indigo-500/10 to-purple-500/10',
