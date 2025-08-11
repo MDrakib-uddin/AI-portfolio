@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, type FormEvent, type ChangeEvent } from 'react';
+import emailjs from '@emailjs/browser';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -17,7 +18,13 @@ const trackButtonClick = (buttonName: string) => {
 // Inline hook to avoid import issues
 const useToast = () => {
   return {
-    toast: (message: string) => console.log('Toast:', message)
+    toast: (message: string | { title: string; description?: string }) => {
+      if (typeof message === 'string') {
+        console.log('Toast:', message);
+      } else {
+        console.log('Toast:', message.title, message.description ?? '');
+      }
+    }
   };
 };
 // Inline hook to avoid import issues
@@ -98,35 +105,68 @@ const socialLinks = [
 ];
 
 const Contact = () => {
-  const sectionRef = useSectionTracking({ sectionName: 'contact' });
+  const sectionRef = useSectionTracking('contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
+    type: null,
+    message: ''
+  });
   const { toast } = useToast();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
     
     // Track contact submission
     trackContactSubmission();
     trackButtonClick('submit_contact');
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message
+    } as Record<string, unknown>;
+
+    try {
+      if (!serviceId || !templateId || !publicKey) {
+        console.warn('EmailJS env not configured. Skipping real send.');
+        // Simulate success
+        await new Promise((res) => setTimeout(res, 1200));
+      } else {
+        await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+      }
+
       toast({
-        title: "Message sent!",
+        title: 'Message sent!',
         description: "Thank you for your message. I'll get back to you soon.",
       });
+      setStatus({ type: 'success', message: 'Message sent successfully.' });
+      setTimeout(() => setStatus({ type: null, message: '' }), 4000);
       setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Email send failed:', error);
+      toast({
+        title: 'Failed to send',
+        description: 'Please try again later or email me directly.',
+      });
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
+      setTimeout(() => setStatus({ type: null, message: '' }), 5000);
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -229,6 +269,20 @@ const Contact = () => {
                     </>
                   )}
                 </Button>
+
+                {status.type && (
+                  <div
+                    className={`mt-2 text-sm rounded-md p-3 border ${
+                      status.type === 'success'
+                        ? 'bg-green-50 text-green-700 border-green-200'
+                        : 'bg-red-50 text-red-700 border-red-200'
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {status.message}
+                  </div>
+                )}
               </form>
             </CardContent>
             

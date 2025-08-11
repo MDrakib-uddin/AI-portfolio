@@ -20,31 +20,31 @@ const socialLinks = [
     bgGradient: 'from-blue-600/10 to-blue-400/10'
   },
   {
-    href: 'https://x.com/UddinRakib97463',
-    label: 'Twitter',
+    href: 'https://www.reddit.com/user/mdrakib_uddin/',
+    label: 'Reddit',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3l-1.5 3.5c-1.3.1-2.5.5-3.6 1.2-2.3-.4-4.2.3-5.1 1.9-.8 1.3-.7 2.9.2 4.1.3.4.7.7 1.1.9.2 1.5 1.3 2.9 3 3.9 1.5.9 3.4 1.4 5.4 1.4s3.9-.5 5.4-1.4c1.7-1 2.8-2.4 3-3.9.4-.2.8-.5 1.1-.9.9-1.2 1-2.8.2-4.1-.9-1.6-2.8-2.3-5.1-1.9-1.1-.7-2.3-1.1-3.6-1.2L14.5 3zM8.5 13c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zm7 0c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zM12 18.2c-1.1 0-2.1-.3-2.8-.9-.2-.2-.2-.5 0-.7s.5-.2.7 0c.5.4 1.3.6 2.1.6s1.6-.2 2.1-.6c.2-.2.5-.2.7 0s.2.5 0 .7c-.7.6-1.7.9-2.8.9z"/></svg>
     ),
-    gradient: 'from-sky-500 to-blue-500',
-    bgGradient: 'from-sky-500/10 to-blue-500/10'
+    gradient: 'from-orange-500 to-red-500',
+    bgGradient: 'from-orange-500/10 to-red-500/10'
   },
   {
-    href: 'https://www.kaggle.com/rakib730',
-    label: 'Kaggle',
+    href: 'https://substack.com/@vitaledge00?utm_source=user-menu',
+    label: 'Substack',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none"><g><path d="M6.857 6.857v18.286h3.429v-6.857l2.857 3.429 7.429 7.429h4.286l-9.143-9.143 8.571-8.571h-4.286l-9.143 9.143v-13.715h-3.429z" fill="#20BEFF"/></g></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M6 7h12M6 11h12M6 15h12"></path></svg>
+    ),
+    gradient: 'from-orange-500 to-orange-400',
+    bgGradient: 'from-orange-500/10 to-orange-400/10'
+  },
+  {
+    href: 'https://www.facebook.com/rakibuddin730',
+    label: 'Facebook',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898v-2.89h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
     ),
     gradient: 'from-blue-700 to-blue-500',
     bgGradient: 'from-blue-700/10 to-blue-500/10'
-  },
-  {
-    href: 'https://huggingface.co/rakib730',
-    label: 'Hugging Face',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="36" cy="36" rx="36" ry="36" fill="#FFD21F"/><ellipse cx="24.5" cy="31.5" rx="3.5" ry="4.5" fill="#fff"/><ellipse cx="47.5" cy="31.5" rx="3.5" ry="4.5" fill="#fff"/><ellipse cx="24.5" cy="32.5" rx="1.5" ry="2.5" fill="#1A1A1A"/><ellipse cx="47.5" cy="32.5" rx="1.5" ry="2.5" fill="#1A1A1A"/><path d="M24 44c2.5 3 8.5 5 12 5s9.5-2 12-5" stroke="#1A1A1A" strokeWidth="2.5" strokeLinecap="round"/><path d="M18 41c0 4 7 7 18 7s18-3 18-7" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round"/></svg>
-    ),
-    gradient: 'from-yellow-500 to-orange-500',
-    bgGradient: 'from-yellow-500/10 to-orange-500/10'
   },
   {
     href: 'mailto:rakibuddinraki2003@gmail.com',
