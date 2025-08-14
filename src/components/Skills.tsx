@@ -16,7 +16,8 @@ import {
   Network,
   BarChart3,
   Search,
-  Cpu
+  Cpu,
+  Server
 } from 'lucide-react';
 // Inline hook to avoid import issues
 const useSectionTracking = (sectionId: string) => {
@@ -39,26 +40,10 @@ const Skills = () => {
       gradient: "from-blue-500 to-cyan-500"
     },
     { 
-      name: "PyTorch", 
-      level: 90, 
-      icon: Flame,
-      description: "Neural Networks, Custom Models, Fine-tuning",
-      projects: ["Vision Transformers", "Audio Classification"],
-      gradient: "from-orange-500 to-red-500"
-    },
-    { 
-      name: "TensorFlow", 
-      level: 85, 
-      icon: Brain,
-      description: "Deep Learning, Model Deployment, TensorFlow Lite",
-      projects: ["Image Classification", "Face Mask Detection"],
-      gradient: "from-green-500 to-teal-500"
-    },
-    { 
       name: "Deep Learning", 
       level: 92, 
       icon: Zap,
-      description: "CNNs, RNNs, Transformers, GANs",
+      description: "ANNs,CNNs, RNNs, Transformers, GANs",
       projects: ["Token Classification", "Speech Recognition"],
       gradient: "from-purple-500 to-pink-500"
     },
@@ -94,31 +79,40 @@ const Skills = () => {
       projects: ["Pipeline Automation", "Model Serving"],
       gradient: "from-pink-500 to-rose-500"
     },
+    {
+      name: "Backend Development",
+      level: 80,
+      icon: Server,
+      description: "Flask, FastAPI, Django, Golang, ",
+      projects: ["API Development", "Database Integration"],
+      gradient: "from-cyan-500 to-blue-500"
+    },
   ];
 
   const aiDomains = [
-    { name: "Computer Vision", icon: Eye, color: "from-blue-500 to-cyan-500" },
-    { name: "Natural Language Processing", icon: MessageSquare, color: "from-green-500 to-teal-500" },
-    { name: "Machine Learning", icon: Bot, color: "from-purple-500 to-pink-500" },
+    { name: "Image Processing", icon: Eye, color: "from-blue-500 to-cyan-500" },
+    { name: "Text Processing", icon: MessageSquare, color: "from-green-500 to-teal-500" },
+    { name: "Speech & Audio Processing", icon: Bot, color: "from-purple-500 to-pink-500" },
     { name: "Deep Learning", icon: Brain, color: "from-orange-500 to-red-500" },
     { name: "Neural Networks", icon: Network, color: "from-indigo-500 to-purple-500" },
     { name: "Data Science", icon: BarChart3, color: "from-emerald-500 to-green-500" },
-    { name: "MLOps & DevOps", icon: Rocket, color: "from-yellow-500 to-orange-500" },
+    { name: "MLOps", icon: Rocket, color: "from-yellow-500 to-orange-500" },
     { name: "Edge Computing", icon: Zap, color: "from-pink-500 to-rose-500" },
-    { name: "Explainable AI", icon: Search, color: "from-cyan-500 to-blue-500" },
+    { name: "LLMs", icon: Brain, color: "from-cyan-500 to-blue-500" },
     { name: "Reinforcement Learning", icon: Target, color: "from-violet-500 to-purple-500" }
   ];
 
   const tools = [
     "PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn",
-    "Pandas", "NumPy", "Docker", "Kubernetes", "Git", "Jupyter",
-    "MLflow", "Weights & Biases", "Librosa", "Transformers", "LangChain", "LangGraph",
-     "Flask","Railway","Netlify","Streamlit","Gradio","Vercel",
+    "Pandas", "NumPy", "Docker", "Kubernetes", "Git","GitHub", "Jupyter",
+    "MLflow", "GCP","Weights & Biases", "Librosa", "Transformers", "LangChain", "LangGraph",
+    "Flask","Django","Railway","Netlify","Streamlit","Gradio","Vercel","AWS","Azure",,
+    "FastAPI","NLTK","Spacy","mlagents"
   ];
 
   const languages = [
-    "Python", "JavaScript", "C++", "SQL", "R", "Julia", "Go", "Rust","Java","C",
-    "SQL","NoSQL","DSA","OOP"
+    "Python", "JavaScript", "C++", "SQL", "R", "Go", "Rust","Java","C",
+    "SQL","NoSQL","DSA","OOP", "Arduino"
   ];
 
   // Animate progress bars on mount
@@ -326,9 +320,9 @@ const Skills = () => {
                 <div>
                   <h4 className="font-semibold text-card-foreground text-xs sm:text-base flex items-center gap-2">
                     <span className="text-lg">🎖️</span>
-                    AWS Certified Machine Learning - Specialty
+                    Machine Learning with Python
                   </h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">Amazon Web Services • 2023</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">IBM • 2025</p>
                 </div>
                 <Button
                   asChild
@@ -346,9 +340,9 @@ const Skills = () => {
                 <div>
                   <h4 className="font-semibold text-card-foreground text-xs sm:text-base flex items-center gap-2">
                     <span className="text-lg">🥇</span>
-                    TensorFlow Developer Certificate
+                    Quantum Program
                   </h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">Google • 2022</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Womanium & WISER • 2025</p>
                 </div>
                 <Button
                   asChild

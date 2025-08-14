@@ -18,10 +18,13 @@ const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
   
   const titles = [
-    "AI & Machine Learning Enthusiast",
     "Competitive Programmer", 
-    "Deep Learning Researcher",
-    "Computer Vision Expert"
+    "AI & Machine Learning Enthusiast", 
+    "Deep Learning Enthusiast",
+    "Computer Vision Expert",
+    "Natural Language Processing Expert",
+    "Backend Developer",
+    "Open Source Contributor"
   ];
 
   useEffect(() => {

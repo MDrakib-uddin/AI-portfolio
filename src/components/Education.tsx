@@ -24,7 +24,7 @@ const degrees = [
     period: '2020 - 2022',
     description: 'Completed Higher Secondary Certificate with strong academic performance. Focused on foundational topics in Mathematics, Physics, Chemistry, Biology and introductory Programming.',
     status: 'Completed',
-    gpa: '5.00/5.00',
+    gpa: '3.42/5.00',
     progress: 100,
     icon: BookOpen,
     color: 'from-green-500 to-teal-500',
@@ -36,7 +36,7 @@ const degrees = [
     period: '2018 - 2020',
     description: 'Completed Secondary School Certificate with strong academic performance. Focused on foundational topics in Mathematics, Physics, Chemistry, Biology and English.',
     status: 'Completed',
-    gpa: '5.00/5.00',
+    gpa: '4.28/5.00',
     progress: 100,
     icon: Building2,
     color: 'from-purple-500 to-pink-500',
@@ -45,17 +45,6 @@ const degrees = [
 ];
 
 const courses = [
-    {
-    title: 'Deep Learning Specialization',
-    institution: 'Coursera (Andrew Ng)',
-    period: '2025',
-    description: 'Covered neural networks, CNNs, sequence models, and practical deep learning techniques.',
-    status: 'In Progress',
-    progress: 80,
-    icon: Brain,
-    color: 'from-indigo-500 to-purple-500',
-    skills: ['Neural Networks', 'CNNs', 'RNNs', 'Transformers']
-  },
   {
     title: 'Machine Learning with Python',
     institution: 'IBM Coursera',
@@ -68,7 +57,18 @@ const courses = [
     skills: ['Supervised Learning', 'Unsupervised Learning', 'Python', 'Scikit-learn']
     },
     {
-    title: 'Deep learning & Reinforcement Learning',
+    title: 'Deep Learning Specialization',
+    institution: 'Coursera (Andrew Ng)',
+    period: '2025',
+    description: 'Covered neural networks, CNNs, sequence models, and practical deep learning techniques.',
+    status: 'In Progress',
+    progress: 80,
+    icon: Brain,
+    color: 'from-indigo-500 to-purple-500',
+    skills: ['Neural Networks', 'CNNs', 'RNNs', 'Transformers']
+  },
+    {
+    title: 'Deep Learning & Reinforcement Learning',
     institution: 'IBM',
     period: '2025',
     description: 'ANN, CNN, RNN, Python, Reinforcement Learning, and Potato Disease Projects.',
@@ -209,7 +209,7 @@ const Education = () => {
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Specialized Courses</h3>
               </div>
               
-              <div className="space-y-4 sm:space-y-5 flex-1">
+              <div className="space-y-4 sm:gap-5 flex-1">
                 {courses.map((course, i) => (
                   <Card 
                     key={i} 
