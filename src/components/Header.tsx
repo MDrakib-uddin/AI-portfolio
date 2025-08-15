@@ -112,16 +112,23 @@ const Header = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg group-hover:scale-110 transition-transform duration-300">
-                <Brain className="h-6 w-6 text-white" />
+              {/* Elegant Icon Design */}
+              <div className="relative">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-accent rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                  <Brain className="h-5 w-5 text-white" />
+                </div>
+                {/* Subtle border glow */}
+                <div className="absolute inset-0 rounded-lg border border-white/10 group-hover:border-white/20 transition-all duration-300"></div>
               </div>
-              <div>
-                <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+
+              {/* Text Content */}
+              <div className="flex flex-col">
+                <span className="text-lg font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   AI & ML Engineer
                 </span>
-                <div className="text-xs text-muted-foreground hidden sm:block">
+                <span className="text-xs text-muted-foreground font-medium">
                   Rakib Uddin
-                </div>
+                </span>
               </div>
             </a>
 
