@@ -95,49 +95,42 @@ const Header = () => {
       <header 
         ref={headerRef}
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled 
+      scrolled 
             ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-2xl shadow-primary/10' 
-            : 'bg-background/80 backdrop-blur-md border-b border-border'
+        : 'bg-background/80 backdrop-blur-md border-b border-border'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3 sm:py-4">
-            {/* Logo */}
-            <a 
-              href="#" 
-              className="flex items-center space-x-3 group" 
-              aria-label="Go to home section"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-3 sm:py-4">
+          {/* Logo */}
+          <a 
+            href="#" 
+            className="flex items-center space-x-3 group" 
+            aria-label="Go to home section"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-            >
-              {/* Elegant Icon Design */}
-              <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-accent rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                  <Brain className="h-5 w-5 text-white" />
-                </div>
-                {/* Subtle border glow */}
-                <div className="absolute inset-0 rounded-lg border border-white/10 group-hover:border-white/20 transition-all duration-300"></div>
+          >
+              <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg group-hover:scale-110 transition-transform duration-300">
+              <Brain className="h-6 w-6 text-white" />
+            </div>
+            <div>
+            <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              AI & ML Engineer
+            </span>
+              <div className="text-xs text-muted-foreground hidden sm:block">
+                Rakib Uddin
               </div>
+            </div>
+          </a>
 
-              {/* Text Content */}
-              <div className="flex flex-col">
-                <span className="text-lg font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  AI & ML Engineer
-                </span>
-                <span className="text-xs text-muted-foreground font-medium">
-                  Rakib Uddin
-                </span>
-              </div>
-            </a>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
@@ -147,18 +140,18 @@ const Header = () => {
                       ? 'text-primary'
                       : 'text-muted-foreground hover:text-primary'
                   }`}
-                >
-                  {item.name}
+              >
+                {item.name}
                   {/* Active indicator */}
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
                     activeSection === item.href.slice(1) ? 'w-full' : 'group-hover:w-full'
                   }`} />
-                </a>
-              ))}
-            </nav>
+              </a>
+            ))}
+          </nav>
 
             {/* Social Links, Theme Toggle & CTA */}
-            <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
@@ -177,8 +170,8 @@ const Header = () => {
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
                 >
-                  <Github className="h-5 w-5" />
-                </a>
+              <Github className="h-5 w-5" />
+            </a>
                 <a 
                   href="https://www.linkedin.com/in/rakib-uddin-4050381b4/" 
                   className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300" 
@@ -186,22 +179,22 @@ const Header = () => {
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
                 >
-                  <Linkedin className="h-5 w-5" />
-                </a>
+              <Linkedin className="h-5 w-5" />
+            </a>
                 <a 
                   href="mailto:rakibuddinraki2003@gmail.com" 
                   className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
                   aria-label="Send email"
                 >
-                  <Mail className="h-5 w-5" />
-                </a>
+              <Mail className="h-5 w-5" />
+            </a>
               </div>
-              
-              <Button
-                asChild
-                size="sm"
+            
+            <Button
+              asChild
+              size="sm"
                 className="ml-2 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
+            >
                 <a 
                   href="#contact"
                   onClick={(e) => {
@@ -211,34 +204,34 @@ const Header = () => {
                 >
                   Contact
                 </a>
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-lg text-foreground hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle navigation menu"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            </Button>
           </div>
 
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <>
-              <div 
-                className="fixed inset-0 bg-black/50 z-40 animate-fade-in" 
-                aria-hidden="true"
-                onClick={() => setIsMenuOpen(false)}
-              ></div>
-              
-              <div className="md:hidden absolute left-0 top-full w-full bg-background/95 backdrop-blur-xl border-b border-border shadow-lg animate-fade-in z-50">
-                <nav className="flex flex-col py-4 px-4" role="navigation" aria-label="Mobile navigation">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
+          {/* Mobile Menu Button */}
+          <button
+              className="md:hidden p-2 rounded-lg text-foreground hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <>
+            <div 
+              className="fixed inset-0 bg-black/50 z-40 animate-fade-in" 
+              aria-hidden="true"
+              onClick={() => setIsMenuOpen(false)}
+            ></div>
+            
+            <div className="md:hidden absolute left-0 top-full w-full bg-background/95 backdrop-blur-xl border-b border-border shadow-lg animate-fade-in z-50">
+              <nav className="flex flex-col py-4 px-4" role="navigation" aria-label="Mobile navigation">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
                       className={`block py-3 px-2 text-base font-medium rounded-lg transition-all duration-300 ${
                         activeSection === item.href.slice(1)
                           ? 'text-primary bg-primary/10'
@@ -249,10 +242,10 @@ const Header = () => {
                         scrollToSection(item.href);
                         setIsMenuOpen(false);
                       }}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
+                >
+                  {item.name}
+                </a>
+              ))}
                   
                   {/* Mobile Theme Toggle */}
                   <div className="flex items-center justify-center py-3">
@@ -264,8 +257,8 @@ const Header = () => {
                       {isDark ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
                     </button>
                   </div>
-                  
-                  <div className="flex items-center justify-center space-x-6 pt-4 mt-4 border-t border-border">
+                
+                <div className="flex items-center justify-center space-x-6 pt-4 mt-4 border-t border-border">
                     <a 
                       href="https://github.com/MDrakib-uddin" 
                       className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300" 
@@ -273,8 +266,8 @@ const Header = () => {
                       rel="noopener noreferrer"
                       aria-label="GitHub profile"
                     >
-                      <Github className="h-6 w-6" />
-                    </a>
+                  <Github className="h-6 w-6" />
+                </a>
                     <a 
                       href="https://www.linkedin.com/in/rakib-uddin-4050381b4/" 
                       className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300" 
@@ -282,23 +275,23 @@ const Header = () => {
                       rel="noopener noreferrer"
                       aria-label="LinkedIn profile"
                     >
-                      <Linkedin className="h-6 w-6" />
-                    </a>
+                  <Linkedin className="h-6 w-6" />
+                </a>
                     <a 
                       href="mailto:rakibuddinraki2003@gmail.com" 
                       className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
                       aria-label="Send email"
                     >
-                      <Mail className="h-6 w-6" />
-                    </a>
-                  </div>
-                  
-                  <div className="pt-4">
-                    <Button
-                      asChild
+                  <Mail className="h-6 w-6" />
+                </a>
+              </div>
+                
+                <div className="pt-4">
+                  <Button
+                    asChild
                       className="w-full bg-gradient-to-r from-primary to-accent text-white hover:scale-105 transition-all duration-300"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                       <a 
                         href="#contact"
                         onClick={(e) => {
@@ -308,14 +301,14 @@ const Header = () => {
                       >
                         Contact Me
                       </a>
-                    </Button>
-                  </div>
-                </nav>
-              </div>
-            </>
-          )}
-        </div>
-      </header>
+                  </Button>
+                </div>
+            </nav>
+            </div>
+          </>
+        )}
+      </div>
+    </header>
     </>
   );
 };

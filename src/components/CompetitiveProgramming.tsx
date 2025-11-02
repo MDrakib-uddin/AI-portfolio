@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardContent, CardTitle } from './ui/card';
-import { Trophy, Star, TrendingUp, Code, Users, Award } from 'lucide-react';
+import { Trophy, Star, TrendingUp, Code, Award } from 'lucide-react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import codeforcesLogo from '../assets/images/codeforces-logo.png';
 import codechefLogo from '../assets/images/codechef-logo.jpeg';
@@ -13,9 +13,9 @@ const platforms = [
     name: 'Codeforces',
     logo: codeforcesLogo,
     username: '@Rakib731',
-    rating: '1216',
+    rating: '1294',
     status: 'Pupil',
-    solved: '700+',
+    solved: '900+',
     contests: '20+',
     profile: 'https://codeforces.com/profile/Rakib731',
     gradient: 'from-blue-600 to-blue-400',
@@ -172,7 +172,7 @@ const CompetitiveProgramming = () => (
               <div className="relative">
                 <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r ${p.gradient} p-0.5 group-hover:scale-110 transition-transform duration-300`}>
                   <div className="w-full h-full bg-card rounded-lg flex items-center justify-center">
-                    <img src={p.logo} alt={p.name} className="h-6 w-6 sm:h-8 sm:w-8 rounded" />
+                    <img src={p.logo} alt={p.name} loading="lazy" decoding="async" width="32" height="32" className="h-6 w-6 sm:h-8 sm:w-8 rounded" />
                   </div>
                 </div>
                 

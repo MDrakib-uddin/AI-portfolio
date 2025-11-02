@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import CompetitiveProgramming from '@/components/CompetitiveProgramming';
-import Education from '../components/Education';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
+import { useState, useEffect, Suspense, lazy } from 'react';
+const Header = lazy(() => import('../components/Header'));
+const Hero = lazy(() => import('../components/Hero'));
+const About = lazy(() => import('../components/About'));
+const CompetitiveProgramming = lazy(() => import('../components/CompetitiveProgramming'));
+const Education = lazy(() => import('../components/Education'));
+const Projects = lazy(() => import('../components/Projects'));
+const Skills = lazy(() => import('../components/Skills'));
+const Contact = lazy(() => import('../components/Contact'));
+const Footer = lazy(() => import('../components/Footer'));
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,17 +33,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <CompetitiveProgramming />
-        <Education />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}>
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <CompetitiveProgramming />
+          <Education />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

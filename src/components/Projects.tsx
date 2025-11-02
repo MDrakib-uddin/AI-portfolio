@@ -1,5 +1,5 @@
 import { ExternalLink, Github, Star } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -14,13 +14,13 @@ const trackButtonClick = (buttonName: string) => {
   // Add analytics tracking logic here if needed
 };
 // Inline hook to avoid import issues
-const useSectionTracking = (sectionId: string) => {
+const useSectionTracking = (_sectionId: string) => {
   const sectionRef = useRef<HTMLElement>(null);
   return sectionRef;
 };
 
 const Projects = () => {
-  const sectionRef = useSectionTracking({ sectionName: 'projects' });
+  const sectionRef = useSectionTracking('projects');
   
   const projects = [
     {
@@ -148,7 +148,9 @@ const Projects = () => {
                 <img 
                   src={project.image} 
                   alt={`Screenshot of project: ${project.title}`}
-                    className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-32 xs:h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 </div>
                 <div className="absolute top-3 right-3">
@@ -259,7 +261,9 @@ const Projects = () => {
                   <img 
                     src={project.image} 
                     alt={`Screenshot of project: ${project.title}`}
-                      className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-24 xs:h-28 sm:h-32 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   </div>
                   

@@ -41,7 +41,7 @@ const Skills = () => {
     { 
       name: "C++", 
       level: 85, 
-      icon: Terminal,
+      icon: Code,
       description: "STL, Competitive Programming, System Programming",
       projects: ["Algorithms", "Data Structures", "Performance"],
       gradient: "from-purple-500 to-pink-500"
@@ -51,7 +51,7 @@ const Skills = () => {
       level: 90, 
       icon: Layers,
       description: "React, Next.js, HTML/CSS, Responsive Design",
-      projects: ["Portfolio Sites", "E-commerce", "Dashboards"],
+      projects: ["Portfolio Sites", "Blogsite", "E-commerce"],
       gradient: "from-green-500 to-teal-500"
     },
     { 
@@ -78,26 +78,26 @@ const Skills = () => {
       name: "Machine Learning", 
       level: 95, 
       icon: Brain,
-      description: "Supervised/Unsupervised learning, Feature Engineering",
-      projects: ["House Price Prediction", "Anomaly Detection"],
+      description: "Regration,Classification, Clustering, Dimensionality Reduction",
+      projects: ["House Price Prediction", "Insurance Prediction"],
       gradient: "from-blue-500 to-cyan-500",
-      domains: ["Supervised Learning", "Unsupervised Learning", "Feature Engineering"]
+      domains: ["Supervised Learning", "Unsupervised Learning", "Feature Engineering","PCA"]
     },
     { 
       name: "Deep Learning", 
       level: 92, 
       icon: Zap,
       description: "ANNs, CNNs, RNNs, Transformers, GANs",
-      projects: ["Token Classification", "Speech Recognition"],
+      projects: ["Token Classification", "Speech Recognition","Potato Disease Detection"],
       gradient: "from-purple-500 to-pink-500",
-      domains: ["Neural Networks", "Computer Vision", "NLP", "LLMs"]
+      domains: ["Neural Networks", "Computer Vision", "NLP", "LLMs","TensorFlow", "PyTorch"]
     },
     { 
       name: "Computer Vision", 
       level: 88, 
       icon: Eye,
       description: "Image Processing, Object Detection, OCR",
-      projects: ["Pet Classification", "Real-time Detection"],
+      projects: ["Pet Classification", "Biomedical Image Analysis"],
       gradient: "from-indigo-500 to-blue-500",
       domains: ["Image Processing", "Object Detection", "OCR"]
     },
@@ -106,7 +106,7 @@ const Skills = () => {
       level: 85, 
       icon: MessageSquare,
       description: "Text Processing, Sentiment Analysis, LLMs",
-      projects: ["Chatbot", "Text Classification"],
+      projects: ["Chatbot", "Text Classification","Question Answering"],
       gradient: "from-emerald-500 to-green-500",
       domains: ["Text Processing", "Sentiment Analysis", "LLMs"]
     },
@@ -114,8 +114,8 @@ const Skills = () => {
       name: "Reinforcement Learning", 
       level: 80, 
       icon: Target,
-      description: "Q-Learning, Policy Gradient, Game AI",
-      projects: ["Game Agent", "Optimization"],
+      description: "Unity ML-Agents, Policy Gradient, Game AI",
+      projects: ["Game Agent", "Optimization","PPO Agent"],
       gradient: "from-yellow-500 to-orange-500",
       domains: ["Q-Learning", "Policy Gradient", "Game AI"]
     },
@@ -124,7 +124,7 @@ const Skills = () => {
       level: 80, 
       icon: Rocket,
       description: "Model Deployment, Monitoring, CI/CD",
-      projects: ["Pipeline Automation", "Model Serving"],
+      projects: ["Pipeline Automation", "Car Price Prediction","Capstone Project"],
       gradient: "from-pink-500 to-rose-500",
       domains: ["Model Deployment", "Monitoring", "CI/CD"]
     }
@@ -134,40 +134,40 @@ const Skills = () => {
   const toolsAndTech = [
     {
       category: "AI Frameworks",
-      items: ["PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn"],
+      items: ["PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn", "Keras","nltk","YOLO","OpenAI Gym","Stable Baselines3"],
       icon: Brain,
       gradient: "from-purple-500 to-pink-500"
     },
     {
       category: "Data Science",
-      items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
+      items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter","Google Colab","Kaggle"],
       icon: BarChart3,
       gradient: "from-blue-500 to-cyan-500"
     },
     {
-      category: "Cloud & DevOps",
-      items: ["Docker", "Kubernetes", "AWS", "Azure", "GCP"],
+      category: "Version Control & MLOps",
+      items: ["Docker", "Kubernetes", "AWS", "Azure", "GCP","Git", "Github","DVC","GitLab", "Bitbucket"],
       icon: Cloud,
       gradient: "from-green-500 to-teal-500"
     },
     {
-      category: "Version Control",
-      items: ["Git", "GitHub", "GitLab", "Bitbucket"],
+      category: "AI Agents",
+      items: ["Langchain", "LlamaIndex", "Langgraph", "SmolAgent", "RAG","Vector DBs", "Pinecone", "ChromaDB"],
       icon: Code,
       gradient: "from-orange-500 to-red-500"
     },
     {
-      category: "ML Tools",
-      items: ["MLflow", "Weights & Biases", "Streamlit", "Gradio"],
+      category: "Web Frameworks",
+      items: ["React","GO", "Django", "FastAPI", "Flask"],
+      icon: Globe,
+      gradient: "from-yellow-500 to-orange-500"
+    },
+    {
+      category: "Deployment & Monitoring",
+      items: ["MLflow", "Weights & Biases", "Streamlit", "Gradio", "TensorBoard", "Prometheus", "Grafana",],
       icon: Rocket,
       gradient: "from-indigo-500 to-purple-500"
     },
-    {
-      category: "Web Frameworks",
-      items: ["React", "Next.js", "Django", "FastAPI", "Flask"],
-      icon: Globe,
-      gradient: "from-yellow-500 to-orange-500"
-    }
   ];
 
   const languages = [

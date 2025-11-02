@@ -81,8 +81,8 @@ const courses = [
 ];
 
 const Education = () => {
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const [progressValues, setProgressValues] = useState({});
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [progressValues, setProgressValues] = useState<Record<string, number>>({});
 
   // Animate progress bars
   useEffect(() => {
@@ -136,14 +136,16 @@ const Education = () => {
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Education Timeline</h3>
               </div>
               
-              <div className="space-y-4 sm:space-y-5 flex-1">
+              <div className="space-y-4 sm:space-y-5 flex-1 relative">
+                <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 via-primary/10 to-transparent" aria-hidden></div>
                 {degrees.map((deg, i) => (
                   <Card 
                     key={i} 
-                    className="bg-card border-border hover:shadow-glow-purple/30 hover:scale-105 transition-all duration-500 overflow-hidden group cursor-pointer"
+                    className="relative pl-12 sm:pl-14 bg-card/90 backdrop-blur border-border hover:shadow-[0_0_30px_-10px_rgba(168,85,247,0.6)] hover:border-primary/40 transition-all duration-500 overflow-hidden group cursor-pointer"
                     onMouseEnter={() => setHoveredItem(`deg-${i}`)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
+                    <div className={`absolute left-[18px] top-6 h-3 w-3 rounded-full bg-white/90 shadow ring-4 ring-primary/20`}></div>
                     <div className={`h-1 bg-gradient-to-r ${deg.color} transition-all duration-300 group-hover:h-2`}></div>
                     <CardHeader className="pb-3 pt-4">
                       <div className="flex items-start gap-3">
@@ -209,14 +211,16 @@ const Education = () => {
                 <h3 className="text-lg sm:text-2xl font-bold text-foreground">Specialized Courses</h3>
               </div>
               
-              <div className="space-y-4 sm:gap-5 flex-1">
+              <div className="space-y-4 sm:gap-5 flex-1 relative">
+                <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-accent/30 via-accent/10 to-transparent" aria-hidden></div>
                 {courses.map((course, i) => (
                   <Card 
                     key={i} 
-                    className="bg-card border-border hover:shadow-glow-purple/30 hover:scale-105 transition-all duration-500 overflow-hidden group cursor-pointer"
+                    className="relative pl-12 sm:pl-14 bg-card/90 backdrop-blur border-border hover:shadow-[0_0_30px_-10px_rgba(99,102,241,0.6)] hover:border-accent/40 transition-all duration-500 overflow-hidden group cursor-pointer"
                     onMouseEnter={() => setHoveredItem(`course-${i}`)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
+                    <div className={`absolute left-[18px] top-6 h-3 w-3 rounded-full bg-white/90 shadow ring-4 ring-accent/20`}></div>
                     <div className={`h-1 bg-gradient-to-r ${course.color} transition-all duration-300 group-hover:h-2`}></div>
                     <CardHeader className="pb-3 pt-4">
                       <div className="flex items-start gap-3">
