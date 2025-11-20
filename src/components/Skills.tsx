@@ -4,67 +4,69 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { FiExternalLink } from 'react-icons/fi';
 import { useState, useEffect, useRef } from 'react';
-import { 
+import {
   Bot, Brain, Zap, Eye, MessageSquare, Target, Rocket,
   Network, BarChart3, Code, Globe, Database, Cloud, Layers, Terminal, Server
 } from 'lucide-react';
+import CircularProgress from './CircularProgress';
+import { motion } from 'framer-motion';
 
-const useSectionTracking = (sectionId: string) => {
+const useSectionTracking = (_sectionId: string) => {
   const sectionRef = useRef<HTMLElement>(null);
   return sectionRef;
 };
 
 const Skills = () => {
   const sectionRef = useSectionTracking('skills');
-  const [animatedValues, setAnimatedValues] = useState({});
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [animatedValues, setAnimatedValues] = useState<Record<string, number>>({});
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState('programming');
 
   // Programming & Development Skills
   const programmingSkills = [
-    { 
-      name: "Python", 
-      level: 95, 
+    {
+      name: "Python",
+      level: 95,
       icon: Code,
       description: "Core Python, OOP, Data Structures, Algorithms",
       projects: ["Web APIs", "Data Processing", "Automation"],
       gradient: "from-blue-500 to-cyan-500"
     },
-    { 
-      name: "JavaScript", 
-      level: 88, 
+    {
+      name: "JavaScript",
+      level: 88,
       icon: Globe,
       description: "ES6+, React, Node.js, TypeScript",
       projects: ["Frontend Apps", "Backend APIs", "Full-stack"],
       gradient: "from-yellow-500 to-orange-500"
     },
-    { 
-      name: "C++", 
-      level: 85, 
+    {
+      name: "C++",
+      level: 85,
       icon: Code,
       description: "STL, Competitive Programming, System Programming",
       projects: ["Algorithms", "Data Structures", "Performance"],
       gradient: "from-purple-500 to-pink-500"
     },
-    { 
-      name: "Web Development", 
-      level: 90, 
+    {
+      name: "Web Development",
+      level: 90,
       icon: Layers,
       description: "React, Next.js, HTML/CSS, Responsive Design",
       projects: ["Portfolio Sites", "Blogsite", "E-commerce"],
       gradient: "from-green-500 to-teal-500"
     },
-    { 
-      name: "Backend Development", 
-      level: 85, 
+    {
+      name: "Backend Development",
+      level: 85,
       icon: Server,
       description: "Flask, FastAPI, Django, REST APIs",
       projects: ["API Development", "Database Design", "Authentication"],
       gradient: "from-indigo-500 to-blue-500"
     },
-    { 
-      name: "Database", 
-      level: 80, 
+    {
+      name: "Database",
+      level: 80,
       icon: Database,
       description: "SQL, MongoDB, PostgreSQL, Redis",
       projects: ["Data Modeling", "Query Optimization", "Caching"],
@@ -74,57 +76,57 @@ const Skills = () => {
 
   // AI & Machine Learning Skills (Merged)
   const aiSkills = [
-    { 
-      name: "Machine Learning", 
-      level: 95, 
+    {
+      name: "Machine Learning",
+      level: 95,
       icon: Brain,
       description: "Regration,Classification, Clustering, Dimensionality Reduction",
       projects: ["House Price Prediction", "Insurance Prediction"],
       gradient: "from-blue-500 to-cyan-500",
-      domains: ["Supervised Learning", "Unsupervised Learning", "Feature Engineering","PCA"]
+      domains: ["Supervised Learning", "Unsupervised Learning", "Feature Engineering", "PCA"]
     },
-    { 
-      name: "Deep Learning", 
-      level: 92, 
+    {
+      name: "Deep Learning",
+      level: 92,
       icon: Zap,
       description: "ANNs, CNNs, RNNs, Transformers, GANs",
-      projects: ["Token Classification", "Speech Recognition","Potato Disease Detection"],
+      projects: ["Token Classification", "Speech Recognition", "Potato Disease Detection"],
       gradient: "from-purple-500 to-pink-500",
-      domains: ["Neural Networks", "Computer Vision", "NLP", "LLMs","TensorFlow", "PyTorch"]
+      domains: ["Neural Networks", "Computer Vision", "NLP", "LLMs", "TensorFlow", "PyTorch"]
     },
-    { 
-      name: "Computer Vision", 
-      level: 88, 
+    {
+      name: "Computer Vision",
+      level: 88,
       icon: Eye,
       description: "Image Processing, Object Detection, OCR",
       projects: ["Pet Classification", "Biomedical Image Analysis"],
       gradient: "from-indigo-500 to-blue-500",
       domains: ["Image Processing", "Object Detection", "OCR"]
     },
-    { 
-      name: "Natural Language Processing", 
-      level: 85, 
+    {
+      name: "Natural Language Processing",
+      level: 85,
       icon: MessageSquare,
       description: "Text Processing, Sentiment Analysis, LLMs",
-      projects: ["Chatbot", "Text Classification","Question Answering"],
+      projects: ["Chatbot", "Text Classification", "Question Answering"],
       gradient: "from-emerald-500 to-green-500",
       domains: ["Text Processing", "Sentiment Analysis", "LLMs"]
     },
-    { 
-      name: "Reinforcement Learning", 
-      level: 80, 
+    {
+      name: "Reinforcement Learning",
+      level: 80,
       icon: Target,
       description: "Unity ML-Agents, Policy Gradient, Game AI",
-      projects: ["Game Agent", "Optimization","PPO Agent"],
+      projects: ["Game Agent", "Optimization", "PPO Agent"],
       gradient: "from-yellow-500 to-orange-500",
       domains: ["Q-Learning", "Policy Gradient", "Game AI"]
     },
-    { 
-      name: "MLOps", 
-      level: 80, 
+    {
+      name: "MLOps",
+      level: 80,
       icon: Rocket,
       description: "Model Deployment, Monitoring, CI/CD",
-      projects: ["Pipeline Automation", "Car Price Prediction","Capstone Project"],
+      projects: ["Pipeline Automation", "Car Price Prediction", "Capstone Project"],
       gradient: "from-pink-500 to-rose-500",
       domains: ["Model Deployment", "Monitoring", "CI/CD"]
     }
@@ -134,31 +136,31 @@ const Skills = () => {
   const toolsAndTech = [
     {
       category: "AI Frameworks",
-      items: ["PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn", "Keras","nltk","YOLO","OpenAI Gym","Stable Baselines3"],
+      items: ["PyTorch", "TensorFlow", "Hugging Face", "OpenCV", "scikit-learn", "Keras", "nltk", "YOLO", "OpenAI Gym", "Stable Baselines3"],
       icon: Brain,
       gradient: "from-purple-500 to-pink-500"
     },
     {
       category: "Data Science",
-      items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter","Google Colab","Kaggle"],
+      items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter", "Google Colab", "Kaggle"],
       icon: BarChart3,
       gradient: "from-blue-500 to-cyan-500"
     },
     {
       category: "Version Control & MLOps",
-      items: ["Docker", "Kubernetes", "AWS", "Azure", "GCP","Git", "Github","DVC","GitLab", "Bitbucket"],
+      items: ["Docker", "Kubernetes", "AWS", "Azure", "GCP", "Git", "Github", "DVC", "GitLab", "Bitbucket"],
       icon: Cloud,
       gradient: "from-green-500 to-teal-500"
     },
     {
       category: "AI Agents",
-      items: ["Langchain", "LlamaIndex", "Langgraph", "SmolAgent", "RAG","Vector DBs", "Pinecone", "ChromaDB"],
+      items: ["Langchain", "LlamaIndex", "Langgraph", "SmolAgent", "RAG", "Vector DBs", "Pinecone", "ChromaDB"],
       icon: Code,
       gradient: "from-orange-500 to-red-500"
     },
     {
       category: "Web Frameworks",
-      items: ["React","GO", "Django", "FastAPI", "Flask"],
+      items: ["React", "GO", "Django", "FastAPI", "Flask"],
       icon: Globe,
       gradient: "from-yellow-500 to-orange-500"
     },
@@ -215,11 +217,10 @@ const Skills = () => {
             <button
               key={section.id}
               onClick={() => setActiveSection(section.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
-                activeSection === section.id
-                  ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105'
-                  : 'bg-card border border-border text-muted-foreground hover:bg-secondary hover:text-foreground'
-              }`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${activeSection === section.id
+                ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105'
+                : 'bg-card border border-border text-muted-foreground hover:bg-secondary hover:text-foreground'
+                }`}
             >
               <section.icon className="h-4 w-4" />
               <span className="text-sm font-medium">{section.name}</span>
@@ -235,14 +236,14 @@ const Skills = () => {
               <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-                
+
                 <CardHeader className="relative pb-3">
                   <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
                     <Code className="h-5 w-5" /> Programming Skills
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative space-y-3 sm:space-y-4">
-                  {programmingSkills.map((skill, index) => (
+                  {programmingSkills.map((skill) => (
                     <div
                       key={skill.name}
                       className="space-y-2 p-2 rounded-lg hover:bg-secondary/20 transition-all duration-300 cursor-pointer"
@@ -257,11 +258,11 @@ const Skills = () => {
                         <span className="text-sm text-primary font-semibold">{skill.level}%</span>
                       </div>
                       <div className="relative">
-                        <Progress 
-                          value={animatedValues[skill.name] || 0} 
+                        <Progress
+                          value={animatedValues[skill.name] || 0}
                           className="h-2"
                         />
-                        <div 
+                        <div
                           className={`absolute top-0 left-0 h-2 bg-gradient-to-r ${skill.gradient} rounded-full transition-all duration-1000`}
                           style={{ width: `${animatedValues[skill.name] || 0}%` }}
                         ></div>
@@ -288,7 +289,7 @@ const Skills = () => {
               <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-500 to-teal-500"></div>
-                
+
                 <CardHeader className="relative pb-3">
                   <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
                     <Terminal className="h-5 w-5" /> Programming Languages
@@ -297,7 +298,7 @@ const Skills = () => {
                 <CardContent className="relative">
                   <div className="flex flex-wrap gap-2">
                     {languages.map((language, index) => (
-                      <Badge 
+                      <Badge
                         key={language}
                         variant="outline"
                         className="text-xs sm:text-sm bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-green-500 hover:to-teal-500 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
@@ -318,7 +319,7 @@ const Skills = () => {
               <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                
+
                 <CardHeader className="relative pb-3">
                   <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
                     <Brain className="h-5 w-5" /> AI & Machine Learning Expertise
@@ -328,7 +329,7 @@ const Skills = () => {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* AI Skills with Progress Bars */}
                     <div className="space-y-3 sm:space-y-4">
-                      {aiSkills.map((skill, index) => (
+                      {aiSkills.map((skill) => (
                         <div
                           key={skill.name}
                           className="space-y-2 p-3 rounded-lg hover:bg-secondary/20 transition-all duration-300 cursor-pointer border border-border/50"
@@ -343,11 +344,11 @@ const Skills = () => {
                             <span className="text-sm text-primary font-semibold">{skill.level}%</span>
                           </div>
                           <div className="relative">
-                            <Progress 
-                              value={animatedValues[skill.name] || 0} 
+                            <Progress
+                              value={animatedValues[skill.name] || 0}
                               className="h-2"
                             />
-                            <div 
+                            <div
                               className={`absolute top-0 left-0 h-2 bg-gradient-to-r ${skill.gradient} rounded-full transition-all duration-1000`}
                               style={{ width: `${animatedValues[skill.name] || 0}%` }}
                             ></div>
@@ -358,8 +359,8 @@ const Skills = () => {
                               <div className="space-y-1">
                                 <p className="text-xs font-medium text-primary">Projects:</p>
                                 <div className="flex gap-1 flex-wrap">
-                                  {skill.projects.map((project, idx) => (
-                                    <Badge key={idx} variant="outline" className="text-xs bg-primary/10">
+                                  {skill.projects.map((project, projIdx) => (
+                                    <Badge key={projIdx} variant="outline" className="text-xs bg-primary/10">
                                       {project}
                                     </Badge>
                                   ))}
@@ -368,8 +369,8 @@ const Skills = () => {
                               <div className="space-y-1">
                                 <p className="text-xs font-medium text-primary">Domains:</p>
                                 <div className="flex gap-1 flex-wrap">
-                                  {skill.domains.map((domain, idx) => (
-                                    <Badge key={idx} variant="outline" className="text-xs bg-accent/10 border-accent/20">
+                                  {skill.domains.map((domain, domIdx) => (
+                                    <Badge key={domIdx} variant="outline" className="text-xs bg-accent/10 border-accent/20">
                                       {domain}
                                     </Badge>
                                   ))}
@@ -396,7 +397,7 @@ const Skills = () => {
                           { name: "Edge Computing", icon: Zap, color: "from-pink-500 to-rose-500", count: "2+ Projects" },
                           { name: "LLMs", icon: Brain, color: "from-cyan-500 to-blue-500", count: "4+ Projects" },
                           { name: "Reinforcement Learning", icon: Target, color: "from-violet-500 to-purple-500", count: "3+ Projects" }
-                        ].map((domain, index) => (
+                        ].map((domain) => (
                           <div
                             key={domain.name}
                             className="group/item p-3 rounded-lg border border-border/50 text-center hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-105 bg-card/50"
@@ -413,6 +414,33 @@ const Skills = () => {
                           </div>
                         ))}
                       </div>
+
+                      {/* Circular Progress Visualizations */}
+                      <div className="space-y-4 mt-8">
+                        <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                          <BarChart3 className="h-5 w-5 text-primary" /> Skill Proficiency
+                        </h3>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                          {aiSkills.slice(0, 6).map((skill, idx) => (
+                            <motion.div
+                              key={skill.name}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.5, delay: idx * 0.1 }}
+                              className="flex flex-col items-center"
+                            >
+                              <CircularProgress
+                                percentage={skill.level}
+                                size={100}
+                                strokeWidth={6}
+                                delay={idx * 0.15}
+                              />
+                              <p className="text-sm font-medium text-center mt-3">{skill.name}</p>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -425,14 +453,14 @@ const Skills = () => {
             <div className="space-y-6">
               {/* Tools & Technologies Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {toolsAndTech.map((category, index) => (
-                  <Card 
+                {toolsAndTech.map((category, _) => (
+                  <Card
                     key={category.category}
                     className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group"
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${category.gradient}`}></div>
-                    
+
                     <CardHeader className="relative pb-3">
                       <CardTitle className="text-base sm:text-lg text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
                         <category.icon className="h-4 w-4" />
@@ -441,8 +469,8 @@ const Skills = () => {
                     </CardHeader>
                     <CardContent className="relative">
                       <div className="flex flex-wrap gap-1">
-                        {category.items.map((item, idx) => (
-                          <Badge 
+                        {category.items.map((item, _) => (
+                          <Badge
                             key={item}
                             variant="outline"
                             className="text-xs bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
@@ -464,7 +492,7 @@ const Skills = () => {
         <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group mt-8">
           <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-500 to-orange-500"></div>
-          
+
           <CardHeader className="relative">
             <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
               <Target className="h-5 w-5" /> Certifications & Achievements

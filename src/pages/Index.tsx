@@ -8,6 +8,9 @@ const Projects = lazy(() => import('../components/Projects'));
 const Skills = lazy(() => import('../components/Skills'));
 const Contact = lazy(() => import('../components/Contact'));
 const Footer = lazy(() => import('../components/Footer'));
+import ParticleBackground from '../components/ParticleBackground';
+import CustomCursor from '../components/CustomCursor';
+import GradientMesh from '../components/GradientMesh';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +36,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <GradientMesh />
+      <ParticleBackground />
+      <CustomCursor />
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}>
         <Header />
         <main>
