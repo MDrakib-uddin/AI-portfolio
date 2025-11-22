@@ -41,7 +41,7 @@ const About = () => {
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
-            I'm a passionate AI enthusiast with 2+ years of educational experience building intelligent systems 
+            I'm a passionate AI enthusiast with 2+ years of educational experience building intelligent systems
             that transform how businesses operate and how people interact with technology.
           </p>
         </div>
@@ -52,31 +52,31 @@ const About = () => {
             <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
               <p className="text-foreground leading-relaxed text-sm xs:text-base mb-4">
                 My journey into the world of <span className="text-primary font-semibold">Artificial Intelligence</span> began during my <span className="text-primary font-semibold">Computer Science</span> studies at <span className="text-primary font-semibold">CBIU</span>, where I was captivated by the power of <span className="text-primary font-semibold">machine learning</span> to address real-world challenges. Since then, I have been deeply engaged in exploring and developing AI systems—ranging from intelligent recommendation engines to computer vision applications.
-            </p>
-            
+              </p>
+
               <p className="text-foreground leading-relaxed text-sm xs:text-base mb-4">
                 I specialize in <span className="text-primary font-semibold">deep learning</span>, <span className="text-primary font-semibold">natural language processing</span>, and <span className="text-primary font-semibold">computer vision</span>. My projects have focused on solving practical problems with AI, from improving <span className="text-primary font-semibold">search algorithms</span> to experimenting with <span className="text-primary font-semibold">autonomous technologies</span>. I'm particularly interested in the intersection of <span className="text-primary font-semibold">AI ethics</span> and real-world impact, striving to ensure that AI is developed and used responsibly.
-            </p>
+              </p>
 
-            <p className="text-foreground leading-relaxed text-sm xs:text-base">
+              <p className="text-foreground leading-relaxed text-sm xs:text-base">
                 Outside of research and development, I contribute to <span className="text-primary font-semibold">open-source communities</span>, write <span className="text-primary font-semibold">technical blogs</span>. I'm also passionate about <span className="text-primary font-semibold">competitive programming</span>, which helps me enhance my algorithmic thinking and build efficient, optimized AI solutions. I strongly believe in democratizing AI by making its tools and knowledge accessible to all.
-            </p>
+              </p>
             </div>
           </div>
 
           {/* Right Column - Enhanced Highlights */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mt-8 lg:mt-0">
             {highlights.map((highlight, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group"
               >
                 {/* Gradient background overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${highlight.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
+
                 {/* Top gradient border */}
                 <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${highlight.gradient}`}></div>
-                
+
                 <CardContent className="relative p-4 sm:p-5 text-center">
                   {/* Enhanced Icon Container */}
                   <div className="relative mb-3 sm:mb-4">
@@ -85,19 +85,19 @@ const About = () => {
                         <highlight.icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
                       </div>
                     </div>
-                    
+
                     {/* Animated ring on hover */}
                     <div className={`absolute inset-0 w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full bg-gradient-to-r ${highlight.gradient} opacity-0 group-hover:opacity-25 group-hover:scale-125 transition-all duration-500 blur-sm`}></div>
                   </div>
-                  
+
                   <h3 className="text-sm sm:text-base font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors duration-300">
                     {highlight.title}
                   </h3>
-                  
+
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {highlight.description}
                   </p>
-                  
+
                   {/* Bottom decoration */}
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
                 </CardContent>

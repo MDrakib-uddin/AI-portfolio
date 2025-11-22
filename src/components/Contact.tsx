@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Mail, Phone, MapPin, Send, CheckCircle, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Sparkles, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
@@ -12,14 +12,12 @@ import confetti from 'canvas-confetti';
 // Inline analytics functions to avoid import issues
 const trackContactSubmission = () => {
   console.log('📊 Contact submission tracked');
-  // Add analytics tracking logic here if needed
 };
 
 const trackButtonClick = (buttonName: string) => {
   console.log('📊 Button click tracked:', buttonName);
-  // Add analytics tracking logic here if needed
 };
-// Inline hook to avoid import issues
+
 const useToast = () => {
   return {
     toast: (message: string | { title: string; description?: string }) => {
@@ -31,8 +29,8 @@ const useToast = () => {
     }
   };
 };
-// Inline hook to avoid import issues
-const useSectionTracking = (sectionId: string) => {
+
+const useSectionTracking = (_sectionId: string) => {
   const sectionRef = useRef<HTMLElement>(null);
   return sectionRef;
 };
@@ -127,7 +125,6 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus({ type: null, message: '' });
 
-    // Track contact submission
     trackContactSubmission();
     trackButtonClick('submit_contact');
 
@@ -144,7 +141,6 @@ const Contact = () => {
     try {
       if (!serviceId || !templateId || !publicKey) {
         console.warn('EmailJS env not configured. Skipping real send.');
-        // Simulate success
         await new Promise((res) => setTimeout(res, 1200));
       } else {
         await emailjs.send(serviceId, templateId, templateParams, { publicKey });
@@ -155,7 +151,6 @@ const Contact = () => {
         description: "Thank you for your message. I'll get back to you soon.",
       });
 
-      // Trigger confetti celebration
       confetti({
         particleCount: 100,
         spread: 70,
@@ -187,11 +182,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-14 sm:py-20 bg-gradient-secondary relative overflow-hidden" ref={sectionRef}>
+    <section id="contact" className="py-14 sm:py-20 bg-background relative overflow-hidden" ref={sectionRef}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+          className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -203,7 +198,7 @@ const Contact = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-10 left-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl"
+          className="absolute bottom-10 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.5, 0.3, 0.5],
@@ -217,6 +212,7 @@ const Contact = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -256,232 +252,241 @@ const Contact = () => {
             </motion.div>
           </div>
           <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you.
-            Let's create something amazing together!
+            Have a project in mind or want to collaborate? Let's create something amazing together!
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-          {/* Enhanced Contact Form */}
-          <Card className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
-            {/* Gradient background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            {/* Top gradient border */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
-
-            <CardHeader className="relative">
-              <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                <CheckCircle className="h-5 w-5 text-primary" />
-                Send Message
-              </CardTitle>
-            </CardHeader>
-
-            <CardContent className="relative">
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-card-foreground">
-                    Full Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50 border-border focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-card-foreground">
-                    Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50 border-border focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-card-foreground">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell me about your project or idea"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={8}
-                    className="bg-background/50 border-border focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 resize-none min-h-[200px]"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:scale-100"
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Left Side - Contact Info & Social (2 columns) */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-2 space-y-6"
+          >
+            {/* Contact Info Cards */}
+            <div className="space-y-4">
+              {contactInfo.map((info, index) => (
+                <motion.div
+                  key={info.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02, x: 5 }}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 mr-2" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
+                  <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group cursor-pointer">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${info.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${info.gradient}`}></div>
 
-                {status.type && (
-                  <div
-                    className={`mt-2 text-sm rounded-md p-3 border ${status.type === 'success'
-                      ? 'bg-green-50 text-green-700 border-green-200'
-                      : 'bg-red-50 text-red-700 border-red-200'
-                      }`}
-                    role="status"
-                    aria-live="polite"
-                  >
-                    {status.message}
-                  </div>
-                )}
-              </form>
-            </CardContent>
-
-            {/* Bottom decoration */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
-          </Card>
-
-          {/* Enhanced Contact Info & Social */}
-          <div className="flex flex-col gap-6 sm:gap-8 mt-6 lg:mt-0">
-            {/* Enhanced Contact Information */}
-            <div className="space-y-6 sm:space-y-8">
-              {/* Contact Info Cards */}
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                  >
-                    <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group cursor-pointer">
-                      {/* Gradient background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${info.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-
-                      {/* Left gradient border */}
-                      <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${info.gradient}`}></div>
-
-                      <CardContent className="relative p-4 sm:p-6">
-                        <div className="flex items-center gap-4">
-                          <motion.div
-                            className={`p-3 rounded-lg bg-gradient-to-br ${info.gradient}`}
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.6 }}
-                          >
-                            <info.icon className="h-6 w-6 text-white" />
-                          </motion.div>
-                          <div className="flex-1">
-                            <h3 className="text-sm font-medium text-muted-foreground mb-1">{info.title}</h3>
-                            {info.link ? (
-                              <a
-                                href={info.link}
-                                className="text-base sm:text-lg font-semibold text-foreground hover:text-primary transition-colors"
-                              >
-                                {info.content}
-                              </a>
-                            ) : (
-                              <p className="text-base sm:text-lg font-semibold text-foreground">{info.content}</p>
-                            )}
-                          </div>
+                    <CardContent className="relative p-4">
+                      <div className="flex items-center gap-3">
+                        <motion.div
+                          className={`p-2.5 rounded-lg bg-gradient-to-br ${info.gradient}`}
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          <info.icon className="h-5 w-5 text-white" />
+                        </motion.div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xs font-medium text-muted-foreground mb-0.5">{info.title}</h3>
+                          {info.link ? (
+                            <a
+                              href={info.link}
+                              className="text-sm font-semibold text-foreground hover:text-primary transition-colors truncate block"
+                            >
+                              {info.content}
+                            </a>
+                          ) : (
+                            <p className="text-sm font-semibold text-foreground truncate">{info.content}</p>
+                          )}
                         </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div> {/* Bottom decoration */}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Enhanced Follow Me */}
+            {/* Social Links */}
             <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-              {/* Gradient background overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              {/* Top gradient border */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"></div>
 
-              <CardHeader className="relative">
-                <CardTitle className="text-lg text-card-foreground group-hover:text-primary transition-colors duration-300">
-                  Follow Me
+              <CardHeader className="relative pb-3">
+                <CardTitle className="text-base text-card-foreground group-hover:text-primary transition-colors duration-300">
+                  Connect With Me
                 </CardTitle>
               </CardHeader>
 
               <CardContent className="relative">
-                <div className="flex gap-3 mt-2">
+                <div className="flex flex-wrap gap-3">
                   {socialLinks.map((social, i) => (
-                    <a
+                    <motion.a
                       key={i}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-full bg-gradient-to-r ${social.gradient} text-white shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 group/social`}
+                      className={`p-3 rounded-lg bg-gradient-to-r ${social.gradient} text-white shadow-md hover:shadow-lg transition-all duration-300 group/social`}
                       aria-label={social.ariaLabel || social.label}
                       title={social.label}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       <div className="group-hover/social:animate-pulse">
                         {social.icon}
                       </div>
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
               </CardContent>
 
-              {/* Bottom decoration */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
             </Card>
 
-            {/* Enhanced Availability */}
+            {/* Availability Card */}
             <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-              {/* Gradient background overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              {/* Top gradient border */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-500 to-teal-500"></div>
 
-              <CardHeader className="relative">
-                <CardTitle className="text-lg text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <CardHeader className="relative pb-3">
+                <CardTitle className="text-base text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
+                  <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
                   Availability
                 </CardTitle>
               </CardHeader>
 
               <CardContent className="relative">
-                <div className="font-semibold text-card-foreground mb-2">
-                  Currently open for new opportunities
+                <div className="text-sm font-semibold text-card-foreground mb-2">
+                  Open for opportunities
                 </div>
-                <div className="text-muted-foreground text-sm leading-relaxed">
-                  I'm always interested in discussing innovative AI projects, consulting opportunities, or potential collaborations. Feel free to reach out!
+                <div className="text-xs text-muted-foreground leading-relaxed">
+                  Interested in AI projects, consulting, or collaborations. Feel free to reach out!
                 </div>
               </CardContent>
 
-              {/* Bottom decoration */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
             </Card>
-          </div>
+          </motion.div>
+
+          {/* Right Side - Contact Form (3 columns) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-3"
+          >
+            <Card className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-purple-500 to-accent"></div>
+
+              <CardHeader className="relative">
+                <CardTitle className="text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
+                  <MessageCircle className="h-5 w-5 text-primary" />
+                  Send Me a Message
+                </CardTitle>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Fill out the form below and I'll get back to you as soon as possible.
+                </p>
+              </CardHeader>
+
+              <CardContent className="relative">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium text-card-foreground">
+                        Full Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="bg-background/50 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium text-card-foreground">
+                        Email Address *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="bg-background/50 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-card-foreground">
+                      Your Message *
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell me about your project or idea..."
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="bg-background/50 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:scale-100 h-12 text-base font-semibold"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-5 w-5 mr-2" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+
+                  {status.type && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`text-sm rounded-lg p-4 border flex items-center gap-2 ${status.type === 'success'
+                          ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-400 dark:border-green-800'
+                          : 'bg-red-50 text-red-700 border-red-200 dark:bg-red-950 dark:text-red-400 dark:border-red-800'
+                        }`}
+                      role="status"
+                      aria-live="polite"
+                    >
+                      {status.type === 'success' ? (
+                        <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                      ) : (
+                        <span className="text-lg flex-shrink-0">⚠️</span>
+                      )}
+                      <span>{status.message}</span>
+                    </motion.div>
+                  )}
+                </form>
+              </CardContent>
+
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>

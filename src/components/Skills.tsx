@@ -1,9 +1,8 @@
-import { Progress } from './ui/progress';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { FiExternalLink } from 'react-icons/fi';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import {
   Bot, Brain, Zap, Eye, MessageSquare, Target, Rocket,
   Network, BarChart3, Code, Globe, Database, Cloud, Layers, Terminal, Server
@@ -18,7 +17,6 @@ const useSectionTracking = (_sectionId: string) => {
 
 const Skills = () => {
   const sectionRef = useSectionTracking('skills');
-  const [animatedValues, setAnimatedValues] = useState<Record<string, number>>({});
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState('programming');
 
@@ -177,22 +175,6 @@ const Skills = () => {
     "TypeScript", "HTML", "CSS", "DSA", "OOP", "Arduino"
   ];
 
-  // Animate progress bars on mount
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const allSkills = [...programmingSkills, ...aiSkills];
-      allSkills.forEach((skill, index) => {
-        setTimeout(() => {
-          setAnimatedValues(prev => ({
-            ...prev,
-            [skill.name]: skill.level
-          }));
-        }, index * 150);
-      });
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
   const sections = [
     { id: 'programming', name: 'Programming & Development', icon: Code },
     { id: 'ai', name: 'AI & Machine Learning', icon: Brain },
@@ -231,80 +213,113 @@ const Skills = () => {
         {/* Dynamic Content Based on Active Section */}
         <div className="space-y-6">
           {activeSection === 'programming' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Programming Skills */}
-              <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-
-                <CardHeader className="relative pb-3">
-                  <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                    <Code className="h-5 w-5" /> Programming Skills
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="relative space-y-3 sm:space-y-4">
-                  {programmingSkills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="space-y-2 p-2 rounded-lg hover:bg-secondary/20 transition-all duration-300 cursor-pointer"
+            <div className="space-y-6">
+              {/* Programming Skills Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {programmingSkills.map((skill, idx) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  >
+                    <Card
+                      className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 group h-full"
                       onMouseEnter={() => setHoveredSkill(skill.name)}
                       onMouseLeave={() => setHoveredSkill(null)}
                     >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <skill.icon className="h-5 w-5 text-primary" />
-                          <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                        </div>
-                        <span className="text-sm text-primary font-semibold">{skill.level}%</span>
-                      </div>
-                      <div className="relative">
-                        <Progress
-                          value={animatedValues[skill.name] || 0}
-                          className="h-2"
-                        />
-                        <div
-                          className={`absolute top-0 left-0 h-2 bg-gradient-to-r ${skill.gradient} rounded-full transition-all duration-1000`}
-                          style={{ width: `${animatedValues[skill.name] || 0}%` }}
-                        ></div>
-                      </div>
-                      {hoveredSkill === skill.name && (
-                        <div className="mt-1 animate-fade-in">
-                          <p className="text-xs text-muted-foreground mb-1">{skill.description}</p>
-                          <div className="flex gap-1 flex-wrap">
-                            {skill.projects.map((project, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs bg-primary/10">
-                                {project}
-                              </Badge>
-                            ))}
+                      {/* Animated gradient background */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${skill.gradient}`}></div>
+
+                      {/* Animated corner accent */}
+                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${skill.gradient} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-500`}></div>
+
+                      <CardContent className="relative p-6 space-y-4">
+                        {/* Icon and Title */}
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className={`p-3 rounded-xl bg-gradient-to-br ${skill.gradient} shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                              <skill.icon className="h-6 w-6 text-white" />
+                            </div>
+                            <div>
+                              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                                {skill.name}
+                              </h3>
+                              <p className="text-xs text-muted-foreground">{skill.description}</p>
+                            </div>
                           </div>
                         </div>
-                      )}
-                    </div>
-                  ))}
-                </CardContent>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
-              </Card>
 
-              {/* Languages */}
+                        {/* Circular Progress */}
+                        <div className="flex justify-center py-4">
+                          <CircularProgress
+                            percentage={skill.level}
+                            size={120}
+                            strokeWidth={8}
+                            delay={idx * 0.15}
+                          />
+                        </div>
+
+                        {/* Projects - Show on hover */}
+                        {hoveredSkill === skill.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="space-y-2 pt-3 border-t border-border/50"
+                          >
+                            <p className="text-xs font-semibold text-primary uppercase tracking-wide">Key Projects</p>
+                            <div className="flex gap-1.5 flex-wrap">
+                              {skill.projects.map((project, projIdx) => (
+                                <Badge
+                                  key={projIdx}
+                                  variant="outline"
+                                  className="text-xs bg-primary/10 border-primary/30 hover:bg-primary hover:text-white transition-all duration-300"
+                                >
+                                  {project}
+                                </Badge>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </CardContent>
+
+                      {/* Bottom glow effect */}
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Programming Languages Card */}
               <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-500 to-teal-500"></div>
 
                 <CardHeader className="relative pb-3">
                   <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                    <Terminal className="h-5 w-5" /> Programming Languages
+                    <Terminal className="h-5 w-5" /> Programming Languages & Concepts
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative">
                   <div className="flex flex-wrap gap-2">
                     {languages.map((language, index) => (
-                      <Badge
+                      <motion.div
                         key={language}
-                        variant="outline"
-                        className="text-xs sm:text-sm bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-green-500 hover:to-teal-500 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: index * 0.03 }}
                       >
-                        {language}
-                      </Badge>
+                        <Badge
+                          variant="outline"
+                          className="text-xs sm:text-sm bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-green-500 hover:to-teal-500 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
+                        >
+                          {language}
+                        </Badge>
+                      </motion.div>
                     ))}
                   </div>
                 </CardContent>
@@ -315,133 +330,142 @@ const Skills = () => {
 
           {activeSection === 'ai' && (
             <div className="space-y-6">
-              {/* AI Skills with Domains */}
+              {/* AI Skills Grid - Main Skills */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {aiSkills.map((skill, idx) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  >
+                    <Card
+                      className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 group h-full"
+                      onMouseEnter={() => setHoveredSkill(skill.name)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                    >
+                      {/* Animated gradient background */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${skill.gradient}`}></div>
+
+                      {/* Animated corner accent */}
+                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${skill.gradient} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-500`}></div>
+
+                      <CardContent className="relative p-6 space-y-4">
+                        {/* Icon and Title */}
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className={`p-3 rounded-xl bg-gradient-to-br ${skill.gradient} shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                              <skill.icon className="h-6 w-6 text-white" />
+                            </div>
+                            <div>
+                              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                                {skill.name}
+                              </h3>
+                              <p className="text-xs text-muted-foreground">{skill.description}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Circular Progress */}
+                        <div className="flex justify-center py-4">
+                          <CircularProgress
+                            percentage={skill.level}
+                            size={120}
+                            strokeWidth={8}
+                            delay={idx * 0.15}
+                          />
+                        </div>
+
+                        {/* Domains */}
+                        <div className="space-y-2">
+                          <p className="text-xs font-semibold text-primary uppercase tracking-wide">Key Domains</p>
+                          <div className="flex gap-1.5 flex-wrap">
+                            {skill.domains.map((domain, domIdx) => (
+                              <Badge
+                                key={domIdx}
+                                variant="outline"
+                                className={`text-xs bg-gradient-to-r ${skill.gradient}/10 border-primary/20 hover:${skill.gradient} hover:text-white hover:scale-105 transition-all duration-300`}
+                              >
+                                {domain}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Projects - Show on hover */}
+                        {hoveredSkill === skill.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="space-y-2 pt-3 border-t border-border/50"
+                          >
+                            <p className="text-xs font-semibold text-accent uppercase tracking-wide">Recent Projects</p>
+                            <div className="flex gap-1.5 flex-wrap">
+                              {skill.projects.map((project, projIdx) => (
+                                <Badge
+                                  key={projIdx}
+                                  variant="outline"
+                                  className="text-xs bg-accent/10 border-accent/30 hover:bg-accent hover:text-white transition-all duration-300"
+                                >
+                                  {project}
+                                </Badge>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </CardContent>
+
+                      {/* Bottom glow effect */}
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* AI Domains Overview - Compact Grid */}
               <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"></div>
 
                 <CardHeader className="relative pb-3">
                   <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                    <Brain className="h-5 w-5" /> AI & Machine Learning Expertise
+                    <Network className="h-5 w-5" /> AI Domains Overview
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* AI Skills with Progress Bars */}
-                    <div className="space-y-3 sm:space-y-4">
-                      {aiSkills.map((skill) => (
-                        <div
-                          key={skill.name}
-                          className="space-y-2 p-3 rounded-lg hover:bg-secondary/20 transition-all duration-300 cursor-pointer border border-border/50"
-                          onMouseEnter={() => setHoveredSkill(skill.name)}
-                          onMouseLeave={() => setHoveredSkill(null)}
-                        >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              <skill.icon className="h-5 w-5 text-primary" />
-                              <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                            </div>
-                            <span className="text-sm text-primary font-semibold">{skill.level}%</span>
-                          </div>
-                          <div className="relative">
-                            <Progress
-                              value={animatedValues[skill.name] || 0}
-                              className="h-2"
-                            />
-                            <div
-                              className={`absolute top-0 left-0 h-2 bg-gradient-to-r ${skill.gradient} rounded-full transition-all duration-1000`}
-                              style={{ width: `${animatedValues[skill.name] || 0}%` }}
-                            ></div>
-                          </div>
-                          {hoveredSkill === skill.name && (
-                            <div className="mt-2 animate-fade-in space-y-2">
-                              <p className="text-xs text-muted-foreground">{skill.description}</p>
-                              <div className="space-y-1">
-                                <p className="text-xs font-medium text-primary">Projects:</p>
-                                <div className="flex gap-1 flex-wrap">
-                                  {skill.projects.map((project, projIdx) => (
-                                    <Badge key={projIdx} variant="outline" className="text-xs bg-primary/10">
-                                      {project}
-                                    </Badge>
-                                  ))}
-                                </div>
-                              </div>
-                              <div className="space-y-1">
-                                <p className="text-xs font-medium text-primary">Domains:</p>
-                                <div className="flex gap-1 flex-wrap">
-                                  {skill.domains.map((domain, domIdx) => (
-                                    <Badge key={domIdx} variant="outline" className="text-xs bg-accent/10 border-accent/20">
-                                      {domain}
-                                    </Badge>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          )}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-3">
+                    {[
+                      { name: "Image Processing", icon: Eye, color: "from-blue-500 to-cyan-500", count: "3+ Projects" },
+                      { name: "Text Processing", icon: MessageSquare, color: "from-green-500 to-teal-500", count: "5+ Projects" },
+                      { name: "Speech & Audio", icon: Bot, color: "from-purple-500 to-pink-500", count: "2+ Projects" },
+                      { name: "Neural Networks", icon: Network, color: "from-indigo-500 to-purple-500", count: "8+ Projects" },
+                      { name: "Data Science", icon: BarChart3, color: "from-emerald-500 to-green-500", count: "6+ Projects" },
+                      { name: "Edge Computing", icon: Zap, color: "from-pink-500 to-rose-500", count: "2+ Projects" },
+                      { name: "LLMs", icon: Brain, color: "from-cyan-500 to-blue-500", count: "4+ Projects" },
+                      { name: "Reinforcement Learning", icon: Target, color: "from-violet-500 to-purple-500", count: "3+ Projects" }
+                    ].map((domain, idx) => (
+                      <motion.div
+                        key={domain.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: idx * 0.05 }}
+                        className="group/item p-4 rounded-xl border border-border/50 text-center hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer hover:scale-105 bg-card/50 hover:border-primary/50"
+                      >
+                        <div className={`w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br ${domain.color} p-2.5 flex items-center justify-center group-hover/item:rotate-12 group-hover/item:scale-110 transition-all duration-300 shadow-md`}>
+                          <domain.icon className="h-6 w-6 text-white" />
                         </div>
-                      ))}
-                    </div>
-
-                    {/* AI Domains Grid */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                        <Network className="h-5 w-5 text-primary" /> AI Domains Overview
-                      </h3>
-                      <div className="grid grid-cols-2 gap-3">
-                        {[
-                          { name: "Image Processing", icon: Eye, color: "from-blue-500 to-cyan-500", count: "3+ Projects" },
-                          { name: "Text Processing", icon: MessageSquare, color: "from-green-500 to-teal-500", count: "5+ Projects" },
-                          { name: "Speech & Audio", icon: Bot, color: "from-purple-500 to-pink-500", count: "2+ Projects" },
-                          { name: "Neural Networks", icon: Network, color: "from-indigo-500 to-purple-500", count: "8+ Projects" },
-                          { name: "Data Science", icon: BarChart3, color: "from-emerald-500 to-green-500", count: "6+ Projects" },
-                          { name: "Edge Computing", icon: Zap, color: "from-pink-500 to-rose-500", count: "2+ Projects" },
-                          { name: "LLMs", icon: Brain, color: "from-cyan-500 to-blue-500", count: "4+ Projects" },
-                          { name: "Reinforcement Learning", icon: Target, color: "from-violet-500 to-purple-500", count: "3+ Projects" }
-                        ].map((domain) => (
-                          <div
-                            key={domain.name}
-                            className="group/item p-3 rounded-lg border border-border/50 text-center hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-105 bg-card/50"
-                          >
-                            <div className={`w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-r ${domain.color} p-2 flex items-center justify-center group-hover/item:animate-bounce`}>
-                              <domain.icon className="h-5 w-5 text-white" />
-                            </div>
-                            <div className="text-sm font-medium text-card-foreground group-hover/item:text-primary transition-colors">
-                              {domain.name}
-                            </div>
-                            <div className="text-xs text-muted-foreground mt-1">
-                              {domain.count}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Circular Progress Visualizations */}
-                      <div className="space-y-4 mt-8">
-                        <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                          <BarChart3 className="h-5 w-5 text-primary" /> Skill Proficiency
-                        </h3>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                          {aiSkills.slice(0, 6).map((skill, idx) => (
-                            <motion.div
-                              key={skill.name}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              whileInView={{ opacity: 1, scale: 1 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.5, delay: idx * 0.1 }}
-                              className="flex flex-col items-center"
-                            >
-                              <CircularProgress
-                                percentage={skill.level}
-                                size={100}
-                                strokeWidth={6}
-                                delay={idx * 0.15}
-                              />
-                              <p className="text-sm font-medium text-center mt-3">{skill.name}</p>
-                            </motion.div>
-                          ))}
+                        <div className="text-sm font-semibold text-card-foreground group-hover/item:text-primary transition-colors leading-tight">
+                          {domain.name}
                         </div>
-                      </div>
-                    </div>
+                        <div className="text-xs text-muted-foreground mt-1.5 font-medium">
+                          {domain.count}
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </CardContent>
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>

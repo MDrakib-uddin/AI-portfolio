@@ -141,6 +141,15 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -151,5 +160,9 @@ All colors MUST be HSL.
 
   .animate-glow {
     animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
   }
 }
