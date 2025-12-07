@@ -7,7 +7,7 @@ const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/brain.jpeg',
+  '/favicon.png',
   '/src/index.css',
   '/src/main.tsx'
 ];
@@ -117,7 +117,7 @@ async function networkFirst(request, cacheName) {
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // Return a fallback response if available
     const fallbackResponse = await getFallbackResponse(request);
     if (fallbackResponse) {
@@ -129,22 +129,22 @@ async function networkFirst(request, cacheName) {
 
 // Helper functions
 function isStaticAsset(request) {
-  return STATIC_ASSETS.some(asset => 
-    request.url.includes(asset) || 
-    request.url.endsWith('.css') || 
+  return STATIC_ASSETS.some(asset =>
+    request.url.includes(asset) ||
+    request.url.endsWith('.css') ||
     request.url.endsWith('.js')
   );
 }
 
 function isImage(request) {
-  return request.destination === 'image' || 
-         request.url.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i);
+  return request.destination === 'image' ||
+    request.url.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i);
 }
 
 function isAPIRequest(request) {
-  return request.url.includes('/api/') || 
-         request.url.includes('analytics') ||
-         request.url.includes('tracking');
+  return request.url.includes('/api/') ||
+    request.url.includes('analytics') ||
+    request.url.includes('tracking');
 }
 
 async function getFallbackResponse(request) {
@@ -158,7 +158,7 @@ async function getFallbackResponse(request) {
       }
     );
   }
-  
+
   return null;
 }
 
@@ -172,7 +172,7 @@ self.addEventListener('sync', event => {
 async function doBackgroundSync() {
   // Handle background sync tasks
   console.log('Background sync triggered');
-  
+
   // You can implement offline form submissions, analytics, etc. here
   const offlineData = await getOfflineData();
   if (offlineData.length > 0) {
@@ -194,8 +194,8 @@ async function syncOfflineData(data) {
 self.addEventListener('push', event => {
   const options = {
     body: event.data ? event.data.text() : 'New notification',
-    icon: '/brain.jpeg',
-    badge: '/brain.jpeg',
+    icon: '/favicon.png',
+    badge: '/favicon.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -211,7 +211,7 @@ self.addEventListener('push', event => {
 // Notification click handling
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  
+
   event.waitUntil(
     clients.openWindow('/')
   );

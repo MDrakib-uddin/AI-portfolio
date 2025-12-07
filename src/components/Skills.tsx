@@ -538,7 +538,7 @@ const Skills = () => {
                   className="bg-gradient-to-r from-primary to-purple-500 text-white shadow-md hover:from-primary/90 hover:to-purple-600 hover:scale-105 transition-all px-3 py-1.5 rounded flex items-center gap-1"
                   aria-label="View AWS Certificate"
                 >
-                  <a href="https://example.com/aws-certificate-demo" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cour sera.org/ver ify/1WALDRMWX3MK" target="_blank" rel="noopener noreferrer">
                     View <FiExternalLink className="ml-1" />
                   </a>
                 </Button>
@@ -548,9 +548,9 @@ const Skills = () => {
                 <div>
                   <h4 className="font-semibold text-card-foreground text-xs sm:text-base flex items-center gap-2">
                     <span className="text-lg">🥇</span>
-                    Quantum Program
+                    CS50x - Introduction to Computer Science
                   </h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">Womanium & WISER • 2025</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Harvard • 2025</p>
                 </div>
                 <Button
                   asChild
@@ -558,7 +558,7 @@ const Skills = () => {
                   className="bg-gradient-to-r from-primary to-yellow-500 text-white shadow-md hover:from-primary/90 hover:to-yellow-600 hover:scale-105 transition-all px-3 py-1.5 rounded flex items-center gap-1"
                   aria-label="View TensorFlow Certificate"
                 >
-                  <a href="https://example.com/tensorflow-certificate-demo" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cs50.harvard.edu/certificates/6bae079b-6154-4800-ba7c-eb56a67929fd" target="_blank" rel="noopener noreferrer">
                     View <FiExternalLink className="ml-1" />
                   </a>
                 </Button>
@@ -568,9 +568,9 @@ const Skills = () => {
                 <div>
                   <h4 className="font-semibold text-card-foreground text-xs sm:text-base flex items-center gap-2">
                     <span className="text-lg">🎓</span>
-                    Deep Learning Specialization
+                    CS50ai - Introduction to Artificial Intelligence with Python
                   </h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">Coursera/Stanford • 2021</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Harvard • 2025</p>
                 </div>
                 <Button
                   asChild
@@ -578,7 +578,7 @@ const Skills = () => {
                   className="bg-gradient-to-r from-primary to-pink-500 text-white shadow-md hover:from-primary/90 hover:to-pink-600 hover:scale-105 transition-all px-3 py-1.5 rounded flex items-center gap-1"
                   aria-label="View Deep Learning Certificate"
                 >
-                  <a href="https://example.com/deeplearning-certificate-demo" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cs50.harvard.edu/certificates/fd1017c9-5ec8-4aa0-a876-ab27e7f62b01" target="_blank" rel="noopener noreferrer">
                     View <FiExternalLink className="ml-1" />
                   </a>
                 </Button>

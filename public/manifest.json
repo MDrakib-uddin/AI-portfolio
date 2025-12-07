@@ -8,14 +8,14 @@
   "description": "Rakib Uddin's AI/ML portfolio: projects, skills, competitive programming, and academic achievements.",
   "icons": [
     {
-      "src": "/brain.jpeg",
+      "src": "/favicon.png",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/png"
     },
     {
-      "src": "/brain.jpeg",
+      "src": "/favicon.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png"
     }
   ]
-} 
+}
