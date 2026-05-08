@@ -31,6 +31,10 @@ export default tseslint.config(
           "caughtErrorsIgnorePattern": "^_"
         }
       ],
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-empty-object-type": "warn",
+      "@typescript-eslint/no-require-imports": "warn",
+      "react-hooks/rules-of-hooks": "warn",
     },
   }
 );
