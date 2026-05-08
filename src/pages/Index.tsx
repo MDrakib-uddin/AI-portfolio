@@ -11,9 +11,24 @@ const Footer = lazy(() => import('../components/Footer'));
 import ParticleBackground from '../components/ParticleBackground';
 import CustomCursor from '../components/CustomCursor';
 import GradientMesh from '../components/GradientMesh';
+import { TerminalProvider } from '../components/TerminalContext';
+import TerminalOverlay from '../components/TerminalOverlay';
+import Chatbot from '../components/Chatbot';
+import { useKonamiCode } from '../hooks/useKonamiCode';
+import confetti from 'canvas-confetti';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  useKonamiCode(() => {
+    confetti({
+      particleCount: 150,
+      spread: 180,
+      origin: { y: 0.6 },
+      colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899']
+    });
+    alert("Achievement Unlocked: Developer Mode!");
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,24 +50,28 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <GradientMesh />
-      <ParticleBackground />
-      <CustomCursor />
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}>
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <CompetitiveProgramming />
-          <Education />
-          <Projects />
-          <Skills />
-          <Contact />
-        </main>
-        <Footer />
-      </Suspense>
-    </div>
+    <TerminalProvider>
+      <div className="min-h-screen bg-background">
+        <GradientMesh />
+        <ParticleBackground />
+        <CustomCursor />
+        <TerminalOverlay />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}>
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <CompetitiveProgramming />
+            <Education />
+            <Projects />
+            <Skills />
+            <Contact />
+          </main>
+          <Footer />
+          <Chatbot />
+        </Suspense>
+      </div>
+    </TerminalProvider>
   );
 };
 

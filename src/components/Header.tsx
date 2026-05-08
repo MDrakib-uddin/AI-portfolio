@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Brain, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Brain, Github, Linkedin, Mail, Terminal as TerminalIcon } from 'lucide-react';
 import { Button } from './ui/button';
 import ThemeToggle from './ThemeToggle';
+import { useTerminal } from './TerminalContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +10,7 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('');
   const [scrollProgress, setScrollProgress] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
+  const { toggleTerminal } = useTerminal();
 
   // Handle scroll effects and active section
   useEffect(() => {
@@ -146,6 +148,15 @@ const Header = () => {
               {/* Theme Toggle */}
               <ThemeToggle />
 
+              {/* Terminal Toggle */}
+              <button
+                onClick={toggleTerminal}
+                className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                aria-label="Toggle terminal mode"
+              >
+                <TerminalIcon className="h-5 w-5" />
+              </button>
+
               {/* Social Links */}
               <div className="flex items-center space-x-3">
                 <a
@@ -231,9 +242,19 @@ const Header = () => {
                     </a>
                   ))}
 
-                  {/* Mobile Theme Toggle */}
-                  <div className="flex items-center justify-center py-3">
+                  {/* Mobile Theme and Terminal Toggle */}
+                  <div className="flex items-center justify-center py-3 space-x-6">
                     <ThemeToggle />
+                    <button
+                      onClick={() => {
+                        toggleTerminal();
+                        setIsMenuOpen(false);
+                      }}
+                      className="p-2 rounded-full bg-secondary/80 text-foreground hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all duration-300"
+                      aria-label="Toggle terminal mode"
+                    >
+                      <TerminalIcon className="h-5 w-5" />
+                    </button>
                   </div>
 
                   <div className="flex items-center justify-center space-x-6 pt-4 mt-4 border-t border-border">

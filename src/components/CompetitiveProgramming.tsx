@@ -11,6 +11,8 @@ import leetcodeLogo from '../assets/images/leetcode-logo.png';
 import hackerrankLogo from '../assets/images/hackerrank-logo.jpeg';
 import atcoderLogo from '../assets/images/atcode-logo.jpeg';
 import lightojLogo from '../assets/images/lightoj-logo.jpeg';
+import { GitHubCalendar } from 'react-github-calendar';
+import { useTheme } from 'next-themes';
 
 const platforms = [
   {
@@ -158,7 +160,10 @@ const skillCategories = [
   }
 ];
 
-const CompetitiveProgramming = () => (
+const CompetitiveProgramming = () => {
+  const { theme } = useTheme();
+  
+  return (
   <section id="competitive-programming" className="py-14 sm:py-20 bg-background">
     <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
       <div className="text-center mb-8 sm:mb-10">
@@ -298,6 +303,30 @@ const CompetitiveProgramming = () => (
         })}
       </div>
 
+      {/* GitHub Contributions Heatmap */}
+      <div className="mb-10 sm:mb-16">
+        <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">
+          GitHub <span className="bg-gradient-primary bg-clip-text text-transparent">Contributions</span>
+        </h3>
+        <Card className="py-8 px-4 sm:px-8 overflow-x-auto flex justify-center items-center bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 relative group">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div className="relative z-10 w-full flex justify-center min-w-max">
+            <GitHubCalendar 
+              username="MDrakib-uddin" 
+              colorScheme={theme === 'dark' ? 'dark' : 'light'}
+              blockSize={14}
+              blockMargin={5}
+              fontSize={14}
+              theme={{
+                 light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+                 dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+              }}
+            />
+          </div>
+        </Card>
+      </div>
+
       {/* Achievements */}
       <div className="mb-10 sm:mb-16">
         <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">
@@ -424,6 +453,7 @@ const CompetitiveProgramming = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default CompetitiveProgramming; 

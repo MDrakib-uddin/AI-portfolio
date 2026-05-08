@@ -1,9 +1,11 @@
 import { Button } from './ui/button';
-import { ArrowDown, Download, MessageCircle, Sparkles, Brain, Zap, Code } from 'lucide-react';
+import { ArrowDown, Download, MessageCircle, Sparkles } from 'lucide-react';
 import DotWaveBackground from './DotWaveBackground';
-import { useParallaxMouse } from '../hooks/useParallaxMouse';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import { lazy, Suspense } from 'react';
+
+const Network3D = lazy(() => import('./Network3D'));
 
 // Inline analytics functions to avoid import issues
 const trackResumeDownload = () => {
@@ -17,7 +19,6 @@ const trackButtonClick = (buttonName: string) => {
 };
 
 const Hero = () => {
-  const { onMouseMove, onMouseLeave, bind } = useParallaxMouse();
 
   const titles = [
     "Competitive Programmer",
@@ -147,57 +148,23 @@ const Hero = () => {
           </div>
 
           {/* Right Content - Visual Elements */}
-          <div className="relative hidden lg:block animate-fade-in delay-1000">
-            <div
-              className="relative w-full h-[600px] flex items-center justify-center"
-              onMouseMove={onMouseMove}
-              onMouseLeave={onMouseLeave}
-            >
-
-              {/* Main Visual Container */}
-              <div className="relative w-96 h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl backdrop-blur-sm border border-primary/20 shadow-2xl">
-
-                {/* Floating Icons */}
-                <div className="absolute top-8 left-8 animate-float">
-                  <div ref={bind(2).ref} style={bind(2).style} className="p-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl backdrop-blur-sm border border-blue-500/30">
-                    <Brain className="h-8 w-8 text-blue-400" />
-                  </div>
+          <div className="relative hidden lg:block animate-fade-in delay-1000 pl-8">
+            <div className="relative w-full h-[600px] flex items-center justify-center">
+              
+              {/* Suspense handles the async loading of the 3D canvas */}
+              <Suspense fallback={
+                <div className="w-96 h-96 flex flex-col items-center justify-center bg-primary/5 rounded-full border border-primary/20 animate-pulse backdrop-blur-3xl shadow-2xl">
+                    <Sparkles className="h-10 w-10 text-primary mb-4 animate-bounce" />
+                    <span className="text-primary font-semibold tracking-widest text-sm">INITIALIZING AI CORE...</span>
                 </div>
-
-                <div className="absolute top-8 right-8 animate-float delay-1000">
-                  <div ref={bind(3).ref} style={bind(3).style} className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl backdrop-blur-sm border border-purple-500/30">
-                    <Zap className="h-8 w-8 text-purple-400" />
-                  </div>
-                </div>
-
-                <div className="absolute bottom-8 left-8 animate-float delay-2000">
-                  <div ref={bind(2).ref} style={bind(2).style} className="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl backdrop-blur-sm border border-green-500/30">
-                    <Code className="h-8 w-8 text-green-400" />
-                  </div>
-                </div>
-
-                <div className="absolute bottom-8 right-8 animate-float delay-3000">
-                  <div ref={bind(3).ref} style={bind(3).style} className="p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl backdrop-blur-sm border border-orange-500/30">
-                    <Sparkles className="h-8 w-8 text-orange-400" />
-                  </div>
-                </div>
-
-                {/* Center Element */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div ref={bind(1).ref} style={bind(1).style} className="w-24 h-24 bg-gradient-to-r from-primary to-accent rounded-2xl shadow-2xl flex items-center justify-center animate-pulse">
-                    <div className="w-16 h-16 bg-background/80 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                      <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                        AI
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              }>
+                <Network3D />
+              </Suspense>
 
               {/* Background Decorative Elements */}
-              <div className="absolute inset-0 -z-10">
-                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+              <div className="absolute inset-0 -z-10 pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
               </div>
             </div>
           </div>

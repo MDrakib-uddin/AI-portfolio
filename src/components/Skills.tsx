@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import CircularProgress from './CircularProgress';
 import { motion } from 'framer-motion';
+import { useSoundEffects } from '../hooks/useSoundEffects';
+import { SkillsNodeGraph } from './SkillsNodeGraph';
 
 const useSectionTracking = (_sectionId: string) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -19,6 +21,7 @@ const Skills = () => {
   const sectionRef = useSectionTracking('skills');
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState('programming');
+  const { playHover, playClick } = useSoundEffects();
 
   // Programming & Development Skills
   const programmingSkills = [
@@ -183,7 +186,17 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-14 sm:py-20 bg-background" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
+        {activeSection === 'programming' && (
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-emerald-500/20 via-cyan-500/10 to-transparent blur-3xl" />
+        )}
+        {activeSection === 'ai' && (
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-violet-500/20 via-pink-500/10 to-transparent blur-3xl" />
+        )}
+        {activeSection === 'tools' && (
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-transparent blur-3xl" />
+        )}
+
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
             Technical Skills & <span className="bg-gradient-primary bg-clip-text text-transparent">Expertise</span>
@@ -191,6 +204,30 @@ const Skills = () => {
           <p className="text-base xs:text-lg text-muted-foreground max-w-xs xs:max-w-md sm:max-w-3xl mx-auto">
             A comprehensive toolkit for building next-generation AI solutions
           </p>
+
+          <div className="mt-4 flex justify-center">
+            {activeSection === 'programming' && (
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/40 px-4 py-2 text-sm text-muted-foreground backdrop-blur">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_14px_rgba(16,185,129,0.55)]" />
+                <span className="font-medium text-foreground">Now viewing:</span>
+                <span className="font-semibold text-emerald-500">Programming & Development</span>
+              </div>
+            )}
+            {activeSection === 'ai' && (
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/40 px-4 py-2 text-sm text-muted-foreground backdrop-blur">
+                <span className="h-2 w-2 rounded-full bg-violet-500 shadow-[0_0_14px_rgba(139,92,246,0.55)]" />
+                <span className="font-medium text-foreground">Now viewing:</span>
+                <span className="font-semibold text-violet-500">AI & Machine Learning</span>
+              </div>
+            )}
+            {activeSection === 'tools' && (
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/40 px-4 py-2 text-sm text-muted-foreground backdrop-blur">
+                <span className="h-2 w-2 rounded-full bg-amber-500 shadow-[0_0_14px_rgba(245,158,11,0.55)]" />
+                <span className="font-medium text-foreground">Now viewing:</span>
+                <span className="font-semibold text-amber-500">Tools & Technologies</span>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Dynamic Section Tabs */}
@@ -198,7 +235,7 @@ const Skills = () => {
           {sections.map((section) => (
             <button
               key={section.id}
-              onClick={() => setActiveSection(section.id)}
+              onClick={() => { playClick(); setActiveSection(section.id); }}
               className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${activeSection === section.id
                 ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105'
                 : 'bg-card border border-border text-muted-foreground hover:bg-secondary hover:text-foreground'
@@ -211,120 +248,100 @@ const Skills = () => {
         </div>
 
         {/* Dynamic Content Based on Active Section */}
-        <div className="space-y-6">
+        <div className="lg:grid lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-7 space-y-6">
           {activeSection === 'programming' && (
             <div className="space-y-6">
-              {/* Programming Skills Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* Programming Skills - Simple list layout */}
+              <div className="space-y-3">
                 {programmingSkills.map((skill, idx) => (
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    transition={{ duration: 0.45, delay: idx * 0.08 }}
                   >
-                    <Card
-                      className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 group h-full"
+                    <div
+                      className="py-4 border-b border-border/70 last:border-b-0"
                       onMouseEnter={() => setHoveredSkill(skill.name)}
                       onMouseLeave={() => setHoveredSkill(null)}
                     >
-                      {/* Animated gradient background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${skill.gradient}`}></div>
-
-                      {/* Animated corner accent */}
-                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${skill.gradient} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-500`}></div>
-
-                      <CardContent className="relative p-6 space-y-4">
-                        {/* Icon and Title */}
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className={`p-3 rounded-xl bg-gradient-to-br ${skill.gradient} shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                              <skill.icon className="h-6 w-6 text-white" />
+                      <div className="space-y-3">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <skill.icon className="h-5 w-5 text-primary shrink-0" />
+                            <div className="min-w-0">
+                              <h3 className="text-base sm:text-lg font-semibold text-foreground truncate">{skill.name}</h3>
+                              <p className="text-xs sm:text-sm text-muted-foreground">{skill.description}</p>
                             </div>
-                            <div>
-                              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-                                {skill.name}
-                              </h3>
-                              <p className="text-xs text-muted-foreground">{skill.description}</p>
-                            </div>
+                          </div>
+                          <div className="text-sm font-semibold text-primary shrink-0">{skill.level}%</div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <div className="h-1.5 w-full rounded-full bg-secondary/70 overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.8, delay: idx * 0.08 }}
+                              className="h-full rounded-full bg-primary"
+                            />
+                          </div>
+                          <div className="flex justify-between text-[11px] text-muted-foreground">
+                            <span>Foundation</span>
+                            <span>Advanced</span>
                           </div>
                         </div>
 
-                        {/* Circular Progress */}
-                        <div className="flex justify-center py-4">
-                          <CircularProgress
-                            percentage={skill.level}
-                            size={120}
-                            strokeWidth={8}
-                            delay={idx * 0.15}
-                          />
+                        <div className="pt-1">
+                          <p className="text-xs font-medium text-muted-foreground mb-2">Focus Areas</p>
+                          <div className="flex gap-1.5 flex-wrap">
+                            {skill.projects.map((project, projIdx) => (
+                              <Badge
+                                key={projIdx}
+                                variant="outline"
+                                className="text-xs"
+                              >
+                                {project}
+                              </Badge>
+                            ))}
+                          </div>
                         </div>
 
-                        {/* Projects - Show on hover */}
                         {hoveredSkill === skill.name && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="space-y-2 pt-3 border-t border-border/50"
-                          >
-                            <p className="text-xs font-semibold text-primary uppercase tracking-wide">Key Projects</p>
-                            <div className="flex gap-1.5 flex-wrap">
-                              {skill.projects.map((project, projIdx) => (
-                                <Badge
-                                  key={projIdx}
-                                  variant="outline"
-                                  className="text-xs bg-primary/10 border-primary/30 hover:bg-primary hover:text-white transition-all duration-300"
-                                >
-                                  {project}
-                                </Badge>
-                              ))}
-                            </div>
-                          </motion.div>
+                          <p className="text-[11px] text-muted-foreground">Actively used in recent projects.</p>
                         )}
-                      </CardContent>
-
-                      {/* Bottom glow effect */}
-                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
-                    </Card>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Programming Languages Card */}
-              <Card className="relative overflow-hidden bg-card border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-500 to-teal-500"></div>
-
-                <CardHeader className="relative pb-3">
-                  <CardTitle className="text-base sm:text-xl text-card-foreground flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
-                    <Terminal className="h-5 w-5" /> Programming Languages & Concepts
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="relative">
-                  <div className="flex flex-wrap gap-2">
-                    {languages.map((language, index) => (
-                      <motion.div
-                        key={language}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: index * 0.03 }}
+              <div className="pt-2">
+                <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2 mb-3">
+                  <Terminal className="h-5 w-5 text-primary" /> Programming Languages & Concepts
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {languages.map((language, index) => (
+                    <motion.div
+                      key={language}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.03 }}
+                    >
+                      <Badge
+                        variant="outline"
+                        className="text-xs sm:text-sm"
                       >
-                        <Badge
-                          variant="outline"
-                          className="text-xs sm:text-sm bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-green-500 hover:to-teal-500 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
-                        >
-                          {language}
-                        </Badge>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-full transition-all duration-500"></div>
-              </Card>
+                        {language}
+                      </Badge>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -342,7 +359,7 @@ const Skills = () => {
                   >
                     <Card
                       className="relative overflow-hidden bg-card border-border hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 group h-full"
-                      onMouseEnter={() => setHoveredSkill(skill.name)}
+                      onMouseEnter={() => { playHover(); setHoveredSkill(skill.name); }}
                       onMouseLeave={() => setHoveredSkill(null)}
                     >
                       {/* Animated gradient background */}
@@ -498,6 +515,8 @@ const Skills = () => {
                             key={item}
                             variant="outline"
                             className="text-xs bg-primary/10 border-primary/20 hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
+                                onMouseEnter={() => setHoveredSkill(item)}
+                                onMouseLeave={() => setHoveredSkill(null)}
                           >
                             {item}
                           </Badge>
@@ -510,6 +529,15 @@ const Skills = () => {
               </div>
             </div>
           )}
+
+          </div>
+
+          <div className="lg:col-span-5">
+            <SkillsNodeGraph
+              activeSection={activeSection as 'programming' | 'ai' | 'tools'}
+              hoveredSkillName={hoveredSkill}
+            />
+          </div>
         </div>
 
         {/* Certifications & Achievements */}

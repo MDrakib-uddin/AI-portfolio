@@ -403,7 +403,7 @@ const Contact = () => {
                         id="name"
                         name="name"
                         type="text"
-                        placeholder="John Doe"
+                        placeholder="Rakib Uddin"
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -419,7 +419,7 @@ const Contact = () => {
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder="rakibuddinraki2003@gmail.com"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -467,8 +467,8 @@ const Contact = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className={`text-sm rounded-lg p-4 border flex items-center gap-2 ${status.type === 'success'
-                          ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-400 dark:border-green-800'
-                          : 'bg-red-50 text-red-700 border-red-200 dark:bg-red-950 dark:text-red-400 dark:border-red-800'
+                        ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-400 dark:border-green-800'
+                        : 'bg-red-50 text-red-700 border-red-200 dark:bg-red-950 dark:text-red-400 dark:border-red-800'
                         }`}
                       role="status"
                       aria-live="polite"
