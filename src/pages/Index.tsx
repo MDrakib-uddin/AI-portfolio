@@ -13,7 +13,7 @@ import CustomCursor from '../components/CustomCursor';
 import GradientMesh from '../components/GradientMesh';
 import { TerminalProvider } from '../components/TerminalContext';
 import TerminalOverlay from '../components/TerminalOverlay';
-import Chatbot from '../components/Chatbot';
+
 import { useKonamiCode } from '../hooks/useKonamiCode';
 import confetti from 'canvas-confetti';
 
@@ -68,7 +68,6 @@ const Index = () => {
             <Contact />
           </main>
           <Footer />
-          <Chatbot />
         </Suspense>
       </div>
     </TerminalProvider>
