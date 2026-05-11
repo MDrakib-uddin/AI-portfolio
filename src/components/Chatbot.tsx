@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, User, Loader2 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 import ReactMarkdown from 'react-markdown';
-import { portfolioData } from '../lib/portfolioData';
+import { portfolioData } from '@/lib/portfolioData';
 
 interface Message {
   role: 'user' | 'model';
