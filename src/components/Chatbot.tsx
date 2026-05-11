@@ -18,16 +18,18 @@ const Chatbot = () => {
 
   // Initialize Gemini Session
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  const ai = new GoogleGenAI({ apiKey: apiKey || 'missing_key' });
+  
+  // Memoize AI instance to avoid re-initialization on every render
+  const ai = React.useMemo(() => new GoogleGenAI({ apiKey: apiKey || 'missing_key' }), [apiKey]);
 
   // Create chat session ref so history is maintained during component lifecycle if needed
-  const chatSessionRef = useRef<any>(null);
+  const chatSessionRef = useRef<ReturnType<typeof ai.chats.create> | null>(null);
 
   useEffect(() => {
     if (chatSessionRef.current === null && apiKey) {
       try {
         chatSessionRef.current = ai.chats.create({
-          model: 'gemini-2.5-flash',
+          model: 'gemini-1.5-flash',
           config: {
             systemInstruction: portfolioData,
             temperature: 0.7,
@@ -43,7 +45,7 @@ const Chatbot = () => {
         console.error("Failed to initialize Gemini:", error);
       }
     }
-  }, [apiKey]);
+  }, [apiKey, ai.chats]);
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -79,7 +81,7 @@ const Chatbot = () => {
       const aiResponseText = response.text || "Sorry, I couldn't generate a response.";
 
       setMessages(prev => [...prev, { role: 'model', content: aiResponseText }]);
-    } catch (error: any) {
+    } catch (error) {
       console.error("Chat error:", error);
       setMessages(prev => [...prev, {
         role: 'model',

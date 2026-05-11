@@ -174,7 +174,7 @@ export const SkillsNodeGraph = ({
     }, []);
 
     // Node drawing functionality
-    const paintNode = useCallback((node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
+    const paintNode = useCallback((node: Node & { x: number, y: number }, ctx: CanvasRenderingContext2D, globalScale: number) => {
         const isCore = node.category === 'Core';
         const isActive = node.category === activeCategory;
         const isHovered = hoveredSkillName ? node.name === hoveredSkillName : false;
@@ -266,7 +266,7 @@ export const SkillsNodeGraph = ({
                 linkColor={() => 'rgba(255, 255, 255, 0.2)'}
                 linkWidth={1.5}
                 nodeCanvasObject={paintNode}
-                nodePointerAreaPaint={(node: any, color, ctx) => {
+                nodePointerAreaPaint={(node: Node & { x: number, y: number }, color, ctx) => {
                     // Invisible area for hover/click detection
                     ctx.save();
                     ctx.globalAlpha = 1;
